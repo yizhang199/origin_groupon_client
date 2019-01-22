@@ -7,7 +7,6 @@
 }
 .component-product-card__header {
   display: flex;
-  margin-bottom: 5px;
 }
 .component-product-card__image-container {
   width: 90px;
@@ -22,6 +21,7 @@
   width: 90px;
   height: 64px;
   border-radius: 5px;
+  box-shadow: 0px 0px 1px white;
 }
 
 .component-product-card__info {
@@ -66,4 +66,8 @@
 .component-product-card .material-icons {
   font-size: 16px;
   color: #ffba2d;
+}
+.component-product-card__product-quantity {
+  font-size: 14px;
+  line-height: 16px;
 }

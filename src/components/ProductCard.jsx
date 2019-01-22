@@ -36,7 +36,9 @@ class ProductCard extends React.Component {
           <i onClick={this.decrease} className="material-icons">
             remove_circle
           </i>
-          <span>{quantity}</span>
+          <span className="component-product-card__product-quantity">
+            {quantity}
+          </span>
           <i onClick={this.add} className="material-icons">
             add_circle
           </i>

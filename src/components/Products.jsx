@@ -24,7 +24,7 @@ class Products extends React.Component {
                 to={`nav${category.category_id}`}
                 className="component-products__item"
                 isDynamic={true}
-                offset={-150}
+                offset={-200}
                 spy={true}
                 smooth={true}
                 duration={300}

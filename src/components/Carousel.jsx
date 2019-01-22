@@ -8,16 +8,16 @@ const MyCarousel = () => {
   return (
     <Carousel showThumbs={false}>
       <div>
-        <img src="images/slide_1.png" />
+        <img src="images/slide_1.png" alt="pic_1" />
       </div>
       <div>
-        <img src="images/slide_2.png" />
+        <img src="images/slide_2.png" alt="pic_2" />
       </div>
       <div>
-        <img src="images/slide_3.png" />
+        <img src="images/slide_3.png" alt="pic_3" />
       </div>
       <div>
-        <img src="images/slide_4.png" />
+        <img src="images/slide_4.png" alt="pic_4" />
       </div>
     </Carousel>
   );

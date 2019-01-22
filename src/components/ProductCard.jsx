@@ -11,27 +11,43 @@ class ProductCard extends React.Component {
   getQuantity = () => {
     let counter = 0;
     this.props.shoppingCartList.map(orderItem => {
-      if (orderItem.product_id === this.props.product_id) {
-        counter++;
+      if (
+        orderItem.item &&
+        orderItem.item.product_id === this.props.product.product_id
+      ) {
+        counter += orderItem.quantity;
       }
     });
+
     return counter;
   };
 
+  decrease = () => {
+    this.props.decreaseFromShoppingCartList(this.props.product);
+  };
+  add = () => {
+    this.props.addToShoppingCartList(this.props.product);
+  };
   renderButtonGroup = () => {
     const quantity = this.getQuantity();
     if (quantity > 0) {
       return (
         <div className="component-product_card__button-group">
-          <i className="material-icons">remove_circle</i>
+          <i onClick={this.decrease} className="material-icons">
+            remove_circle
+          </i>
           <span>{quantity}</span>
-          <i className="material-icons">add_circle</i>
+          <i onClick={this.add} className="material-icons">
+            add_circle
+          </i>
         </div>
       );
     } else {
       return (
         <div className="component-product_card__button-group-init">
-          <i className="material-icons">add_circle</i>
+          <i onClick={this.add} className="material-icons">
+            add_circle
+          </i>
         </div>
       );
     }

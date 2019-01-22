@@ -1,0 +1,62 @@
+.component-order-item-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #a5a5a5;
+  min-height: 60px;
+  align-items: center;
+}
+.component-order-item-card__left,
+.component-order-item-card__middle,
+.component-order-item-card__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.component-order-item-card__left {
+  flex: 1;
+}
+.component-order-item-card__middle {
+  flex: 2;
+}
+.component-order-item-card__right {
+  flex: 1;
+  align-items: flex-end;
+}
+
+.component-order-item-card__name {
+  font-size: 12px;
+}
+.component-order-item-card__quantity {
+  font-size: 14px;
+  font-weight: normal;
+  color: white;
+  flex: 1;
+}
+.component-order-item-card__price {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.component-order-item-card__button-group {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+}
+.component-order-item-card__button-group-init {
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+  width: 85%;
+}
+.component-order-item-card .material-icons {
+  font-size: 16px;
+  color: #ffba2d;
+}
+.component-order-item-card__product-quantity {
+  font-size: 14px;
+  line-height: 16px;
+}

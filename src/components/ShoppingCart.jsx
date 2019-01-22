@@ -20,9 +20,9 @@ class ShoppingCart extends React.Component {
         <div className="component-shopping-cart__list">
           {this.props.shoppingCartList.map((orderItem, index) => {
             return (
-              <OrderItem orderItem={orderItem} key={`orderItem${index}`}>
+              <OrderItemCard orderItem={orderItem} key={`orderItem${index}`}>
                 {orderItem.item.name}
-              </OrderItem>
+              </OrderItemCard>
             );
           })}
         </div>

@@ -15,8 +15,26 @@ class ProductCard extends React.Component {
         counter++;
       }
     });
-
     return counter;
+  };
+
+  renderButtonGroup = () => {
+    const quantity = this.getQuantity();
+    if (quantity > 0) {
+      return (
+        <div className="component-product_card__button-group">
+          <i className="material-icons">remove_circle</i>
+          <span>{quantity}</span>
+          <i className="material-icons">add_circle</i>
+        </div>
+      );
+    } else {
+      return (
+        <div className="component-product_card__button-group-init">
+          <i className="material-icons">add_circle</i>
+        </div>
+      );
+    }
   };
   render() {
     return (
@@ -45,11 +63,7 @@ class ProductCard extends React.Component {
                 {this.props.product.quantity}/
                 {this.props.product.stock_status_id}
               </div>
-              <div className="component-product_card__button-group">
-                <i className="material-icons">remove_circle</i>
-                <span>{this.getQuantity()}</span>
-                <i className="material-icons">add_circle</i>
-              </div>
+              {this.renderButtonGroup()}
             </div>
           </div>
         </div>

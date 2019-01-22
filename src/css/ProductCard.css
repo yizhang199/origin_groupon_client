@@ -1,5 +1,5 @@
 .component-product-card {
-  padding: 5px 10px;
+  padding: 5px 5px;
   border-radius: 5px;
   background-color: transparent;
   margin-bottom: 10px;
@@ -41,7 +41,8 @@
 .component-product-card__quantity {
   font-size: 14px;
   font-weight: normal;
-  color: #a5a5a5;
+  color: white;
+  flex: 1;
 }
 .component-product-card__price {
   font-size: 12px;
@@ -52,6 +53,15 @@
 }
 .component-product_card__button-group {
   display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+.component-product_card__button-group-init {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
 }
 .component-product-card .material-icons {
   font-size: 16px;

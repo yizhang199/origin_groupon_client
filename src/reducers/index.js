@@ -9,7 +9,24 @@ const productsReducer = (products = [], action) => {
   return products;
 };
 
+const languageIdReducer = (language_id = 2, action) => {
+  if (action.type === actionTypes.switchLanguage) {
+    return action.payload;
+  }
+  return language_id;
+};
+
+const shoppingCartListReducer = (shoppingCartList = [], action) => {
+  if (action.type === actionTypes.addToShoppingCartList) {
+  } else if (action.type === actionTypes.decreaseFromShoppingCartList) {
+  }
+
+  return shoppingCartList;
+};
+
 export default combineReducers({
   products: productsReducer,
-  form: formReducer
+  language_id: languageIdReducer,
+  form: formReducer,
+  shoppingCartList: shoppingCartListReducer
 });

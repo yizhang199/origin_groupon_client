@@ -9,7 +9,7 @@ import "../css/Products.css";
 
 class Products extends React.Component {
   componentDidMount() {
-    this.props.getProducts();
+    this.props.getProducts(this.props.language_id);
   }
 
   render() {
@@ -63,8 +63,8 @@ class Products extends React.Component {
   }
 }
 
-const mapStateToProps = ({ products }) => {
-  return { products };
+const mapStateToProps = ({ products, language_id }) => {
+  return { products, language_id };
 };
 
 export default connect(

@@ -1,0 +1,15 @@
+.component-shopping-cart__header {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 6vh;
+  background-color: #ffba2d;
+}
+.component-shopping-cart__list {
+  position: fixed;
+  bottom: 6vh;
+  left: 0;
+  height: 65vh;
+}

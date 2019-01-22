@@ -18,16 +18,30 @@ export const switchLanguage = language_id => {
   };
 };
 
-export const addToShoppingCartList = orderItem => {
+export const addToShoppingCartList = product => {
   return {
     type: types.addToShoppingCartList,
+    payload: product
+  };
+};
+
+export const decreaseFromShoppingCartList = product => {
+  return {
+    type: types.decreaseFromShoppingCartList,
+    payload: product
+  };
+};
+
+export const increaseOrderItem = orderItem => {
+  return {
+    type: types.increaseOrderItem,
     payload: orderItem
   };
 };
 
-export const decreaseFromShoppingCartList = orderItem => {
+export const decreaseOrderItem = orderItem => {
   return {
-    type: types.decreaseFromShoppingCartList,
+    type: types.decreaseOrderItem,
     payload: orderItem
   };
 };

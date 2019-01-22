@@ -6,6 +6,7 @@ import Head from "./Head";
 import Products from "./Products";
 import Confirm from "./Confirm";
 import Payment from "./Payment";
+import ShoppingCart from "./ShoppingCart";
 
 import "../css/App.css";
 
@@ -20,6 +21,7 @@ const App = () => {
           <Route exact path={`/confirm`} component={Confirm} />
           <Route exact path={`/payment`} componete={Payment} />
           <Route exact path={`/`} component={Products} />
+          <ShoppingCart />
         </React.Fragment>
       </Router>
     </div>

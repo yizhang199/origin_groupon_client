@@ -1,0 +1,41 @@
+.component-choice-form {
+  height: 65vh;
+  width: 80vw;
+  position: fixed;
+  z-index: 500;
+  top: 15vh;
+  left: 10vw;
+  background-color: #040404;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px white;
+}
+
+.component-choice-form__header {
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  border-bottom: 2px solid #5a5a5a;
+  margin-bottom: 8px;
+}
+.component-choice-form__header__image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 45px;
+}
+.component-choice-form__header__image-container img {
+  width: 95%;
+  height: 95%;
+  border-radius: 5px;
+}
+.component-choice-form__header__product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 46px;
+  margin-left: 15px;
+}
+.component-choice-form__product-name {
+  font-size: 12px;
+}

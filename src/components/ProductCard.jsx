@@ -5,9 +5,17 @@ import {
   decreaseFromShoppingCartList
 } from "../actions";
 import { connect } from "react-redux";
+
+import ChoiceForm from "./ChoiceForm";
+
 import "../css/ProductCard.css";
 
 class ProductCard extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { showChoiceForm: false };
+  }
   getQuantity = () => {
     let counter = 0;
     this.props.shoppingCartList.map(orderItem => {
@@ -22,6 +30,10 @@ class ProductCard extends React.Component {
     return counter;
   };
 
+  toggleOptionForm = () => {
+    this.setState({ showChoiceForm: !this.state.showChoiceForm });
+  };
+
   decrease = () => {
     this.props.decreaseFromShoppingCartList(this.props.product);
   };
@@ -30,7 +42,8 @@ class ProductCard extends React.Component {
   };
   renderButtonGroup = () => {
     const quantity = this.getQuantity();
-    if (quantity > 0) {
+    const withOptions = this.props.product.options.length > 0;
+    if (!withOptions && quantity > 0) {
       return (
         <div className="component-product_card__button-group">
           <i onClick={this.decrease} className="material-icons">
@@ -44,9 +57,29 @@ class ProductCard extends React.Component {
           </i>
         </div>
       );
-    } else {
+    } else if (!withOptions) {
       return (
         <div className="component-product_card__button-group-init">
+          <i onClick={this.add} className="material-icons">
+            add_circle
+          </i>
+        </div>
+      );
+    } else if (withOptions && quantity == 0) {
+      return (
+        <div className="component-product_card__button-group-init">
+          <i onClick={this.toggleOptionForm} className="material-icons">
+            add_circle
+          </i>
+        </div>
+      );
+    } else {
+      return (
+        <div className="component-product_card__button-group">
+          <i className="material-icons disable">remove_circle</i>
+          <span className="component-product-card__product-quantity">
+            {quantity}
+          </span>
           <i onClick={this.add} className="material-icons">
             add_circle
           </i>
@@ -85,6 +118,15 @@ class ProductCard extends React.Component {
             </div>
           </div>
         </div>
+        {this.state.showChoiceForm ? (
+          <React.Fragment>
+            <div
+              onClick={this.toggleOptionForm}
+              className="componente_product-card__cover"
+            />
+            <ChoiceForm product={this.props.product} />
+          </React.Fragment>
+        ) : null}
       </div>
     );
   }

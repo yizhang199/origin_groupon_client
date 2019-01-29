@@ -15,3 +15,32 @@
   width: 100vw;
   background-color: #040404;
 }
+.component-shopping-cart__icon-container {
+  position: absolute;
+  top: -18px;
+  left: 20px;
+  border-radius: 50%;
+  border: 2px solid;
+  width: 39px;
+  height: 39px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffba2d;
+}
+.component-shopping-cart__icon-container .material-icons {
+  font-size: 30px;
+}
+.component-shopping-cart__icon-quantity {
+  border-radius: 50%;
+  background-color: red;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  display: inline-block;
+  font-size: 13px;
+  text-align: center;
+  font-weight: bold;
+  left: 20px;
+  top: -5px;
+}

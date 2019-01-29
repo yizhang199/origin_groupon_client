@@ -44,6 +44,9 @@ class ShoppingCart extends React.Component {
    * @returns {JSX} icon of shopping cart and quantity badge
    */
   renderIcon = () => {
+    if (this.state.showList) {
+      return null;
+    }
     return (
       <div className="component-shopping-cart__icon-container">
         <i className="material-icons">shopping_cart</i>

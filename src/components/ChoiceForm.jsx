@@ -196,8 +196,9 @@ class ChoiceForm extends React.Component {
       ...this.props.product,
       choices: this.state.choices
     };
-    console.log(newOrderItem);
-    // this.props.addToShoppingCartList(newOrderItem);
+
+    this.props.addToShoppingCartList(newOrderItem);
+    this.props.toggleOptionForm();
   };
 
   render() {

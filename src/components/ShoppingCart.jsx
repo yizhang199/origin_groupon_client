@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import OrderItemCard from "./OrderItemCard";
+import { history } from "../history";
 
 import "../css/ShoppingCart.css";
 
@@ -55,6 +57,41 @@ class ShoppingCart extends React.Component {
       </div>
     );
   };
+  /**
+   * calculate total price of shoppingCartList
+   * @param {Void}
+   * @returns {decimal} total price/cost of ordered items
+   */
+  getTotalPrice = () => {
+    let sum = 0;
+    this.props.shoppingCartList.map(orderItem => {
+      console.log(orderItem);
+      let price = parseFloat(orderItem.item.price);
+      if (orderItem.item.choices) {
+        orderItem.item.choices.map(choice => {
+          if (Array.isArray(choice.productOptionValue)) {
+            choice.productOptionValue.map(value => {
+              price += parseFloat(value.price);
+            });
+          } else {
+            price += parseFloat(choice.productOptionValue.price);
+          }
+        });
+      }
+
+      sum += price * orderItem.quantity;
+    });
+
+    return `$${sum.toFixed(2)}`;
+  };
+  /**
+   * route to Confirm.jsx programic
+   * @param {Void}
+   * @returns {Void}
+   */
+  navToConfirm = () => {
+    history.push("/confirm");
+  };
 
   /**
    * render jsx for shopping cart list
@@ -63,15 +100,41 @@ class ShoppingCart extends React.Component {
   renderList = () => {
     if (this.state.showList && this.props.shoppingCartList.length > 0) {
       return (
-        <div className="component-shopping-cart__list">
-          {this.props.shoppingCartList.map((orderItem, index) => {
-            return (
-              <OrderItemCard orderItem={orderItem} key={`orderItem${index}`}>
-                {orderItem.item.name}
-              </OrderItemCard>
-            );
-          })}
-        </div>
+        <React.Fragment>
+          <div
+            className="component-shopping-cart__cover"
+            onClick={this.toggleList}
+          />
+          <div className="component-shopping-cart__list">
+            <div className="component-shopping-cart__list__header">
+              <span className="component-shopping-cart__list__header-quantity">
+                <i className="material-icons">shopping_cart</i>
+                <span className="component-shopping-cart__list__header-quantity__number">
+                  {this.getTotal()}
+                </span>
+              </span>
+              <span className="component-shopping-cart__list__header-totoalPrice">
+                {this.getTotalPrice()}
+              </span>
+            </div>
+            {this.props.shoppingCartList.map((orderItem, index) => {
+              return (
+                <OrderItemCard orderItem={orderItem} key={`orderItem${index}`}>
+                  {orderItem.item.name}
+                </OrderItemCard>
+              );
+            })}
+            <div className="component-shopping-cart__list__footer">
+              <Link
+                onClick={this.toggleList}
+                to="/confirm"
+                className="component-shopping-cart__list__button-confirm"
+              >
+                确定
+              </Link>
+            </div>
+          </div>
+        </React.Fragment>
       );
     } else {
       return null;

@@ -124,7 +124,10 @@ class ProductCard extends React.Component {
               onClick={this.toggleOptionForm}
               className="componente_product-card__cover"
             />
-            <ChoiceForm product={this.props.product} />
+            <ChoiceForm
+              toggleOptionForm={this.toggleOptionForm}
+              product={this.props.product}
+            />
           </React.Fragment>
         ) : null}
       </div>

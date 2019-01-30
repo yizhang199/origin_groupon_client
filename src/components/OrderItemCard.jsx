@@ -6,6 +6,16 @@ import { increaseOrderItem, decreaseOrderItem } from "../actions";
 import "../css/OrderItemCard.css";
 
 class OrderItemCard extends React.Component {
+  componentDidMount() {
+    console.log(this.props.orderItem);
+  }
+  makePrice = value => {
+    if (value == 0) {
+      return `Free`;
+    } else {
+      return `$${value}`;
+    }
+  };
   increase = () => {
     this.props.increaseOrderItem(this.props.orderItem);
   };
@@ -38,6 +48,45 @@ class OrderItemCard extends React.Component {
       );
     }
   };
+  renderChoices = () => {
+    if (this.props.orderItem.item.choices) {
+      return this.props.orderItem.item.choices.map((choice, index) => {
+        if (Array.isArray(choice.productOptionValue)) {
+          return choice.productOptionValue.map((value, index) => {
+            return (
+              <div
+                className="component-order-item-card__option-value"
+                key={`value${index}`}
+              >
+                <span className="component-order-item-card__option-name">
+                  {value.name}
+                </span>
+                <span className="component-order-item-card__option-price">
+                  {this.makePrice(value.price)}
+                </span>
+              </div>
+            );
+          });
+        } else {
+          return (
+            <div
+              className="component-order-item-card__option-value"
+              key={`choice${index}`}
+            >
+              <span className="component-order-item-card__option-name">
+                {choice.productOptionValue.name}
+              </span>
+              <span className="component-order-item-card__option-price">
+                {this.makePrice(choice.productOptionValue.price)}
+              </span>
+            </div>
+          );
+        }
+      });
+    }
+
+    return null;
+  };
   render() {
     return (
       <div className="component-order-item-card">
@@ -47,7 +96,7 @@ class OrderItemCard extends React.Component {
           </span>{" "}
         </div>
         <div className="component-order-item-card__middle">
-          <span>sample options</span>
+          {this.renderChoices()}
         </div>
         <div className="component-order-item-card__right">
           <span className="component-order-item-card__price">

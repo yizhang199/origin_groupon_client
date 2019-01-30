@@ -45,4 +45,33 @@ export const decreaseOrderItem = orderItem => {
     payload: orderItem
   };
 };
+
+export const confirmOrder = () => {
+  return async function(dispatch) {
+    const response = await kidsnParty.post(`/orders`);
+
+    dispatch({ type: types.confirmOrder, payload: response.data });
+  };
+};
+
+export const selectedShop = shop => {
+  return {
+    type: types.selectedShop,
+    payload: shop
+  };
+};
+export const pickedDate = date => {
+  return {
+    type: types.pickedDate,
+    payload: date
+  };
+};
+
+export const getShops = () => {
+  return async function(dispatch) {
+    const response = await kidsnParty.get(`/locations`);
+
+    dispatch({ type: types.getShops, payload: response.data.locations });
+  };
+};
 export const actionTypes = types;

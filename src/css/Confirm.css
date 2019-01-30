@@ -1,0 +1,5 @@
+.component-confirm {
+  margin-bottom: 6vh;
+  overflow: scroll;
+  height: calc(88vh - 42px);
+}

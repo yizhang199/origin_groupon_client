@@ -17,9 +17,35 @@ const languageIdReducer = (language_id = 2, action) => {
   return language_id;
 };
 
+const selectedShopReducer = (selectedShop = {}, action) => {
+  if (action.type === actionTypes.selectedShop) {
+    return action.payload;
+  }
+
+  return selectedShop;
+};
+
+const pickedDateReducer = (pickedDate = {}, action) => {
+  if (action.type === actionTypes.pickedDate) {
+    return action.payload;
+  }
+
+  return pickedDate;
+};
+
+const shopsReducer = (shops = [], action) => {
+  if (action.type === actionTypes.getShops) {
+    return action.payload;
+  }
+  return shops;
+};
+
 export default combineReducers({
   products: productsReducer,
   language_id: languageIdReducer,
   form: formReducer,
-  shoppingCartList: shoppingCartListReducer
+  shoppingCartList: shoppingCartListReducer,
+  selectedShop: selectedShopReducer,
+  pickedDate: pickedDateReducer,
+  shops: shopsReducer
 });

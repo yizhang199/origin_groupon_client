@@ -39,3 +39,30 @@
 .component-choice-form__product-name {
   font-size: 12px;
 }
+.component-choice-form__body {
+  padding: 0px 10px;
+}
+
+.component-choice-form__option-name {
+  text-align: center;
+  border-bottom: 1px solid #a5a5a5;
+  margin-top: 10px;
+}
+.component-choice-form__footer {
+  position: fixed;
+  bottom: 20vh;
+  left: 10vw;
+  width: 80vw;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.componente-choice-form__button-container button {
+  width: 120px;
+  height: 30px;
+  border: 1px solid #daae14;
+  background-color: #daae14;
+  color: white;
+  font-weight: bold;
+}

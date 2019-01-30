@@ -16,16 +16,27 @@ class ChoiceForm extends React.Component {
       if (option.type === "radio") {
         newArray = [
           ...newArray,
-          { name: option.option_name, choice: option.values[0].name }
+          {
+            productOption: option.product_option_id,
+            productOptionValue: option.values[0].product_option_value_id
+          }
         ];
       } else if (option.type === "checkbox") {
-        newArray = [...newArray, { name: option.option_name, choice: [] }];
+        newArray = [
+          ...newArray,
+          { productOption: option.product_option_id, productOptionValue: [] }
+        ];
       }
     });
 
     this.setState({ choices: newArray });
   }
 
+  /**
+   * handle choice form value change update state
+   * @param {Event} input - value, type ...
+   * @returns {Void}
+   */
   handleChange = e => {
     switch (e.target.type) {
       case "radio":
@@ -43,11 +54,16 @@ class ChoiceForm extends React.Component {
     }
   };
 
+  /**
+   * update state when radio button been clicked
+   * @param {Integer} value - product_option_value_id
+   * @returns {Voide} state updated
+   */
   radioButtonEvent = (value, name) => {
     this.setState({
       choices: this.state.choices.map(ele => {
-        if (ele.name === name) {
-          return { ...ele, choice: value };
+        if (ele.productOption === name) {
+          return { ...ele, productOptionValue: value };
         } else {
           return ele;
         }
@@ -55,15 +71,27 @@ class ChoiceForm extends React.Component {
     });
   };
 
+  /**
+   * update state when check box been checked
+   * @param
+   */
   checkboxEvent = (value, name, status) => {
     console.log({ value, name, status });
 
     this.setState({
       choices: this.state.choices.map(ele => {
-        if (ele.name === name && status) {
-          return { ...ele, choice: [...ele.choice, value] };
-        } else if (ele.name === name) {
-          return { ...ele, choice: ele.choice.filter(item => item === value) };
+        if (ele.productOption == name && status) {
+          return {
+            ...ele,
+            productOptionValue: [...ele.productOptionValue, value]
+          };
+        } else if (ele.productOption == name) {
+          return {
+            ...ele,
+            productOptionValue: ele.productOptionValue.filter(
+              item => item === value
+            )
+          };
         } else {
           return ele;
         }
@@ -71,6 +99,11 @@ class ChoiceForm extends React.Component {
     });
   };
 
+  /**
+   * make up price display format
+   * @param {decimal} price
+   * @returns {string} formatted price
+   */
   makePrice = value => {
     if (value > 0) {
       return `$${value}`;
@@ -78,6 +111,11 @@ class ChoiceForm extends React.Component {
     return "";
   };
 
+  /**
+   * render JSX for one single option choice
+   * @param {Object} option
+   * @returns {JSX}
+   */
   renderOption = option => {
     switch (option.type) {
       case "radio":
@@ -85,7 +123,7 @@ class ChoiceForm extends React.Component {
           return (
             <label key={`optionValue${option_value.product_option_value_id}`}>
               <input
-                name={option.option_name}
+                name={option.product_option_id}
                 type="radio"
                 value={option_value.product_option_value_id}
                 onChange={this.handleChange}
@@ -115,6 +153,11 @@ class ChoiceForm extends React.Component {
     }
   };
 
+  /**
+   * render a frame which is container of multiple option choices
+   * @param {Void}
+   * @returns {JSX} a frame with title
+   */
   renderOptions = () => {
     return this.props.product.options.map((option, index) => {
       return (
@@ -122,20 +165,23 @@ class ChoiceForm extends React.Component {
           <div className="component-choice-form__option-name">
             {option.option_name}
           </div>
-
           {this.renderOption(option)}
         </div>
       );
     });
   };
 
+  /**
+   * submit choices - will call action to update shopplingCartList in redux store
+   * @param {Event}
+   * @returns {Void}
+   */
   onSubmit = e => {
     e.preventDefault();
 
     const newOrderItem = { ...this.props.product, choices: this.state.choices };
-    console.log("newOrderItem: ", newOrderItem);
 
-    // this.props.addToShoppingCartList(newOrderItem);
+    this.props.addToShoppingCartList(newOrderItem);
   };
 
   render() {

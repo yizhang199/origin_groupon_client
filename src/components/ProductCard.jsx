@@ -80,7 +80,7 @@ class ProductCard extends React.Component {
           <span className="component-product-card__product-quantity">
             {quantity}
           </span>
-          <i onClick={this.add} className="material-icons">
+          <i onClick={this.toggleOptionForm} className="material-icons">
             add_circle
           </i>
         </div>

@@ -40,11 +40,21 @@ class ChoiceForm extends React.Component {
   handleChange = e => {
     switch (e.target.type) {
       case "radio":
-        this.radioButtonEvent(e.target.value, e.target.name);
+        const radioOptionObject = {
+          name: e.target.getAttribute("data-option-value-name"),
+          price: e.target.getAttribute("data-option-value-price"),
+          product_option_value_id: e.target.value
+        };
+        this.radioButtonEvent(radioOptionObject, e.target.name);
         break;
       case "checkbox":
+        const checkboxOptionObject = {
+          name: e.target.getAttribute("data-option-value-name"),
+          price: e.target.getAttribute("data-option-value-price"),
+          product_option_value_id: e.target.name
+        };
         this.checkboxEvent(
-          e.target.name,
+          checkboxOptionObject,
           e.target.getAttribute("data-group-product-option-id"),
           e.target.checked
         );
@@ -62,7 +72,7 @@ class ChoiceForm extends React.Component {
   radioButtonEvent = (value, name) => {
     this.setState({
       choices: this.state.choices.map(ele => {
-        if (ele.productOption === name) {
+        if (ele.productOption == name) {
           return { ...ele, productOptionValue: value };
         } else {
           return ele;
@@ -76,8 +86,6 @@ class ChoiceForm extends React.Component {
    * @param
    */
   checkboxEvent = (value, name, status) => {
-    console.log({ value, name, status });
-
     this.setState({
       choices: this.state.choices.map(ele => {
         if (ele.productOption == name && status) {
@@ -89,7 +97,8 @@ class ChoiceForm extends React.Component {
           return {
             ...ele,
             productOptionValue: ele.productOptionValue.filter(
-              item => item === value
+              item =>
+                item.product_option_value_id === value.product_option_value_id
             )
           };
         } else {
@@ -126,6 +135,8 @@ class ChoiceForm extends React.Component {
                 name={option.product_option_id}
                 type="radio"
                 value={option_value.product_option_value_id}
+                data-option-value-name={option_value.name}
+                data-option-value-price={option_value.price}
                 onChange={this.handleChange}
               />
               {option_value.name}
@@ -139,6 +150,8 @@ class ChoiceForm extends React.Component {
             <label key={`optionValue${value.product_option_value_id}`}>
               <input
                 name={value.product_option_value_id + ""}
+                data-option-value-name={value.name}
+                data-option-value-price={value.price}
                 type="checkbox"
                 data-group-product-option-id={option.product_option_id}
                 onChange={this.handleChange}
@@ -179,9 +192,12 @@ class ChoiceForm extends React.Component {
   onSubmit = e => {
     e.preventDefault();
 
-    const newOrderItem = { ...this.props.product, choices: this.state.choices };
-
-    this.props.addToShoppingCartList(newOrderItem);
+    const newOrderItem = {
+      ...this.props.product,
+      choices: this.state.choices
+    };
+    console.log(newOrderItem);
+    // this.props.addToShoppingCartList(newOrderItem);
   };
 
   render() {

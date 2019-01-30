@@ -5,6 +5,7 @@ import Carousel from "./Carousel";
 
 import { getProducts } from "../actions";
 import ProductCard from "./ProductCard";
+import ShoppingCart from "./ShoppingCart";
 
 import "../css/Products.css";
 
@@ -62,6 +63,7 @@ class Products extends React.Component {
             })}
           </div>
         </div>
+        <ShoppingCart />
       </React.Fragment>
     );
   }

@@ -3,3 +3,8 @@
   overflow: scroll;
   height: calc(88vh - 42px);
 }
+.componente-confirm__shops-header {
+  color: #a5a5a5;
+  font-size: 12px;
+  font-weight: bold;
+}

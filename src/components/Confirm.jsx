@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import ShopCard from "./ShopCard";
 import { getShops } from "../actions";
+import ShoppingCart from "./ShoppingCart";
 import "../css/Confirm.css";
 class Confirm extends React.Component {
   /**
@@ -25,8 +26,11 @@ class Confirm extends React.Component {
   render() {
     return (
       <div className="component-confirm">
-        <div className="componente-confirm__shops-header">shops</div>
+        <div className="componente-confirm__shops-header">
+          选择取货的店面和时间
+        </div>
         {this.renderShopList()}
+        <ShoppingCart />
       </div>
     );
   }

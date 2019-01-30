@@ -15,8 +15,6 @@ class ShopCard extends React.Component {
       <div className="component-shop-card__open-dates-container">
         {this.props.shop.open.map((openDate, index) => {
           let myClass = "component-open-date-tag__content";
-          console.log(this.props);
-
           if (this.props.date.date) {
             if (
               this.props.date.date === openDate &&

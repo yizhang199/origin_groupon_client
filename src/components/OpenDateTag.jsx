@@ -6,7 +6,6 @@ import { pickedDate } from "../actions";
 import "../css/OpenDateTag.css";
 class OpenDateTag extends React.Component {
   handlePickedDate = () => {
-    console.log(this.props.date, this.props.shop.location_id);
     this.props.pickedDate({
       date: this.props.date,
       location_id: this.props.shop.location_id

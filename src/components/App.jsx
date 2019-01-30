@@ -6,6 +6,8 @@ import Products from "./Products";
 import Confirm from "./Confirm";
 import Payment from "./Payment";
 import ShoppingCart from "./ShoppingCart";
+import Login from "./Login";
+import Register from "./Register";
 
 import "../css/App.css";
 
@@ -18,8 +20,9 @@ const App = () => {
           <Route exact path={`/products`} component={Products} />
           <Route exact path={`/confirm`} component={Confirm} />
           <Route exact path={`/payment`} componete={Payment} />
+          <Route exact path={`/login`} component={Login} />
+          <Route exact path={`/register`} component={Register} />
           <Route exact path={`/`} component={Products} />
-          <ShoppingCart />
         </React.Fragment>
       </Router>
     </div>

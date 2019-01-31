@@ -4,7 +4,7 @@ import { Field, reduxForm } from "redux-form";
 import "../css/Form.css";
 
 class LoginForm extends React.Component {
-  renderInput = ({ input, placeholder, label }) => {
+  renderInput = ({ input, placeholder }) => {
     return (
       <input
         {...input}
@@ -14,20 +14,11 @@ class LoginForm extends React.Component {
       />
     );
   };
+
   render() {
     return (
       <div className="component-form">
         <form>
-          <div className="component-form__input-container">
-            <label className="component-form__form-field">
-              <i className="material-icons">account_circle</i>
-              <Field
-                name="username"
-                component={this.renderInput}
-                placeholder="请输入用户名"
-              />
-            </label>
-          </div>
           <div className="component-form__input-container">
             <label className="component-form__form-field">
               <i className="material-icons">email</i>
@@ -35,7 +26,7 @@ class LoginForm extends React.Component {
                 name="email"
                 component={this.renderInput}
                 placeholder="请输入Email"
-              />{" "}
+              />
             </label>
           </div>
           <div className="component-form__input-container">
@@ -48,16 +39,7 @@ class LoginForm extends React.Component {
               />
             </label>
           </div>
-          <div className="component-form__input-container">
-            <label className="component-form__form-field">
-              <i className="material-icons">lock</i>
-              <Field
-                name="repeat_password"
-                component={this.renderInput}
-                placeholder="请再次输入密码"
-              />
-            </label>
-          </div>
+
           <button className="component-form__submit-button">确认</button>
         </form>
       </div>

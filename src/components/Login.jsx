@@ -5,7 +5,7 @@ import FormHead from "./FormHead";
 const Login = () => {
   return (
     <div className="component-login">
-      <FormHead />
+      <FormHead pathname="login" />
       <LoginForm />
     </div>
   );

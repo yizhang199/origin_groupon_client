@@ -5,7 +5,7 @@ import Head from "./Head";
 import Products from "./Products";
 import Confirm from "./Confirm";
 import Payment from "./Payment";
-import ShoppingCart from "./ShoppingCart";
+
 import Login from "./Login";
 import Register from "./Register";
 

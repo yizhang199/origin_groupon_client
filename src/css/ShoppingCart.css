@@ -5,7 +5,7 @@
   left: 0;
   width: 100vw;
   height: 6vh;
-  background-color: #ffba2d;
+  background-color: #daae14;
 }
 .component-shopping-cart__cover {
   height: 100vh;
@@ -29,16 +29,17 @@
   top: -18px;
   left: 20px;
   border-radius: 50%;
-  border: 2px solid;
+  border: 2px solid #daae14;
   width: 39px;
   height: 39px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffba2d;
+  background-color: #fff;
 }
 .component-shopping-cart__icon-container .material-icons {
   font-size: 30px;
+  color: #daae14;
 }
 .component-shopping-cart__icon-quantity {
   border-radius: 50%;
@@ -98,7 +99,6 @@
   justify-content: space-evenly;
   align-items: center;
   border-radius: 5px;
-  /* padding: 1px 10px; */
 }
 .component-shopping-cart__list__header-quantity .material-icons {
   border-right: 1px solid #a5a5a55c;

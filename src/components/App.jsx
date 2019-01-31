@@ -1,10 +1,11 @@
 import React from "react";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Route, Router } from "react-router-dom";
 
 import Head from "./Head";
 import Products from "./Products";
 import Confirm from "./Confirm";
 import Payment from "./Payment";
+import { history } from "../history";
 
 import Login from "./Login";
 import Register from "./Register";
@@ -14,7 +15,7 @@ import "../css/App.css";
 const App = () => {
   return (
     <div className="component-app">
-      <Router>
+      <Router history={history}>
         <React.Fragment>
           <Head title="天府川菜馆" />
           <Route exact path={`/products`} component={Products} />

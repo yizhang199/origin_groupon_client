@@ -5,7 +5,7 @@ import RegisterForm from "./RegisterForm";
 const Register = () => {
   return (
     <div className="component-register">
-      <FormHead pathname="register" />
+      <FormHead />
       <RegisterForm />
     </div>
   );

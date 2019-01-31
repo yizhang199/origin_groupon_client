@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { history } from "../history";
+
 import "../css/FormHead.css";
 
-const FormHead = props => {
+const FormHead = () => {
   return (
     <div className="component-form-head">
       <Link
         className={`component-from-head__nav left${
-          props.pathname === "register" ? " active" : ""
+          history.location.pathname === "/register" ? " active" : ""
         }`}
         to="/register"
       >
@@ -16,7 +18,7 @@ const FormHead = props => {
       </Link>
       <Link
         className={`component-from-head__nav right${
-          props.pathname === "login" ? " active" : ""
+          history.location.pathname === "/login" ? " active" : ""
         }`}
         to="/login"
       >

@@ -1,6 +1,8 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
 
+import { login } from "../actions";
 import "../css/Form.css";
 
 class LoginForm extends React.Component {
@@ -15,11 +17,13 @@ class LoginForm extends React.Component {
       />
     );
   };
-
+  onSubmit = formValues => {
+    this.props.login();
+  };
   render() {
     return (
       <div className="component-form">
-        <form>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <div className="component-form__input-container">
             <label className="component-form__form-field">
               <i className="material-icons">email</i>
@@ -49,5 +53,8 @@ class LoginForm extends React.Component {
     );
   }
 }
-
-export default reduxForm({ form: "loginForm" })(LoginForm);
+const reduxFormWrapper = reduxForm({ form: "loginForm" })(LoginForm);
+export default connect(
+  null,
+  { login }
+)(reduxFormWrapper);

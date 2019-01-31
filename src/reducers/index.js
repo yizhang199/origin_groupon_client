@@ -39,7 +39,12 @@ const shopsReducer = (shops = [], action) => {
   }
   return shops;
 };
-
+const userReducer = (user = {}, action) => {
+  if (action.type === actionTypes.login) {
+    return action.payload;
+  }
+  return user;
+};
 export default combineReducers({
   products: productsReducer,
   language_id: languageIdReducer,
@@ -47,5 +52,6 @@ export default combineReducers({
   shoppingCartList: shoppingCartListReducer,
   selectedShop: selectedShopReducer,
   pickedDate: pickedDateReducer,
-  shops: shopsReducer
+  shops: shopsReducer,
+  user: userReducer
 });

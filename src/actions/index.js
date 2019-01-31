@@ -1,6 +1,7 @@
 import types from "./actionTypes";
 
 import kidsnParty from "../apis/kidsnParty";
+import { history } from "../history";
 
 export const getProducts = language_id => {
   return async function(dispatch, getState) {
@@ -72,6 +73,22 @@ export const getShops = () => {
     const response = await kidsnParty.get(`/locations`);
 
     dispatch({ type: types.getShops, payload: response.data.locations });
+  };
+};
+
+export const login = () => {
+  return async function(dispatch, getState) {
+    const { values } = getState().form.loginForm;
+
+    const requestBody = { email: values.email, password: values.password };
+    const response = await kidsnParty.post(`/user/login`, requestBody);
+    if (response.data.success) {
+      dispatch({ type: types.login, payload: response.data.data });
+      localStorage.setItem("user", JSON.stringify(response.data.data));
+      history.push("/payment");
+    } else {
+      alert("email or password incorrect");
+    }
   };
 };
 export const actionTypes = types;

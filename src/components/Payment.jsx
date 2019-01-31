@@ -1,6 +1,6 @@
 import React from "react";
 
-const Payment = props => {
+const Payment = () => {
   return (
     <div className="component-payment">
       <h1>Payment</h1>

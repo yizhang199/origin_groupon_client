@@ -22,7 +22,8 @@ const App = () => {
           <Route exact path={`/products`} component={Products} />
 
           <Route exact path={`/confirm`} component={Confirm} />
-          <PrivateRoute exact path={`/payment`} componete={Payment} />
+          <PrivateRoute exact path={`/payment`} component={Payment} />
+          {/* <Route exact path={`/payment`} component={Payment} /> */}
           <Route exact path={`/login`} component={Login} />
           <Route exact path={`/register`} component={Register} />
           <Route exact path={`/`} component={Products} />

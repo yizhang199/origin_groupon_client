@@ -8,7 +8,8 @@ const types = {
   confirmOrder: "CONFIRM_ORDER",
   selectedShop: "SELECTED_SHOP",
   pickedDate: "PICKED_DATE",
-  getShops: "GET_SHOPS"
+  getShops: "GET_SHOPS",
+  login: "LOGIN"
 };
 
 export default types;

@@ -1,0 +1,31 @@
+.component-form-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.component-from-head__nav {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #daae14;
+  width: 120px;
+}
+
+.component-from-head__nav.active {
+  color: black;
+  background-color: #daae14;
+}
+
+.left {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.right {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

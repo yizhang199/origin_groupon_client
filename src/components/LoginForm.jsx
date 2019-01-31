@@ -4,13 +4,14 @@ import { Field, reduxForm } from "redux-form";
 import "../css/Form.css";
 
 class LoginForm extends React.Component {
-  renderInput = ({ input, placeholder }) => {
+  renderInput = ({ input, placeholder, type }) => {
     return (
       <input
         {...input}
         type="text"
         className="component-form__input"
         placeholder={placeholder}
+        type={type}
       />
     );
   };
@@ -26,6 +27,7 @@ class LoginForm extends React.Component {
                 name="email"
                 component={this.renderInput}
                 placeholder="请输入Email"
+                type="text"
               />
             </label>
           </div>
@@ -36,6 +38,7 @@ class LoginForm extends React.Component {
                 name="password"
                 component={this.renderInput}
                 placeholder="请输入密码"
+                type="password"
               />
             </label>
           </div>

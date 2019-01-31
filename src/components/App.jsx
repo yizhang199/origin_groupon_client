@@ -6,6 +6,7 @@ import Products from "./Products";
 import Confirm from "./Confirm";
 import Payment from "./Payment";
 import { history } from "../history";
+import { PrivateRoute } from "../PrivateRoute";
 
 import Login from "./Login";
 import Register from "./Register";
@@ -19,8 +20,9 @@ const App = () => {
         <React.Fragment>
           <Head title="天府川菜馆" />
           <Route exact path={`/products`} component={Products} />
+
           <Route exact path={`/confirm`} component={Confirm} />
-          <Route exact path={`/payment`} componete={Payment} />
+          <PrivateRoute exact path={`/payment`} componete={Payment} />
           <Route exact path={`/login`} component={Login} />
           <Route exact path={`/register`} component={Register} />
           <Route exact path={`/`} component={Products} />

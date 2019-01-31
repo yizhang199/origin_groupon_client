@@ -4,11 +4,11 @@ import { Field, reduxForm } from "redux-form";
 import "../css/Form.css";
 
 class RegisterForm extends React.Component {
-  renderInput = ({ input, placeholder }) => {
+  renderInput = ({ input, placeholder, type }) => {
     return (
       <input
         {...input}
-        type="text"
+        type={type}
         className="component-form__input"
         placeholder={placeholder}
       />
@@ -25,6 +25,7 @@ class RegisterForm extends React.Component {
                 name="username"
                 component={this.renderInput}
                 placeholder="请输入用户名"
+                type="text"
               />
             </label>
           </div>
@@ -35,7 +36,8 @@ class RegisterForm extends React.Component {
                 name="email"
                 component={this.renderInput}
                 placeholder="请输入Email"
-              />{" "}
+                type="text"
+              />
             </label>
           </div>
           <div className="component-form__input-container">
@@ -45,6 +47,7 @@ class RegisterForm extends React.Component {
                 name="password"
                 component={this.renderInput}
                 placeholder="请输入密码"
+                type="password"
               />
             </label>
           </div>
@@ -55,6 +58,7 @@ class RegisterForm extends React.Component {
                 name="repeat_password"
                 component={this.renderInput}
                 placeholder="请再次输入密码"
+                type="password"
               />
             </label>
           </div>

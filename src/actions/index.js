@@ -91,4 +91,13 @@ export const login = () => {
     }
   };
 };
+
+export const register = () => {
+  return async function(dispatch, getState) {
+    const { values } = getState().form.registerForm;
+
+    const response = await kidsnParty.post(`/user/register`, values);
+    console.log(response);
+  };
+};
 export const actionTypes = types;

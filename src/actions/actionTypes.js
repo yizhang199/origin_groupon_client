@@ -9,7 +9,8 @@ const types = {
   selectedShop: "SELECTED_SHOP",
   pickedDate: "PICKED_DATE",
   getShops: "GET_SHOPS",
-  login: "LOGIN"
+  login: "LOGIN",
+  register: "REGISTER"
 };
 
 export default types;

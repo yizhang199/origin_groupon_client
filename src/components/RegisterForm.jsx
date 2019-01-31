@@ -1,6 +1,8 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
 
+import { register } from "../actions";
 import "../css/Form.css";
 
 class RegisterForm extends React.Component {
@@ -14,10 +16,13 @@ class RegisterForm extends React.Component {
       />
     );
   };
+  onSubmit = formValues => {
+    this.props.register();
+  };
   render() {
     return (
       <div className="component-form">
-        <form>
+        <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <div className="component-form__input-container">
             <label className="component-form__form-field">
               <i className="material-icons">account_circle</i>
@@ -69,4 +74,8 @@ class RegisterForm extends React.Component {
   }
 }
 
-export default reduxForm({ form: "registerForm" })(RegisterForm);
+const reduxFormWrapper = reduxForm({ form: "registerForm" })(RegisterForm);
+export default connect(
+  null,
+  { register }
+)(reduxFormWrapper);

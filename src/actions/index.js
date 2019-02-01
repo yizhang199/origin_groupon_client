@@ -1,7 +1,9 @@
 import types from "./actionTypes";
 
 import kidsnParty from "../apis/kidsnParty";
+import redpay from "../apis/payment";
 import { history } from "../history";
+import Axios from "axios";
 
 export const getProducts = language_id => {
   return async function(dispatch, getState) {
@@ -61,6 +63,7 @@ export const selectedShop = shop => {
     payload: shop
   };
 };
+
 export const pickedDate = date => {
   return {
     type: types.pickedDate,
@@ -98,6 +101,48 @@ export const register = () => {
 
     const response = await kidsnParty.post(`/user/register`, values);
     console.log(response);
+  };
+};
+
+export const setPaymentMethod = value => {
+  return {
+    type: types.setPaymentMethod,
+    payload: value
+  };
+};
+export const makePayment = () => {
+  return async function(dispatch, getState) {
+    const { paymentMethod } = getState();
+
+    var win = window.open("_blank");
+    const today = new Date();
+    const timestamps = Math.floor(today / 1000);
+    const mchOrderNo = `123456789999666${Math.round(Math.random() * 1000)}`;
+    const response = await redpay.post(`create`, {
+      version: "1.0",
+      mchNo: "77902",
+      storeNo: "77911",
+      mchOrderNo: mchOrderNo,
+      channel: paymentMethod,
+      payWay: "BUYER_SCAN_TRX_QRCODE",
+      currency: "AUD",
+      amount: 123,
+      notifyUrl: "http://kidsnparty.com.au/table4/public/api/payment",
+      returnUrl: "https://wap.redpayments.com.au/pay/success",
+      item: "Clothes",
+      quantity: 1,
+      timestamp: timestamps,
+      params: '{"buyerId":285502587945850268}'
+    });
+
+    win.location = response.data.data.qrCode;
+    dispatch({ type: "abc" });
+    // .then(res => {
+    //   // this.setState({ order_no: res.data.data.mchOrderNo });
+    //   this.setState({ order_no: mchOrderNo });
+    //   console.log(res.data);
+    //
+    // });
   };
 };
 export const actionTypes = types;

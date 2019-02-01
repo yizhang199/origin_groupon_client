@@ -10,7 +10,8 @@ const types = {
   pickedDate: "PICKED_DATE",
   getShops: "GET_SHOPS",
   login: "LOGIN",
-  register: "REGISTER"
+  register: "REGISTER",
+  setPaymentMethod: "SET_PAYMENT_METHOD"
 };
 
 export default types;

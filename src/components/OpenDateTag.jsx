@@ -8,8 +8,10 @@ class OpenDateTag extends React.Component {
   handlePickedDate = () => {
     this.props.pickedDate({
       date: this.props.date,
-      location_id: this.props.shop.location_id
+      location_id: this.props.shop.location_id,
+      shop_name: this.props.shop.name
     });
+    this.props.toggleSection();
   };
 
   /**

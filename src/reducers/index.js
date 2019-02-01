@@ -45,6 +45,12 @@ const userReducer = (user = {}, action) => {
   }
   return user;
 };
+const paymentMethodReducer = (paymentMethod = "", action) => {
+  if (action.type === actionTypes.setPaymentMethod) {
+    return action.payload;
+  }
+  return paymentMethod;
+};
 export default combineReducers({
   products: productsReducer,
   language_id: languageIdReducer,
@@ -53,5 +59,6 @@ export default combineReducers({
   selectedShop: selectedShopReducer,
   pickedDate: pickedDateReducer,
   shops: shopsReducer,
-  user: userReducer
+  user: userReducer,
+  paymentMethod: paymentMethodReducer
 });

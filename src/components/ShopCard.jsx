@@ -31,6 +31,7 @@ class ShopCard extends React.Component {
               shop={this.props.shop}
               date={openDate}
               myClass={myClass}
+              toggleSection={this.props.toggleSection}
             />
           );
         })}

@@ -16,14 +16,14 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .component-shop-card__name,
 .component-shop-card__address,
-.component-shop-card__telephone,
-.component-shop-card__open-dates-container {
+.component-shop-card__telephone {
   z-index: 1;
+  text-shadow: 1px 1px 1px black;
 }
 .component-shop-card__open-dates-container {
   display: flex;

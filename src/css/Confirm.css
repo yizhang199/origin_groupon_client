@@ -1,10 +1,106 @@
 .component-confirm {
-  margin-bottom: 6vh;
   overflow: scroll;
-  height: calc(88vh - 42px);
+  height: 88vh;
 }
-.componente-confirm__shops-header {
-  color: #a5a5a5;
+.component-confirm__section-header {
   font-size: 12px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #fff;
+}
+.component-confirm__subtitle {
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+}
+.component-confirm__subtitle.active {
+  color: #daae14;
+}
+
+.payment-section__header-text {
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+}
+.payment-section__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.payment-section__body input {
+  opacity: 0;
+  position: absolute;
+}
+.payment-section__check-mark-wrapper {
+  background-color: #25262b;
+  height: 52px;
+  width: 126px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid #f1f1f1;
+}
+.payment-section__body-img {
+  width: 120px;
+  background-color: white;
+  border-radius: 2px;
+  padding: 3px;
+  height: 46px;
+}
+.payment-section__body input:checked ~ .payment-section__check-mark-wrapper {
+  background-color: #daae14;
+}
+.payment-section__footer {
+  display: flex;
+  padding: 10px 15px;
+  justify-content: flex-end;
+  margin-bottom: 50px;
+}
+.payment-section__footer-button {
+  width: 99px;
+  line-height: 28px;
+  height: 28px;
+  border-radius: 3px;
+  background-color: #daae14;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+}
+.component-confirm__button-group {
+  display: flex;
+  height: 70px;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 500;
+}
+.component-confirm__payment-button,
+.component-confirm__save-button {
+  width: 120px;
+  height: 30px;
+  color: #fff;
+
+  border-radius: 5px;
+  outline: none;
+}
+.component-confirm__save-button {
+  background-color: #daae14;
+  border: 1px solid #daae14;
+}
+.component-confirm__payment-button {
+  background-color: #f55747;
+  border: 1px solid #f55747;
 }

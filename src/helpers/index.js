@@ -53,3 +53,31 @@ export const makePrice = value => {
     return `$${value}`;
   }
 };
+
+/**
+ * format open date
+ * @param {String} date
+ * @returns {String} formatted Open Date
+ */
+export const makeDate = date => {
+  const dt = new Date(date);
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
+  const cusYear = dt.getFullYear();
+  const cusMonth = months[dt.getMonth()];
+  const dtDate = dt.getDate();
+  const cusDate = dtDate > 9 ? dtDate : `0${dtDate}`;
+  return `${cusMonth} ${cusDate}, ${cusYear}`;
+};

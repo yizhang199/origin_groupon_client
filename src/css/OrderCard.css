@@ -1,0 +1,99 @@
+.component-order-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 1px solid #5a5a5a;
+  font-size: 12px;
+}
+.component-order-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.component-order-card__header__left,
+.component-order-card__header__right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.component-order-card__header__left {
+}
+.component-order-card__header__right {
+}
+.component-order-card__header__invoice-no,
+.component-order-card__header__added-date,
+.component-order-card__header__picked-shop,
+.component-order-card__header__picked-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.component-order-card__header__invoice-no,
+.component-order-card__header__picked-shop {
+  border-bottom: 1px solid #5a5a5a;
+}
+.component-order-card__header__invoice-no__title,
+.component-order-card__header__added-date__title,
+.component-order-card__header__picked-shop__title,
+.component-order-card__header__picked-date__title {
+  flex: 1;
+  border-right: 1px solid #5a5a5a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+}
+.component-order-card__header__picked-shop__title,
+.component-order-card__header__picked-date__title {
+  border-left: 1px solid #5a5a5a;
+}
+.component-order-card__header__invoice-no__value,
+.component-order-card__header__added-date__value,
+.component-order-card__header__picked-shop__value,
+.component-order-card__header__picked-date__value {
+  flex: 2;
+  text-align: right;
+  padding-right: 5px;
+}
+.component-order-card__body {
+  font-size: 10px;
+  height: 30px;
+  overflow: scroll;
+  border-top: 1px solid #5a5a5a;
+  width: 100%;
+}
+.component-order-card__body__list-item {
+  margin-right: 5px;
+  padding: 4px;
+  display: -webkit-inline-box;
+}
+.component-order-card__footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #5a5a5a;
+  height: 45px;
+}
+
+.component-order-card__footer__button-remove,
+.component-order-card__footer__button-continue {
+  outline: none;
+  width: 90px;
+  color: #fff;
+  border-radius: 3px;
+  height: 20px;
+  border: 1px solid;
+  font-size: 12px;
+}
+.component-order-card__footer__button-remove {
+  background-color: #f55747;
+  border-color: #f55747;
+}
+.component-order-card__footer__button-continue {
+  background-color: #daae14;
+  border-color: #daae14;
+}

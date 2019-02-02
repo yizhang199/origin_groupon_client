@@ -13,8 +13,8 @@ class Orders extends React.Component {
   render() {
     return (
       <div className="component-orders">
-        {this.props.orders.map(order => {
-          return <OrderCard order={order} key={order.invoice_no} />;
+        {this.props.orders.map((order, index) => {
+          return <OrderCard order={order} key={`customerOrder${index}`} />;
         })}
       </div>
     );

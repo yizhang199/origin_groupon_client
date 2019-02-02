@@ -6,7 +6,7 @@ import Carousel from "./Carousel";
 import { getProducts } from "../actions";
 import ProductCard from "./ProductCard";
 import ShoppingCart from "./ShoppingCart";
-
+import Head from "./Head";
 import "../css/Products.css";
 
 class Products extends React.Component {
@@ -17,6 +17,7 @@ class Products extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Head title="天府川菜馆" pageName="products" />
         <Carousel />
         <div className="component-products">
           <div className="component-products__category-list">

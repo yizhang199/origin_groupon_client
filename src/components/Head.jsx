@@ -7,17 +7,25 @@ import { history } from "../history";
 import "../css/Head.css";
 
 const Head = props => {
+  // const { pathname } = window.location;
+  // const isHomePage =
+  //   pathname === "/" || pathname === "/products" || pathname === "";
+  const isHomePage = props.pageName === "products";
   const clickLanguageButton = () => {
-    props.switchLanguage(props.language_id);
-    alert("敬请期待");
+    if (isHomePage) {
+      props.switchLanguage(props.language_id);
+      alert("暂未开放该功能");
+    } else {
+      history.push("/");
+    }
   };
   const clickAccountButton = () => {
-    history.push("/login");
+    history.push("/account");
   };
   return (
     <div className="component-head">
       <i className="material-icons" onClick={clickLanguageButton}>
-        g_translate
+        {isHomePage ? `g_translate` : `home`}
       </i>
       <span>{props.title}</span>
       <i className="material-icons" onClick={clickAccountButton}>

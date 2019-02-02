@@ -66,3 +66,58 @@
   color: white;
   font-weight: bold;
 }
+.component-choice-form__option-value-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 80px;
+  overflow: scroll;
+  position: relative;
+}
+.component-choice-form__value-wrapper input {
+  opacity: 0;
+  position: absolute;
+}
+.component-choice-form__value-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 40px;
+  border: 1px solid #fff;
+  position: relative;
+}
+.component-choice-form__value-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 92%;
+  background-color: #5a5a5a;
+  border: 1px solid #fff;
+  height: 92%;
+}
+.component-choice-form__value-wrapper
+  input:checked
+  ~ .component-choice-form__value-info {
+  background-color: #daae14;
+}
+hr {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+}
+.component-choice-form__value-name {
+  font-size: 12px;
+  flex: 1;
+  line-height: 20px;
+}
+.component-choice-form__value-price {
+  font-size: 10px;
+  color: #fff;
+}
+.component-choice-form__option-intro {
+  font-size: 10px;
+  color: #5a5a5a;
+}

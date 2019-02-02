@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ShopCard from "./ShopCard";
+import Head from "./Head";
 import {
   getShops,
   setPaymentMethod,
@@ -170,26 +171,29 @@ class Confirm extends React.Component {
   };
   render() {
     return (
-      <div className="component-confirm">
-        {this.renderSectionHeader("选择取货的店面和时间", "showShopList")}
-        {this.renderShopList()}
-        {this.renderSectionHeader("选择付款方式", "showPaymentMethod")}
-        {this.renderPaymentMethod()}
-        <div className="component-confirm__button-group">
-          <button
-            className="component-confirm__save-button"
-            onClick={this.props.saveOrCreateOrder}
-          >
-            保存订单
-          </button>
-          <button
-            onClick={this.submitPayment}
-            className="component-confirm__payment-button"
-          >
-            确定付款
-          </button>
+      <React.Fragment>
+        <Head title="天府川菜馆" pageName="confirm" />
+        <div className="component-confirm">
+          {this.renderSectionHeader("选择取货的店面和时间", "showShopList")}
+          {this.renderShopList()}
+          {this.renderSectionHeader("选择付款方式", "showPaymentMethod")}
+          {this.renderPaymentMethod()}
+          <div className="component-confirm__button-group">
+            <button
+              className="component-confirm__save-button"
+              onClick={this.props.saveOrCreateOrder}
+            >
+              保存订单
+            </button>
+            <button
+              onClick={this.submitPayment}
+              className="component-confirm__payment-button"
+            >
+              确定付款
+            </button>
+          </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -155,6 +155,7 @@ export const fetchUser = () => {
     };
   } else {
     history.push("/login");
+    return { type: "abc" };
   }
 };
 

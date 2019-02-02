@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import AccountInformation from "./AccountInformation";
 import Orders from "./Orders";
+import Head from "./Head";
 
 import { fetchUser } from "../actions";
 
@@ -12,10 +13,13 @@ class Account extends React.Component {
   }
   render() {
     return (
-      <div className="compnent-account">
-        <AccountInformation />
-        <Orders />
-      </div>
+      <React.Fragment>
+        <Head title="天府川菜馆" pageName="account" />
+        <div className="compnent-account">
+          <AccountInformation />
+          <Orders />
+        </div>
+      </React.Fragment>
     );
   }
 }

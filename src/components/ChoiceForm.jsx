@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { addToShoppingCartList } from "../actions";
-
+import { makePrice } from "../helpers";
 import "../css/ChoiceForm.css";
 class ChoiceForm extends React.Component {
   constructor(props) {
@@ -130,7 +130,10 @@ class ChoiceForm extends React.Component {
       case "radio":
         return option.values.map(option_value => {
           return (
-            <label key={`optionValue${option_value.product_option_value_id}`}>
+            <label
+              key={`optionValue${option_value.product_option_value_id}`}
+              className="component-choice-form__value-wrapper"
+            >
               <input
                 name={option.product_option_id}
                 type="radio"
@@ -139,7 +142,15 @@ class ChoiceForm extends React.Component {
                 data-option-value-price={option_value.price}
                 onChange={this.handleChange}
               />
-              {option_value.name}
+              <span className="component-choice-form__value-info">
+                <span className="component-choice-form__value-name">
+                  {option_value.name}
+                </span>
+                <hr />
+                <span className="component-choice-form__value-price">
+                  {makePrice(option_value.price)}
+                </span>
+              </span>
             </label>
           );
         });
@@ -147,7 +158,10 @@ class ChoiceForm extends React.Component {
       case "checkbox":
         return option.values.map(value => {
           return (
-            <label key={`optionValue${value.product_option_value_id}`}>
+            <label
+              key={`optionValue${value.product_option_value_id}`}
+              className="component-choice-form__value-wrapper"
+            >
               <input
                 name={value.product_option_value_id + ""}
                 data-option-value-name={value.name}
@@ -156,7 +170,15 @@ class ChoiceForm extends React.Component {
                 data-group-product-option-id={option.product_option_id}
                 onChange={this.handleChange}
               />
-              {value.name}
+              <span className="component-choice-form__value-info">
+                <span className="component-choice-form__value-name">
+                  {value.name}
+                </span>
+                <hr />
+                <span className="component-choice-form__value-price">
+                  {makePrice(value.price)}
+                </span>
+              </span>
             </label>
           );
         });
@@ -165,7 +187,17 @@ class ChoiceForm extends React.Component {
         break;
     }
   };
+  getIntro = type => {
+    switch (type) {
+      case "radio":
+        return "(只能选择一项)";
 
+      case "checkbox":
+        return "(可多选)";
+      default:
+        break;
+    }
+  };
   /**
    * render a frame which is container of multiple option choices
    * @param {Void}
@@ -177,8 +209,13 @@ class ChoiceForm extends React.Component {
         <div className="component-choice-form__body" key={`option${index}`}>
           <div className="component-choice-form__option-name">
             {option.option_name}
+            <span className="component-choice-form__option-intro">
+              {this.getIntro(option.type)}
+            </span>
           </div>
-          {this.renderOption(option)}
+          <div className="component-choice-form__option-value-container">
+            {this.renderOption(option)}
+          </div>
         </div>
       );
     });

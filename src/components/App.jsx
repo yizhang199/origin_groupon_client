@@ -18,9 +18,7 @@ const App = () => {
     <div className="component-app">
       <Router history={history}>
         <React.Fragment>
-          <Head title="天府川菜馆" />
           <Route exact path={`/products`} component={Products} />
-
           <Route exact path={`/confirm`} component={Confirm} />
           <PrivateRoute exact path={`/account`} component={Account} />
           <Route exact path={`/login`} component={Login} />

@@ -45,3 +45,11 @@ export const makeOrderItemOption = choices => {
 
   return options;
 };
+
+export const makePrice = value => {
+  if (value == 0) {
+    return `free`;
+  } else {
+    return `$${value}`;
+  }
+};

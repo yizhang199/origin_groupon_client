@@ -3,7 +3,7 @@ import types from "./actionTypes";
 import kidsnParty from "../apis/kidsnParty";
 import redpay from "../apis/payment";
 import { history } from "../history";
-import Axios from "axios";
+import { calculateTotalPrice, makeOrderItemOption } from "../helpers";
 
 export const getProducts = language_id => {
   return async function(dispatch, getState) {
@@ -88,7 +88,7 @@ export const login = () => {
     if (response.data.success) {
       dispatch({ type: types.login, payload: response.data.data });
       localStorage.setItem("user", JSON.stringify(response.data.data));
-      history.push("/payment");
+      history.push("/account");
     } else {
       alert("email or password incorrect");
     }
@@ -145,4 +145,74 @@ export const makePayment = () => {
     // });
   };
 };
+
+export const fetchUser = () => {
+  if (localStorage.getItem("user")) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    return {
+      type: types.login,
+      payload: user
+    };
+  } else {
+    history.push("/login");
+  }
+};
+
+export const fetchOrders = () => {
+  return async function(dispatch, getState) {
+    const { id } = getState().user;
+
+    const response = await kidsnParty.get(`/orders`);
+    dispatch({ type: types.setOrders, payload: response.data.orders });
+  };
+};
+export const saveOrCreateOrder = () => {
+  return async function(dispatch, getState) {
+    const { user, pickedDate, paymentMethod } = getState();
+    const { location_id } = pickedDate;
+    const { shoppingCartList } = getState();
+    const makeOrderInfo = () => {
+      let total = 0;
+      let items = [];
+
+      shoppingCartList.map(orderItem => {
+        const options = orderItem.item.choices
+          ? makeOrderItemOption(orderItem.item.choices)
+          : [];
+        const sum = calculateTotalPrice(orderItem);
+        total += sum;
+        items = [
+          ...items,
+          {
+            product_id: orderItem.item.product_id,
+            price: sum / orderItem.quantity,
+            quantity: orderItem.quantity,
+            total: sum,
+            options
+          }
+        ];
+      });
+
+      return { total, items };
+    };
+
+    const orderInfo = makeOrderInfo();
+    const requestBody = {
+      // TODO: generate invoice_no dynamicly
+      invoice_no: 123,
+      store_id: location_id,
+      customer_id: user.id,
+      payment_method: paymentMethod,
+      fax: pickedDate.date,
+
+      total: orderInfo.total,
+      order_items: orderInfo.items
+    };
+    const response = await kidsnParty.post("/orders", requestBody);
+    console.log(response);
+    dispatch({ type: types.refreshShoppingCart });
+    history.push("/");
+  };
+};
+
 export const actionTypes = types;

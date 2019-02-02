@@ -2,7 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ShopCard from "./ShopCard";
-import { getShops, setPaymentMethod, makePayment } from "../actions";
+import {
+  getShops,
+  setPaymentMethod,
+  makePayment,
+  saveOrCreateOrder,
+  fetchUser
+} from "../actions";
 
 import "../css/Confirm.css";
 class Confirm extends React.Component {
@@ -19,6 +25,7 @@ class Confirm extends React.Component {
    * @returns update state.shops in redux store
    */
   componentDidMount() {
+    this.props.fetchUser();
     this.props.getShops();
   }
 
@@ -169,7 +176,12 @@ class Confirm extends React.Component {
         {this.renderSectionHeader("选择付款方式", "showPaymentMethod")}
         {this.renderPaymentMethod()}
         <div className="component-confirm__button-group">
-          <button className="component-confirm__save-button">保存订单</button>
+          <button
+            className="component-confirm__save-button"
+            onClick={this.props.saveOrCreateOrder}
+          >
+            保存订单
+          </button>
           <button
             onClick={this.submitPayment}
             className="component-confirm__payment-button"
@@ -188,5 +200,5 @@ const mapStateToProps = ({ shops, pickedDate, paymentMethod }) => {
 
 export default connect(
   mapStateToProps,
-  { getShops, setPaymentMethod, makePayment }
+  { getShops, setPaymentMethod, makePayment, saveOrCreateOrder, fetchUser }
 )(Confirm);

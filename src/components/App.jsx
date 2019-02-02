@@ -4,7 +4,7 @@ import { Route, Router } from "react-router-dom";
 import Head from "./Head";
 import Products from "./Products";
 import Confirm from "./Confirm";
-import Payment from "./Payment";
+import Account from "./Account";
 import { history } from "../history";
 import { PrivateRoute } from "../PrivateRoute";
 
@@ -22,8 +22,7 @@ const App = () => {
           <Route exact path={`/products`} component={Products} />
 
           <Route exact path={`/confirm`} component={Confirm} />
-          <PrivateRoute exact path={`/payment`} component={Payment} />
-          {/* <Route exact path={`/payment`} component={Payment} /> */}
+          <PrivateRoute exact path={`/account`} component={Account} />
           <Route exact path={`/login`} component={Login} />
           <Route exact path={`/register`} component={Register} />
           <Route exact path={`/`} component={Products} />

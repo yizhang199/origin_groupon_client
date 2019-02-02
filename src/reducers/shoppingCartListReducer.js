@@ -57,6 +57,9 @@ const shoppingCartListReducer = (shoppingCartList = [], action) => {
 
       return resultArr;
 
+    case actionTypes.refreshShoppingCart:
+      return [];
+
     default:
       return shoppingCartList;
   }

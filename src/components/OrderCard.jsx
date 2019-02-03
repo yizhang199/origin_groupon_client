@@ -48,14 +48,7 @@ const OrderCard = props => {
       <div className="component-order-card__body">
         {renderOrderList(order.order_items)}
       </div>
-      <div className="component-order-card__footer">
-        <button className="component-order-card__footer__button-remove">
-          删除订单
-        </button>
-        <button className="component-order-card__footer__button-continue">
-          继续点单
-        </button>
-      </div>
+      {renderOrderCardFooter(order)}
     </div>
   );
 };
@@ -75,6 +68,29 @@ const renderOrderList = list => {
       })}
     </div>
   );
+};
+
+const renderOrderCardFooter = order => {
+  if (order.status_id === 1) {
+    return (
+      <div className="component-order-card__footer">
+        <button className="component-order-card__footer__button-remove">
+          删除订单
+        </button>
+        <button className="component-order-card__footer__button-continue">
+          继续点单
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <div className="component-order-card__footer">
+        <div className="component-order-card__footer__intro">
+          该订单已经生成，若需修改请联系客服。
+        </div>
+      </div>
+    );
+  }
 };
 
 export default OrderCard;

@@ -88,7 +88,7 @@ export const login = () => {
     if (response.data.success) {
       dispatch({ type: types.login, payload: response.data.data });
       localStorage.setItem("user", JSON.stringify(response.data.data));
-      history.push("/account");
+      history.push("/");
     } else {
       alert("email or password incorrect");
     }
@@ -213,6 +213,18 @@ export const saveOrCreateOrder = method => {
     console.log(response);
     dispatch({ type: types.refreshShoppingCart });
     history.push("/");
+  };
+};
+
+export const renderNewShoppingCart = order => {
+  return async function(dispatch, getState) {
+    let newShoppingCartList = [];
+    setPaymentMethod(order.paymentMethod);
+
+    dispatch({
+      type: types.renderNewShoppingCart,
+      payload: newShoppingCartList
+    });
   };
 };
 

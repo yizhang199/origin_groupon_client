@@ -14,7 +14,9 @@ class Orders extends React.Component {
     return (
       <div className="component-orders">
         {this.props.orders.map((order, index) => {
-          return <OrderCard order={order} key={`customerOrder${index}`} />;
+          if (order.status_id !== 3) {
+            return <OrderCard order={order} key={`customerOrder${index}`} />;
+          }
         })}
       </div>
     );

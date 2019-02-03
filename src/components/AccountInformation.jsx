@@ -3,12 +3,18 @@ import { connect } from "react-redux";
 
 import { history } from "../history";
 
+import "../css/AccountInformation.css";
+
 const AccountInformation = props => {
   return (
     <div className="component-account-information">
-      <p>{props.user.name}</p>
-      <p>
+      <div className="component-account-information__title">
+        欢迎回来， {props.user.name}
+      </div>
+
+      <div className="component-account-information__footer">
         <button
+          className="component-account-information__footer__button-logout"
           onClick={() => {
             localStorage.removeItem("user");
             history.push("/");
@@ -16,7 +22,7 @@ const AccountInformation = props => {
         >
           登出
         </button>
-      </p>
+      </div>
     </div>
   );
 };

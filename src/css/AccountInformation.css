@@ -1,0 +1,16 @@
+.component-account-information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+.component-account-information__footer__button-logout {
+  width: 80px;
+  background-color: #daae14;
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #fff;
+  line-height: 20px;
+  height: 20px;
+  border-radius: 3px;
+}

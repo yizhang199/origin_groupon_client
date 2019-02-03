@@ -167,7 +167,7 @@ export const fetchOrders = () => {
     dispatch({ type: types.setOrders, payload: response.data.orders });
   };
 };
-export const saveOrCreateOrder = () => {
+export const saveOrCreateOrder = method => {
   return async function(dispatch, getState) {
     const { user, pickedDate, paymentMethod } = getState();
     const { location_id } = pickedDate;
@@ -205,7 +205,7 @@ export const saveOrCreateOrder = () => {
       customer_id: user.id,
       payment_method: paymentMethod,
       fax: pickedDate.date,
-
+      order_status_id: method,
       total: orderInfo.total,
       order_items: orderInfo.items
     };

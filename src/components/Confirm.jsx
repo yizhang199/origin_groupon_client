@@ -169,6 +169,9 @@ class Confirm extends React.Component {
   submitPayment = () => {
     this.props.makePayment();
   };
+  saveOrder = () => {
+    this.props.saveOrCreateOrder(1);
+  };
   render() {
     return (
       <React.Fragment>
@@ -181,7 +184,7 @@ class Confirm extends React.Component {
           <div className="component-confirm__button-group">
             <button
               className="component-confirm__save-button"
-              onClick={this.props.saveOrCreateOrder}
+              onClick={this.saveOrder}
             >
               保存订单
             </button>

@@ -7,7 +7,9 @@ import { calculateTotalPrice, makeOrderItemOption } from "../helpers";
 
 export const getProducts = language_id => {
   return async function(dispatch, getState) {
-    const response = await kidsnParty.get(`/products/${language_id}`);
+    const response = await kidsnParty.get(`/products`, {
+      params: { language_id }
+    });
 
     dispatch({ type: types.getProducts, payload: response });
   };
@@ -218,9 +220,22 @@ export const saveOrCreateOrder = method => {
 
 export const renderNewShoppingCart = order => {
   return async function(dispatch, getState) {
-    let newShoppingCartList = [];
+    const date = order.picked_date;
+    const location_id = order.store_id;
+    const shop_name = order.store_name;
+    // 1. set up simple value state attributes
+    // 1-1. pickedDate
+    pickedDate({ date, location_id, shop_name });
+    // 1-3. paymentMethod
     setPaymentMethod(order.paymentMethod);
 
+    // 2. set up complicate object data
+    // 2-1. restore shoppingCartList
+    const reponse = await kidsnParty.post("/convert", {
+      items: order.order_items
+    });
+
+    const newShoppingCartList = reponse.data.shoppingCartList;
     dispatch({
       type: types.renderNewShoppingCart,
       payload: newShoppingCartList

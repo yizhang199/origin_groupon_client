@@ -1,9 +1,77 @@
 import React from "react";
+import { connect } from "react-redux";
 
+import { renderNewShoppingCart } from "../actions";
 import { makeDate } from "../helpers";
 
 import "../css/OrderCard.css";
+
+/**
+ * main function to render JSX
+ * @param {React.Props} props
+ * @returns {JSX} order card component
+ */
 const OrderCard = props => {
+  /**
+   * render list of order items for certain order
+   * @param {Array} list
+   * @returns {JSX}
+   */
+  const renderOrderList = list => {
+    return (
+      <div className="component-order-card__body__list">
+        {list.map((orderItem, index) => {
+          return (
+            <span
+              key={`orderItem${index}`}
+              className="component-order-card__body__list-item"
+            >
+              <span>{orderItem.name}</span> x <span>{orderItem.quantity},</span>
+            </span>
+          );
+        })}
+      </div>
+    );
+  };
+
+  /**
+   * render JSX for button group or text information depending order status
+   * @param {Object<Order>} order
+   * @returns {JSX}
+   */
+  const renderOrderCardFooter = order => {
+    if (order.status_id === 1) {
+      return (
+        <div className="component-order-card__footer">
+          <button className="component-order-card__footer__button-remove">
+            删除订单
+          </button>
+          <button
+            className="component-order-card__footer__button-continue"
+            onClick={continueOrder}
+          >
+            继续点单
+          </button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="component-order-card__footer">
+          <div className="component-order-card__footer__intro">
+            该订单已经生成，若需修改请联系客服。
+          </div>
+        </div>
+      );
+    }
+  };
+  /**
+   * call aciont function to change state in redux store
+   * @param {Object<Order>}
+   * @returns {Void} call action function
+   */
+  const continueOrder = order => {
+    props.renderNewShoppingCart();
+  };
   const order = props.order;
   return (
     <div className="component-order-card">
@@ -53,44 +121,7 @@ const OrderCard = props => {
   );
 };
 
-const renderOrderList = list => {
-  return (
-    <div className="component-order-card__body__list">
-      {list.map((orderItem, index) => {
-        return (
-          <span
-            key={`orderItem${index}`}
-            className="component-order-card__body__list-item"
-          >
-            <span>{orderItem.name}</span> x <span>{orderItem.quantity},</span>
-          </span>
-        );
-      })}
-    </div>
-  );
-};
-
-const renderOrderCardFooter = order => {
-  if (order.status_id === 1) {
-    return (
-      <div className="component-order-card__footer">
-        <button className="component-order-card__footer__button-remove">
-          删除订单
-        </button>
-        <button className="component-order-card__footer__button-continue">
-          继续点单
-        </button>
-      </div>
-    );
-  } else {
-    return (
-      <div className="component-order-card__footer">
-        <div className="component-order-card__footer__intro">
-          该订单已经生成，若需修改请联系客服。
-        </div>
-      </div>
-    );
-  }
-};
-
-export default OrderCard;
+export default connect(
+  null,
+  { renderNewShoppingCart }
+)(OrderCard);

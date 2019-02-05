@@ -219,7 +219,7 @@ export const saveOrCreateOrder = method => {
 };
 
 export const renderNewShoppingCart = order => {
-  return async function(dispatch, getState) {
+  return async function(dispatch) {
     const date = order.picked_date;
     const location_id = order.store_id;
     const shop_name = order.store_name;
@@ -243,6 +243,13 @@ export const renderNewShoppingCart = order => {
       type: types.renderNewShoppingCart,
       payload: newShoppingCartList
     });
+  };
+};
+
+export const deleteOrder = order => {
+  return async function(dispatch) {
+    const response = await kidsnParty.delete(`/order/${order.order_id}`);
+    dispatch({ type: "abc" });
   };
 };
 

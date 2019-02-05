@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { renderNewShoppingCart } from "../actions";
+import { renderNewShoppingCart, deleteOrder } from "../actions";
 import { makeDate } from "../helpers";
 
 import "../css/OrderCard.css";
@@ -43,7 +43,10 @@ const OrderCard = props => {
     if (order.status_id === 1) {
       return (
         <div className="component-order-card__footer">
-          <button className="component-order-card__footer__button-remove">
+          <button
+            className="component-order-card__footer__button-remove"
+            onClick={deleteOrder}
+          >
             删除订单
           </button>
           <button
@@ -65,8 +68,17 @@ const OrderCard = props => {
     }
   };
   /**
+   * call action delete order by calling api
+   * @param {void}
+   * @returns {void}
+   */
+
+  const deleteOrder = () => {
+    props.deleteOrder(props.order);
+  };
+  /**
    * call aciont function to change state in redux store
-   * @param {Object<Order>}
+   * @param {void}
    * @returns {Void} call action function
    */
   const continueOrder = () => {
@@ -123,5 +135,5 @@ const OrderCard = props => {
 
 export default connect(
   null,
-  { renderNewShoppingCart }
+  { renderNewShoppingCart, deleteOrder }
 )(OrderCard);

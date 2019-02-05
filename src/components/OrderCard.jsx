@@ -69,8 +69,8 @@ const OrderCard = props => {
    * @param {Object<Order>}
    * @returns {Void} call action function
    */
-  const continueOrder = order => {
-    props.renderNewShoppingCart();
+  const continueOrder = () => {
+    props.renderNewShoppingCart(props.order);
   };
   const order = props.order;
   return (

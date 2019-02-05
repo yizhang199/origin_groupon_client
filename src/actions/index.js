@@ -232,10 +232,13 @@ export const renderNewShoppingCart = order => {
     // 2. set up complicate object data
     // 2-1. restore shoppingCartList
     const reponse = await kidsnParty.post("/convert", {
-      items: order.order_items
+      items: order.order_items,
+      language_id: 2,
+      order_id: order.order_id
     });
 
     const newShoppingCartList = reponse.data.shoppingCartList;
+
     dispatch({
       type: types.renderNewShoppingCart,
       payload: newShoppingCartList

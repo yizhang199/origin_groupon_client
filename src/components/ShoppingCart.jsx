@@ -65,7 +65,6 @@ class ShoppingCart extends React.Component {
   getTotalPrice = () => {
     let sum = 0;
     this.props.shoppingCartList.map(orderItem => {
-      console.log(orderItem);
       let price = parseFloat(orderItem.item.price);
       if (orderItem.item.choices) {
         orderItem.item.choices.map(choice => {

@@ -6,9 +6,6 @@ import { increaseOrderItem, decreaseOrderItem } from "../actions";
 import "../css/OrderItemCard.css";
 
 class OrderItemCard extends React.Component {
-  componentDidMount() {
-    console.log(this.props.orderItem);
-  }
   makePrice = value => {
     if (value == 0) {
       return `Free`;

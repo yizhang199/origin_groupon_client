@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Router } from "react-router-dom";
+import { connect } from "react-redux";
 
-import Head from "./Head";
+import { initialApp } from "../actions";
 import Products from "./Products";
 import Confirm from "./Confirm";
 import Account from "./Account";
@@ -13,21 +14,29 @@ import Register from "./Register";
 
 import "../css/App.css";
 
-const App = () => {
-  return (
-    <div className="component-app">
-      <Router history={history}>
-        <React.Fragment>
-          <Route exact path={`/products`} component={Products} />
-          <Route exact path={`/confirm`} component={Confirm} />
-          <PrivateRoute exact path={`/account`} component={Account} />
-          <Route exact path={`/login`} component={Login} />
-          <Route exact path={`/register`} component={Register} />
-          <Route exact path={`/`} component={Products} />
-        </React.Fragment>
-      </Router>
-    </div>
-  );
-};
+class App extends React.Component {
+  componentDidMount() {
+    this.props.initialApp();
+  }
+  render() {
+    return (
+      <div className="component-app">
+        <Router history={history}>
+          <React.Fragment>
+            <Route exact path={`/products`} component={Products} />
+            <Route exact path={`/confirm`} component={Confirm} />
+            <PrivateRoute exact path={`/account`} component={Account} />
+            <Route exact path={`/login`} component={Login} />
+            <Route exact path={`/register`} component={Register} />
+            <Route exact path={`/`} component={Products} />
+          </React.Fragment>
+        </Router>
+      </div>
+    );
+  }
+}
 
-export default App;
+export default connect(
+  null,
+  { initialApp }
+)(App);

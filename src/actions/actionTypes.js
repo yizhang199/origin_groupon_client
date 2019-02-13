@@ -7,7 +7,7 @@ const types = {
   decreaseOrderItem: "DECREASE_ORDER_ITEM",
   renderNewShoppingCart: "RENDER_NEW_SHOPPING_CART",
   refreshShoppingCart: "REFRESH_SHOPPING_CART",
-
+  initialApp: "INITIAL_APP",
   confirmOrder: "CONFIRM_ORDER",
   selectedShop: "SELECTED_SHOP",
   pickedDate: "PICKED_DATE",

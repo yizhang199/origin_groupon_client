@@ -57,6 +57,12 @@ const ordersReducer = (orders = [], action) => {
   }
   return orders;
 };
+const customSettingReducer = (customSetting = {}, action) => {
+  if (action.type === actionTypes.initialApp) {
+    return action.payload;
+  }
+  return customSetting;
+};
 export default combineReducers({
   products: productsReducer,
   language_id: languageIdReducer,
@@ -67,5 +73,6 @@ export default combineReducers({
   shops: shopsReducer,
   user: userReducer,
   paymentMethod: paymentMethodReducer,
-  orders: ordersReducer
+  orders: ordersReducer,
+  customSetting: customSettingReducer
 });

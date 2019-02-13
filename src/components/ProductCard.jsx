@@ -130,6 +130,9 @@ class ProductCard extends React.Component {
             />
           </React.Fragment>
         ) : null}
+        {this.props.product.quantity === 0 ? (
+          <div className="component-product-cover" />
+        ) : null}
       </div>
     );
   }

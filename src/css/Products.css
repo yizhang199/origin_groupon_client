@@ -39,4 +39,5 @@
 .component-products__product-list {
   flex: 3;
   padding: 0 10px;
+  padding-bottom: 10vh;
 }

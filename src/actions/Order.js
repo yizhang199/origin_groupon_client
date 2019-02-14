@@ -2,7 +2,19 @@ import types from "./actionTypes";
 
 import kidsnParty from "../apis/kidsnParty";
 import { history } from "../history";
-import { calculateTotalPrice, makeOrderItemOption } from "../helpers";
+import {
+  calculateTotalPrice,
+  makeOrderItemOption,
+  makeHeader
+} from "../helpers";
+
+export const index = () => {
+  return async function(dispatch) {
+    const headers = makeHeader();
+    const response = await kidsnParty.get(`/orders`, { headers });
+    dispatch({ type: types.setOrders, payload: response.data.orders });
+  };
+};
 export const create = method => {
   return async function(dispatch, getState) {
     const { user, pickedDate, paymentMethod } = getState();
@@ -52,5 +64,6 @@ export const create = method => {
 };
 
 export default {
-  create
+  create,
+  index
 };

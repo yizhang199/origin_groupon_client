@@ -1,4 +1,5 @@
 import types from "./actionTypes";
+import { makeHeader } from "../helpers";
 
 import kidsnParty from "../apis/kidsnParty";
 import { history } from "../history";
@@ -30,7 +31,8 @@ const register = () => {
 const show = () => {
   return async function(dispatch) {
     if (localStorage.getItem("user")) {
-      const response = await kidsnParty.get("/user");
+      const headers = makeHeader();
+      const response = await kidsnParty.get("/user", { headers });
       if (response.status === 200) {
         localStorage.setItem("user", JSON.stringify(response.data));
         dispatch({ type: types.login, payload: response.data });

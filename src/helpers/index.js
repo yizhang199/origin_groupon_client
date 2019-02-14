@@ -81,3 +81,14 @@ export const makeDate = date => {
   const cusDate = dtDate > 9 ? dtDate : `0${dtDate}`;
   return `${cusMonth} ${cusDate}, ${cusYear}`;
 };
+
+export const makeHeader = () => {
+  let headers = {};
+  if (localStorage.getItem("user")) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const auth_token = `Bearer ${user.api_token}`;
+    headers = { Authorization: auth_token };
+  }
+
+  return headers;
+};

@@ -134,14 +134,7 @@ export const makePayment = () => {
   };
 };
 
-export const fetchOrders = () => {
-  return async function(dispatch, getState) {
-    const { id } = getState().user;
-
-    const response = await kidsnParty.get(`/orders`);
-    dispatch({ type: types.setOrders, payload: response.data.orders });
-  };
-};
+export const fetchOrders = Order.index;
 export const saveOrCreateOrder = Order.create;
 
 export const renderNewShoppingCart = order => {

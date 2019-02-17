@@ -3,6 +3,7 @@ import { makeHeader } from "../helpers";
 
 import kidsnParty from "../apis/kidsnParty";
 import { history } from "../history";
+
 const login = () => {
   return async function(dispatch, getState) {
     const { values } = getState().form.loginForm;
@@ -19,11 +20,10 @@ const login = () => {
 };
 
 const register = () => {
-  return async function(dispatch, getState) {
+  return async function(getState) {
     const { values } = getState().form.registerForm;
-
     const response = await kidsnParty.post(`/user/register`, values);
-
+    console.log("register response: ", response);
     history.push("/");
   };
 };
@@ -32,7 +32,14 @@ const show = () => {
   return async function(dispatch) {
     if (localStorage.getItem("user")) {
       const headers = makeHeader();
-      const response = await kidsnParty.get("/user", { headers });
+      const response = await kidsnParty
+        .get("/user", { headers })
+        .catch(error => {
+          localStorage.removeItem("user");
+          history.push("/login");
+          return { type: "abc", payload: error };
+        });
+
       if (response.status === 200) {
         localStorage.setItem("user", JSON.stringify(response.data));
         dispatch({ type: types.login, payload: response.data });

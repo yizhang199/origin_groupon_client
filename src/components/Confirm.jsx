@@ -123,6 +123,21 @@ class Confirm extends React.Component {
             <input
               type="radio"
               name="payment_method"
+              value="Paypal"
+              onChange={this.handlePaymentMethodChange}
+            />
+            <span className="payment-section__check-mark-wrapper">
+              <img
+                className="payment-section__body-img"
+                src="images/paypal.png"
+                alt=""
+              />
+            </span>
+          </label>
+          <label className="payment-section__radio-label">
+            <input
+              type="radio"
+              name="payment_method"
               value="ALIPAY"
               onChange={this.handlePaymentMethodChange}
             />

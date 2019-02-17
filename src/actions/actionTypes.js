@@ -15,7 +15,9 @@ const types = {
   login: "LOGIN",
   register: "REGISTER",
   setPaymentMethod: "SET_PAYMENT_METHOD",
-  setOrders: "SET_ORDERS"
+  setOrders: "SET_ORDERS",
+  setPaidItemList: "SET_PAID_ITEM_LIST",
+  setPaymentInformation: "SET_PAYMENT_INFORMATION"
 };
 
 export default types;

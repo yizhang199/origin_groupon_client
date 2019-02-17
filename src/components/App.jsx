@@ -6,6 +6,7 @@ import { initialApp } from "../actions";
 import Products from "./Products";
 import Confirm from "./Confirm";
 import Account from "./Account";
+import Complete from "./Complete";
 import { history } from "../history";
 import { PrivateRoute } from "../PrivateRoute";
 
@@ -28,6 +29,7 @@ class App extends React.Component {
             <PrivateRoute exact path={`/account`} component={Account} />
             <Route exact path={`/login`} component={Login} />
             <Route exact path={`/register`} component={Register} />
+            <Route exact path={`/complete`} component={Complete} />
             <Route exact path={`/`} component={Products} />
           </React.Fragment>
         </Router>

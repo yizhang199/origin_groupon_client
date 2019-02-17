@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import OrderItemCard from "./OrderItemCard";
 import { history } from "../history";
+import { getTotal, getTotalPrice } from "../helpers";
 
 import "../css/ShoppingCart.css";
 
@@ -15,24 +16,11 @@ class ShoppingCart extends React.Component {
   }
 
   /**
-   * calculate total quantity of shopping cart list
-   * @returns {Integer} total quantity of shopping cart list
-   */
-  getTotal = () => {
-    let count = 0;
-    this.props.shoppingCartList.map(orderItem => {
-      count += orderItem.quantity;
-    });
-
-    return count;
-  };
-
-  /**
    * render quantity badge for shopping cart icon
    * @returns {JSX} badge of quantity
    */
   renderQuantityBadge = () => {
-    const count = this.getTotal();
+    const count = getTotal(this.props.shoppingCartList);
     if (count > 0) {
       return (
         <span className="component-shopping-cart__icon-quantity">{count}</span>
@@ -57,32 +45,7 @@ class ShoppingCart extends React.Component {
       </div>
     );
   };
-  /**
-   * calculate total price of shoppingCartList
-   * @param {Void}
-   * @returns {decimal} total price/cost of ordered items
-   */
-  getTotalPrice = () => {
-    let sum = 0;
-    this.props.shoppingCartList.map(orderItem => {
-      let price = parseFloat(orderItem.item.price);
-      if (orderItem.item.choices) {
-        orderItem.item.choices.map(choice => {
-          if (Array.isArray(choice.productOptionValue)) {
-            choice.productOptionValue.map(value => {
-              price += parseFloat(value.price);
-            });
-          } else {
-            price += parseFloat(choice.productOptionValue.price);
-          }
-        });
-      }
 
-      sum += price * orderItem.quantity;
-    });
-
-    return `$${sum.toFixed(2)}`;
-  };
   /**
    * route to Confirm.jsx programic
    * @param {Void}
@@ -112,11 +75,11 @@ class ShoppingCart extends React.Component {
               <span className="component-shopping-cart__list__header-quantity">
                 <i className="material-icons">shopping_cart</i>
                 <span className="component-shopping-cart__list__header-quantity__number">
-                  {this.getTotal()}
+                  {getTotal(this.props.shoppingCartList)}
                 </span>
               </span>
               <span className="component-shopping-cart__list__header-totoalPrice">
-                {this.getTotalPrice()}
+                {`$${getTotalPrice(this.props.shoppingCartList)}`}
               </span>
             </div>
             {this.props.shoppingCartList.map((orderItem, index) => {

@@ -46,6 +46,47 @@ export const makeOrderItemOption = choices => {
   return options;
 };
 
+/**
+ * calculate total quantity of shopping cart list
+ * @param {Array} shoppingCartList
+ * @returns {Integer} total quantity of shopping cart list
+ */
+export const getTotal = shoppingCartList => {
+  let count = 0;
+  shoppingCartList.map(orderItem => {
+    count += orderItem.quantity;
+  });
+
+  return count;
+};
+
+/**
+ * calculate total price of shoppingCartList
+ * @param {Array} shoppingCartList
+ * @returns {decimal} total price/cost of ordered items
+ */
+export const getTotalPrice = shoppingCartList => {
+  let sum = 0;
+  shoppingCartList.map(orderItem => {
+    let price = parseFloat(orderItem.item.price);
+    if (orderItem.item.choices) {
+      orderItem.item.choices.map(choice => {
+        if (Array.isArray(choice.productOptionValue)) {
+          choice.productOptionValue.map(value => {
+            price += parseFloat(value.price);
+          });
+        } else {
+          price += parseFloat(choice.productOptionValue.price);
+        }
+      });
+    }
+
+    sum += price * orderItem.quantity;
+  });
+
+  return sum.toFixed(2);
+};
+
 export const makePrice = value => {
   if (value == 0) {
     return `free`;

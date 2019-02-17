@@ -83,6 +83,18 @@ const labelsReducer = (labels = {}, action) => {
   }
   return labels;
 };
+const paidItemListReducer = (paidItemList = [], action) => {
+  if (action.type === actionTypes.setPaidItemList) {
+    return action.payload;
+  }
+  return paidItemList;
+};
+const paymentInformationReducer = (paymentInformation = [], action) => {
+  if (action.type === actionTypes.setPaymentInformation) {
+    return action.payload;
+  }
+  return paymentInformation;
+};
 export default combineReducers({
   products: productsReducer,
   language_id: languageIdReducer,
@@ -95,5 +107,7 @@ export default combineReducers({
   paymentMethod: paymentMethodReducer,
   orders: ordersReducer,
   customSetting: customSettingReducer,
-  labels: labelsReducer
+  labels: labelsReducer,
+  paidItemList: paidItemListReducer,
+  paymentInformation: paymentInformationReducer
 });

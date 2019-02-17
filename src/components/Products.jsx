@@ -11,13 +11,16 @@ import "../css/Products.css";
 
 class Products extends React.Component {
   componentDidMount() {
-    this.props.getProducts(this.props.language_id);
+    this.props.getProducts();
   }
 
   render() {
+    if (!this.props.labels.app_head_title) {
+      return <div>loading...</div>;
+    }
     return (
       <React.Fragment>
-        <Head title="天府川菜馆" pageName="products" />
+        <Head title={this.props.labels.app_head_title} pageName="products" />
         <Carousel />
         <div className="component-products">
           <div className="component-products__category-list">
@@ -70,8 +73,8 @@ class Products extends React.Component {
   }
 }
 
-const mapStateToProps = ({ products, language_id }) => {
-  return { products, language_id };
+const mapStateToProps = ({ products, language_id, labels }) => {
+  return { products, language_id, labels };
 };
 
 export default connect(

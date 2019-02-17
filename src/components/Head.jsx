@@ -14,7 +14,7 @@ const Head = props => {
   const clickLanguageButton = () => {
     if (isHomePage) {
       props.switchLanguage(props.language_id);
-      alert("暂未开放该功能");
+      window.location.reload();
     } else {
       history.push("/");
     }

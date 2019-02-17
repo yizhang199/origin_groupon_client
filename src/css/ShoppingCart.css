@@ -72,7 +72,7 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 6vh;
+  height: 8vh;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -83,12 +83,15 @@
   background-color: #daae14;
   border: 1px solid #daae14;
   border-radius: 3px;
-  height: 20px;
+  height: 35px;
   width: 120px;
-  line-height: 20px;
+  /* line-height: 20px; */
   color: white;
   font-weight: bold;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
 }
 .component-shopping-cart__list__header-quantity {

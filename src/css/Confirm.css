@@ -92,15 +92,13 @@
   width: 120px;
   height: 30px;
   color: #fff;
-
   border-radius: 5px;
   outline: none;
+  border: 1px solid #fff;
 }
 .component-confirm__save-button {
   background-color: #daae14;
-  border: 1px solid #daae14;
 }
 .component-confirm__payment-button {
   background-color: #f55747;
-  border: 1px solid #f55747;
 }

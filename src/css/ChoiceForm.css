@@ -61,10 +61,13 @@
 .componente-choice-form__button-container button {
   width: 120px;
   height: 30px;
-  border: 1px solid #daae14;
   background-color: #daae14;
   color: white;
   font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 0 2px #fff;
+  border: 1px solid #fff;
+  text-transform: capitalize;
 }
 .component-choice-form__option-value-container {
   display: flex;

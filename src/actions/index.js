@@ -4,31 +4,30 @@ import kidsnParty from "../apis/kidsnParty";
 import redpay from "../apis/payment";
 import Auth from "./Auth";
 import Order from "./Order";
+import Product from "./Product";
 
 export const initialApp = () => {
   return async function(dispatch) {
-    const reponse = await kidsnParty.get("/initial");
-
-    dispatch({ type: types.initialApp, payload: reponse.data.custom_setting });
-  };
-};
-export const getProducts = language_id => {
-  return async function(dispatch, getState) {
-    const response = await kidsnParty.get(`/products`, {
-      params: { language_id }
+    const response = await kidsnParty.get("/initial", {
+      params: {
+        language_id: localStorage.getItem("aupos_language_id")
+          ? localStorage.getItem("aupos_language_id")
+          : null
+      }
     });
-
-    dispatch({ type: types.getProducts, payload: response });
+    dispatch({ type: types.initialApp, payload: response.data });
   };
 };
-
 export const switchLanguage = language_id => {
+  language_id = parseInt(language_id);
   language_id = language_id === 1 ? 2 : 1;
+
   return {
     type: types.switchLanguage,
     payload: language_id
   };
 };
+export const getProducts = Product.index;
 
 export const addToShoppingCartList = product => {
   return {

@@ -6,12 +6,14 @@ import { history } from "../history";
 import "../css/AccountInformation.css";
 
 const AccountInformation = props => {
-  console.log(props);
+  if (!props.labels.account_greeting) {
+    return <div>loading...</div>;
+  }
 
   return (
     <div className="component-account-information">
       <div className="component-account-information__title">
-        欢迎回来， {props.user.username}
+        {props.labels.account_greeting}, {props.user.username}
       </div>
 
       <div className="component-account-information__footer">
@@ -22,15 +24,15 @@ const AccountInformation = props => {
             history.push("/");
           }}
         >
-          登出
+          {props.labels.sign_out}
         </button>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = ({ user }) => {
-  return { user };
+const mapStateToProps = ({ user, labels }) => {
+  return { user, labels };
 };
 
 export default connect(mapStateToProps)(AccountInformation);

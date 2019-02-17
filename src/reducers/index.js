@@ -12,9 +12,23 @@ const productsReducer = (products = [], action) => {
 
 const languageIdReducer = (language_id = 2, action) => {
   if (action.type === actionTypes.switchLanguage) {
+    localStorage.setItem("aupos_language_id", action.payload);
+    console.log(localStorage.getItem("aupos_language_id"));
     return action.payload;
+  } else if (
+    action.type === actionTypes.initialApp &&
+    !localStorage.getItem("aupos_language_id")
+  ) {
+    localStorage.setItem(
+      "aupos_language_id",
+      action.payload.custom_setting.default_language_id
+    );
+    return action.payload.custom_setting.default_language_id;
   }
-  return language_id;
+
+  return localStorage.getItem("aupos_language_id")
+    ? localStorage.getItem("aupos_language_id")
+    : language_id;
 };
 
 const selectedShopReducer = (selectedShop = {}, action) => {
@@ -59,9 +73,15 @@ const ordersReducer = (orders = [], action) => {
 };
 const customSettingReducer = (customSetting = {}, action) => {
   if (action.type === actionTypes.initialApp) {
-    return action.payload;
+    return action.payload.custom_setting;
   }
   return customSetting;
+};
+const labelsReducer = (labels = {}, action) => {
+  if (action.type === actionTypes.initialApp) {
+    return action.payload.layout_text;
+  }
+  return labels;
 };
 export default combineReducers({
   products: productsReducer,
@@ -74,5 +94,6 @@ export default combineReducers({
   user: userReducer,
   paymentMethod: paymentMethodReducer,
   orders: ordersReducer,
-  customSetting: customSettingReducer
+  customSetting: customSettingReducer,
+  labels: labelsReducer
 });

@@ -190,10 +190,10 @@ class ChoiceForm extends React.Component {
   getIntro = type => {
     switch (type) {
       case "radio":
-        return "(只能选择一项)";
+        return `(${this.props.labels.radio_description})`;
 
       case "checkbox":
-        return "(可多选)";
+        return `(${this.props.labels.checkbox_description})`;
       default:
         break;
     }
@@ -239,6 +239,9 @@ class ChoiceForm extends React.Component {
   };
 
   render() {
+    if (!this.props.labels.app_head_title) {
+      return <div>load...</div>;
+    }
     return (
       <div className="component-choice-form">
         <div className="component-choice-form__header">
@@ -259,7 +262,7 @@ class ChoiceForm extends React.Component {
           {this.renderOptions()}
           <div className="component-choice-form__footer">
             <div className="componente-choice-form__button-container">
-              <button>确定</button>
+              <button>{this.props.labels.for_sure}</button>
             </div>
           </div>
         </form>
@@ -267,8 +270,10 @@ class ChoiceForm extends React.Component {
     );
   }
 }
-
+const mapStateToProps = ({ labels }) => {
+  return { labels };
+};
 export default connect(
-  null,
+  mapStateToProps,
   { addToShoppingCartList }
 )(ChoiceForm);

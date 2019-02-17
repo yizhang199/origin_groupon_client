@@ -12,9 +12,12 @@ class Account extends React.Component {
     this.props.fetchUser();
   }
   render() {
+    if (!this.props.labels.app_head_title) {
+      return <div>loading...</div>;
+    }
     return (
       <React.Fragment>
-        <Head title="天府川菜馆" pageName="account" />
+        <Head title={this.props.labels.app_head_title} pageName="account" />
         <div className="compnent-account">
           <AccountInformation />
           <Orders />
@@ -24,8 +27,8 @@ class Account extends React.Component {
   }
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = ({ labels }) => {
+  return { labels };
 };
 
 export default connect(

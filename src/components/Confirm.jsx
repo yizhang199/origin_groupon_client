@@ -173,26 +173,35 @@ class Confirm extends React.Component {
     this.props.saveOrCreateOrder(1);
   };
   render() {
+    if (!this.props.labels.app_head_title) {
+      return <div>loading...</div>;
+    }
     return (
       <React.Fragment>
-        <Head title="天府川菜馆" pageName="confirm" />
+        <Head title={this.props.labels.app_head_title} pageName="confirm" />
         <div className="component-confirm">
-          {this.renderSectionHeader("选择取货的店面和时间", "showShopList")}
+          {this.renderSectionHeader(
+            this.props.labels.subtitle_select_date,
+            "showShopList"
+          )}
           {this.renderShopList()}
-          {this.renderSectionHeader("选择付款方式", "showPaymentMethod")}
+          {this.renderSectionHeader(
+            this.props.labels.subtitle_select_payment_method,
+            "showPaymentMethod"
+          )}
           {this.renderPaymentMethod()}
           <div className="component-confirm__button-group">
             <button
               className="component-confirm__save-button"
               onClick={this.saveOrder}
             >
-              保存订单
+              {this.props.labels.save_order}
             </button>
             <button
               onClick={this.submitPayment}
               className="component-confirm__payment-button"
             >
-              确定付款
+              {this.props.labels.confirm_pay}
             </button>
           </div>
         </div>
@@ -201,8 +210,8 @@ class Confirm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ shops, pickedDate, paymentMethod }) => {
-  return { shops, pickedDate, paymentMethod };
+const mapStateToProps = ({ shops, pickedDate, paymentMethod, labels }) => {
+  return { shops, pickedDate, paymentMethod, labels };
 };
 
 export default connect(

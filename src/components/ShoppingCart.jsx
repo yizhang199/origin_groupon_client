@@ -97,6 +97,9 @@ class ShoppingCart extends React.Component {
    * @returns {JSX} list of OrderItemCard
    */
   renderList = () => {
+    if (!this.props.labels.for_sure) {
+      return <div>loading...</div>;
+    }
     if (this.state.showList && this.props.shoppingCartList.length > 0) {
       return (
         <React.Fragment>
@@ -129,7 +132,7 @@ class ShoppingCart extends React.Component {
                 to="/confirm"
                 className="component-shopping-cart__list__button-confirm"
               >
-                确定
+                {this.props.labels.confirm_order}
               </Link>
             </div>
           </div>
@@ -165,8 +168,8 @@ class ShoppingCart extends React.Component {
   }
 }
 
-const mapStateToProps = ({ shoppingCartList }) => {
-  return { shoppingCartList };
+const mapStateToProps = ({ shoppingCartList, labels }) => {
+  return { shoppingCartList, labels };
 };
 
 export default connect(mapStateToProps)(ShoppingCart);

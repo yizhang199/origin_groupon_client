@@ -1,0 +1,43 @@
+.component-complete {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.component-complete__icon {
+  margin-top: 7vh;
+  margin-bottom: 4vh;
+  height: 20vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.component-complete__icon .material-icons {
+  font-size: 60px;
+  color: #ffba2d;
+  border: 5px solid #ffba2d;
+  border-radius: 50%;
+  padding: 15px;
+}
+.component-complete__title {
+  height: 8vh;
+  letter-spacing: 3px;
+  font-size: 1.6rem;
+}
+.component-complete__trasition-information {
+  width: 80vw;
+  height: 45vh;
+  overflow: scroll;
+}
+.component-complete__trasition-information__row {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  height: 5vh;
+  align-items: flex-end;
+}
+.component-complete__trasition-information__value {
+  font-size: 12px;
+}

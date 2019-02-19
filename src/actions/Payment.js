@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import types from "./actionTypes";
 
 import redpay from "../apis/payment";
@@ -46,9 +44,14 @@ const query = paymentId => {
       }
     });
     console.log(response);
+    const fakeData = [
+      { amount: { total: 125 }, payee: { email: `fakeEmail.com` } }
+    ];
     dispatch({
       type: types.setPaymentInformation,
-      payload: response.data.transactions ? response.data.transactions : []
+      payload: response.data.transactions
+        ? response.data.transactions
+        : fakeData
     });
   };
 };

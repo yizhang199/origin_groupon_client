@@ -6,6 +6,8 @@ import Auth from "./Auth";
 import Order from "./Order";
 import Product from "./Product";
 
+import { history } from "../history";
+
 export const initialApp = () => {
   return async function(dispatch) {
     const response = await kidsnParty.get("/initial", {
@@ -103,10 +105,11 @@ export const fetchOrders = Order.index;
 export const saveOrCreateOrder = Order.create;
 
 export const renderNewShoppingCart = order => {
-  return async function(dispatch) {
+  return async function(dispatch, getState) {
     const date = order.picked_date;
     const location_id = order.store_id;
     const shop_name = order.store_name;
+    const { language_id } = getState();
     // 1. set up simple value state attributes
     // 1-1. pickedDate
     pickedDate({ date, location_id, shop_name });
@@ -117,7 +120,7 @@ export const renderNewShoppingCart = order => {
     // 2-1. restore shoppingCartList
     const reponse = await kidsnParty.post("/convert", {
       items: order.order_items,
-      language_id: 2,
+      language_id,
       order_id: order.order_id
     });
 
@@ -127,6 +130,8 @@ export const renderNewShoppingCart = order => {
       type: types.renderNewShoppingCart,
       payload: newShoppingCartList
     });
+
+    history.push("/");
   };
 };
 

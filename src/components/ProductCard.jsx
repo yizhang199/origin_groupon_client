@@ -111,8 +111,9 @@ class ProductCard extends React.Component {
             </div>
             <div className="component-product-card__info__footer">
               <div className="component-product-card__quantity">
-                {this.props.product.quantity}/
-                {this.props.product.stock_status_id}
+                {this.props.product.stock_status_id -
+                  this.props.product.quantity}
+                /{this.props.product.stock_status_id}
               </div>
               {this.renderButtonGroup()}
             </div>

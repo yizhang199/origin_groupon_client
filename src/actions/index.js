@@ -6,10 +6,8 @@ import Auth from "./Auth";
 import Order from "./Order";
 import Product from "./Product";
 
-import { makeHeader } from "../helpers";
-
 import { history } from "../history";
-
+export const actionTypes = types;
 export const initialApp = () => {
   return async function(dispatch) {
     const response = await kidsnParty.get("/initial", {
@@ -102,9 +100,12 @@ export const setPaymentMethod = value => {
   };
 };
 export const makePayment = Payment.create;
-
+// order actions
 export const fetchOrders = Order.index;
 export const saveOrCreateOrder = Order.create;
+export const deleteOrder = Order.deleteOrder;
+
+export const queryOrder = Payment.query;
 
 export const renderNewShoppingCart = order => {
   return async function(dispatch, getState) {
@@ -136,16 +137,3 @@ export const renderNewShoppingCart = order => {
     history.push("/");
   };
 };
-
-export const queryOrder = Payment.query;
-export const deleteOrder = order => {
-  const headers = makeHeader();
-  return async function(dispatch) {
-    const response = await kidsnParty.delete(`/order/${order.order_id}`, {
-      headers
-    });
-    dispatch({ type: types.setOrders, payload: response.data });
-  };
-};
-
-export const actionTypes = types;

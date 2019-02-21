@@ -66,8 +66,18 @@ export const create = method => {
     history.push("/");
   };
 };
+const deleteOrder = order => {
+  const headers = makeHeader();
+  return async function(dispatch) {
+    const response = await kidsnParty.delete(`/order/${order.order_id}`, {
+      headers
+    });
+    dispatch({ type: types.setOrders, payload: response.data });
+  };
+};
 
 export default {
   create,
-  index
+  index,
+  deleteOrder
 };

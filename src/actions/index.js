@@ -6,6 +6,8 @@ import Auth from "./Auth";
 import Order from "./Order";
 import Product from "./Product";
 
+import { makeHeader } from "../helpers";
+
 import { history } from "../history";
 
 export const initialApp = () => {
@@ -137,9 +139,12 @@ export const renderNewShoppingCart = order => {
 
 export const queryOrder = Payment.query;
 export const deleteOrder = order => {
+  const headers = makeHeader();
   return async function(dispatch) {
-    const response = await kidsnParty.delete(`/order/${order.order_id}`);
-    dispatch({ type: "abc" });
+    const response = await kidsnParty.delete(`/order/${order.order_id}`, {
+      headers
+    });
+    dispatch({ type: types.setOrders, payload: response.data });
   };
 };
 

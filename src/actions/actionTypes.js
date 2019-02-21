@@ -17,7 +17,8 @@ const types = {
   setPaymentMethod: "SET_PAYMENT_METHOD",
   setOrders: "SET_ORDERS",
   setPaidItemList: "SET_PAID_ITEM_LIST",
-  setPaymentInformation: "SET_PAYMENT_INFORMATION"
+  setPaymentInformation: "SET_PAYMENT_INFORMATION",
+  saveOrder: "SAVE_ORDER"
 };
 
 export default types;

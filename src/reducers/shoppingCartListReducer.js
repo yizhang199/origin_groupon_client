@@ -64,6 +64,8 @@ const shoppingCartListReducer = (shoppingCartList = [], action) => {
       return [];
     case actionTypes.setPaymentInformation:
       return [];
+    case actionTypes.saveOrder:
+      return [];
 
     default:
       return shoppingCartList;

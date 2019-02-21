@@ -19,6 +19,7 @@ export const create = method => {
   return async function(dispatch, getState) {
     const { user, pickedDate, paymentMethod } = getState();
     const { location_id } = pickedDate;
+    const headers = makeHeader();
     const { shoppingCartList } = getState();
     const makeOrderInfo = () => {
       let total = 0;
@@ -46,9 +47,12 @@ export const create = method => {
     };
 
     const orderInfo = makeOrderInfo();
+    const today = new Date();
+    const invoice_no = `${today.getFullYear()}${today.getDate()}${today.getMonth()}${Math.round(
+      Math.random() * 1000
+    )}`;
     const requestBody = {
-      // TODO: generate invoice_no dynamicly
-      invoice_no: 123,
+      invoice_no: invoice_no,
       store_id: location_id,
       customer_id: user.user_id,
       payment_method: paymentMethod,
@@ -57,8 +61,8 @@ export const create = method => {
       total: orderInfo.total,
       order_items: orderInfo.items
     };
-    const response = await kidsnParty.post("/orders", requestBody);
-    dispatch({ type: types.refreshShoppingCart });
+    const response = await kidsnParty.post("/orders", requestBody, { headers });
+    dispatch({ type: types.saveOrder, payload: response.data });
     history.push("/");
   };
 };

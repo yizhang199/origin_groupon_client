@@ -68,6 +68,8 @@ const paymentMethodReducer = (paymentMethod = "", action) => {
 const ordersReducer = (orders = [], action) => {
   if (action.type === actionTypes.setOrders) {
     return action.payload;
+  } else if (action.type === actionTypes.saveOrders) {
+    return action.payload;
   }
   return orders;
 };

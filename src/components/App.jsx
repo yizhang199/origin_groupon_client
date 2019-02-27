@@ -24,13 +24,41 @@ class App extends React.Component {
       <div className="component-app">
         <Router history={history}>
           <React.Fragment>
-            <Route exact path={`/products`} component={Products} />
-            <Route exact path={`/confirm`} component={Confirm} />
-            <PrivateRoute exact path={`/account`} component={Account} />
-            <Route exact path={`/login`} component={Login} />
-            <Route exact path={`/register`} component={Register} />
-            <Route exact path={`/complete`} component={Complete} />
-            <Route exact path={`/`} component={Products} />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/products`}
+              component={Products}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/confirm`}
+              component={Confirm}
+            />
+            <PrivateRoute
+              exact
+              path={`${process.env.PUBLIC_URL}/account`}
+              component={Account}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/login`}
+              component={Login}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/register`}
+              component={Register}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/complete`}
+              component={Complete}
+            />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/`}
+              component={Products}
+            />
           </React.Fragment>
         </Router>
       </div>

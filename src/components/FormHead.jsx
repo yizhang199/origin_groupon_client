@@ -12,7 +12,7 @@ const FormHead = () => {
         className={`component-from-head__nav left${
           history.location.pathname === "/register" ? " active" : ""
         }`}
-        to="/register"
+        to={`${process.env.PUBLIC_URL}/register`}
       >
         注册
       </Link>
@@ -20,7 +20,7 @@ const FormHead = () => {
         className={`component-from-head__nav right${
           history.location.pathname === "/login" ? " active" : ""
         }`}
-        to="/login"
+        to={`${process.env.PUBLIC_URL}/login`}
       >
         登录
       </Link>

@@ -16,11 +16,11 @@ const Head = props => {
       props.switchLanguage(props.language_id);
       window.location.reload();
     } else {
-      history.push("/");
+      history.push(`${process.env.PUBLIC_URL}/`);
     }
   };
   const clickAccountButton = () => {
-    history.push("/account");
+    history.push(`${process.env.PUBLIC_URL}/account`);
   };
   return (
     <div className="component-head">

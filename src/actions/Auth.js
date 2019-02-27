@@ -12,7 +12,7 @@ const login = () => {
     if (response.data.success) {
       dispatch({ type: types.login, payload: response.data.data });
       localStorage.setItem("user", JSON.stringify(response.data.data));
-      history.push("/");
+      history.push(`${process.env.PUBLIC_URL}/`);
     } else {
       alert("email or password incorrect");
     }
@@ -24,7 +24,7 @@ const register = () => {
     const { values } = getState().form.registerForm;
     const response = await kidsnParty.post(`/user/register`, values);
     console.log("register response: ", response);
-    history.push("/");
+    history.push(`${process.env.PUBLIC_URL}/`);
   };
 };
 
@@ -36,7 +36,7 @@ const show = () => {
         .get("/user", { headers })
         .catch(error => {
           localStorage.removeItem("user");
-          history.push("/login");
+          history.push(`${process.env.PUBLIC_URL}/login`);
           return { type: "abc", payload: error };
         });
 
@@ -45,10 +45,10 @@ const show = () => {
         dispatch({ type: types.login, payload: response.data });
       } else {
         localStorage.removeItem("user");
-        history.push("/login");
+        history.push(`${process.env.PUBLIC_URL}/login`);
       }
     } else {
-      history.push("/login");
+      history.push(`${process.env.PUBLIC_URL}/login`);
       return { type: "abc" };
     }
   };

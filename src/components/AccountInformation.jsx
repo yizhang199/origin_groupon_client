@@ -21,7 +21,7 @@ const AccountInformation = props => {
           className="component-account-information__footer__button-logout"
           onClick={() => {
             localStorage.removeItem("user");
-            history.push("/");
+            history.push(`${process.env.PUBLIC_URL}/`);
           }}
         >
           {props.labels.sign_out}

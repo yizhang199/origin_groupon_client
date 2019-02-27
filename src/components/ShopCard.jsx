@@ -43,7 +43,11 @@ class ShopCard extends React.Component {
     return (
       <div
         className="component-shop-card"
-        style={{ backgroundImage: `url(/images/${this.props.shop.image})` }}
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}/images/${
+            this.props.shop.image
+          })`
+        }}
       >
         <div className="component-shop-card__name">{this.props.shop.name}</div>
         <div className="component-shop-card__address">

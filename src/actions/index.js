@@ -134,6 +134,6 @@ export const renderNewShoppingCart = order => {
       payload: newShoppingCartList
     });
 
-    history.push("/");
+    history.push(`${process.env.PUBLIC_URL}/`);
   };
 };

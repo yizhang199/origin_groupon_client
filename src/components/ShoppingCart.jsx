@@ -52,7 +52,7 @@ class ShoppingCart extends React.Component {
    * @returns {Void}
    */
   navToConfirm = () => {
-    history.push("/confirm");
+    history.push(`${process.env.PUBLIC_URL}/confirm`);
   };
 
   /**
@@ -92,7 +92,7 @@ class ShoppingCart extends React.Component {
             <div className="component-shopping-cart__list__footer">
               <Link
                 onClick={this.toggleList}
-                to="/confirm"
+                to={`${process.env.PUBLIC_URL}/confirm`}
                 className="component-shopping-cart__list__button-confirm"
               >
                 {this.props.labels.confirm_order}

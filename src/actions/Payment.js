@@ -1,6 +1,6 @@
 import types from "./actionTypes";
 
-import redpay from "../apis/payment";
+import { Payment as redpay } from "../apis";
 import { getTotalPrice, getTotal } from "../helpers";
 
 export const create = () => {

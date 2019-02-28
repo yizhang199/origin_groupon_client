@@ -1,7 +1,6 @@
 import types from "./actionTypes";
 
-import kidsnParty from "../apis/kidsnParty";
-import Payment from "./Payment";
+import { kidsnParty, Payment } from "../apis";
 import Auth from "./Auth";
 import Order from "./Order";
 import Product from "./Product";

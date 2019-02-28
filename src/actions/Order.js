@@ -1,6 +1,6 @@
 import types from "./actionTypes";
 
-import kidsnParty from "../apis/kidsnParty";
+import { kidsnParty } from "../apis";
 import { history } from "../history";
 import {
   calculateTotalPrice,

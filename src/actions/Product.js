@@ -1,5 +1,5 @@
 import types from "./actionTypes";
-import kidsnParty from "../apis/kidsnParty";
+import { kidsnParty } from "../apis/";
 
 const index = () => {
   const language_id = localStorage.getItem("aupos_language_id")

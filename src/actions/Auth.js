@@ -1,7 +1,7 @@
 import types from "./actionTypes";
 import { makeHeader } from "../helpers";
 
-import kidsnParty from "../apis/kidsnParty";
+import { kidsnParty } from "../apis";
 import { history } from "../history";
 
 const login = () => {

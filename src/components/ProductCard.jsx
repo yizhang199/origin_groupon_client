@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import ChoiceForm from "./ChoiceForm";
 
 import "../css/ProductCard.css";
+import { baseUrl } from "../apis";
 
 class ProductCard extends React.Component {
   constructor(props) {
@@ -95,7 +96,7 @@ class ProductCard extends React.Component {
       >
         <div className="component-product-card__header">
           <div className="component-product-card__image-container">
-            <img src={this.props.product.image} alt="" />
+            <img src={`${baseUrl}${this.props.product.image}`} alt="" />
           </div>
           <div className="component-product-card__info">
             <div className="component-product-card__info__header">

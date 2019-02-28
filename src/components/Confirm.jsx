@@ -130,7 +130,7 @@ class Confirm extends React.Component {
             <span className="payment-section__check-mark-wrapper">
               <img
                 className="payment-section__body-img"
-                src={`${baseUrl}images/paypal.png`}
+                src={`${baseUrl}/images/paypal.png`}
                 alt=""
               />
             </span>
@@ -145,7 +145,7 @@ class Confirm extends React.Component {
             <span className="payment-section__check-mark-wrapper">
               <img
                 className="payment-section__body-img"
-                src={`${baseUrl}images/alipay.png`}
+                src={`${baseUrl}/images/alipay.png`}
                 alt=""
               />
             </span>
@@ -160,7 +160,7 @@ class Confirm extends React.Component {
             <span className="payment-section__check-mark-wrapper">
               <img
                 className="payment-section__body-img"
-                src={`${baseUrl}images/wechat.png`}
+                src={`${baseUrl}/images/wechat.png`}
                 alt=""
               />
             </span>

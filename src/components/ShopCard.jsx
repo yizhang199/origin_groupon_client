@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { pickedDate } from "../actions";
 import OpenDateTag from "./OpenDateTag";
+import { baseUrl } from "../apis";
 
 import "../css/ShopCard.css";
 class ShopCard extends React.Component {
@@ -44,9 +45,7 @@ class ShopCard extends React.Component {
       <div
         className="component-shop-card"
         style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/images/${
-            this.props.shop.image
-          })`
+          backgroundImage: `url(${baseUrl}/images/${this.props.shop.image})`
         }}
       >
         <div className="component-shop-card__name">{this.props.shop.name}</div>

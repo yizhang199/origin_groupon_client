@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { addToShoppingCartList } from "../actions";
 import { makePrice } from "../helpers";
 import "../css/ChoiceForm.css";
+import { baseUrl } from "../apis";
 class ChoiceForm extends React.Component {
   constructor(props) {
     super(props);
@@ -246,7 +247,10 @@ class ChoiceForm extends React.Component {
       <div className="component-choice-form">
         <div className="component-choice-form__header">
           <div className="component-choice-form__header__image-container">
-            <img src={this.props.product.image} alt={this.props.product.name} />
+            <img
+              src={`${baseUrl}${this.props.product.image}`}
+              alt={this.props.product.name}
+            />
           </div>
           <div className="component-choice-form__header__product-info">
             <div className="component-choice-form__product-name">

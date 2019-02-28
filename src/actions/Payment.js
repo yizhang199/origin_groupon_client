@@ -23,7 +23,7 @@ export const create = () => {
       currency: "AUD",
       amount: getTotalPrice(shoppingCartList),
       notifyUrl: "http://kidsnparty.com.au/table4/public/api/payment",
-      returnUrl: "http://localhost:3000/complete",
+      returnUrl: "http://kidsnparty.com.au/groupon/complete",
       item: "Clothes",
       quantity: getTotal(shoppingCartList),
       timestamp: timestamps,

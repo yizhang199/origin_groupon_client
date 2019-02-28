@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { pickedDate } from "../actions";
+import { pickedDate, pickStore } from "../actions";
 import OpenDateTag from "./OpenDateTag";
-import { baseUrl } from "../apis";
 
 import "../css/ShopCard.css";
 class ShopCard extends React.Component {
@@ -40,22 +39,31 @@ class ShopCard extends React.Component {
     );
   };
 
+  pickStore = () => {
+    this.props.pickStore(this.props.shop);
+    this.props.toggleSection();
+  };
   render() {
     return (
       <div
         className="component-shop-card"
-        style={{
-          backgroundImage: `url(${baseUrl}/images/${this.props.shop.image})`
-        }}
+        // style={{
+        //   backgroundImage: `url(${baseUrl}/images/${this.props.shop.image})`
+        // }}
+        onClick={this.props.pickStore}
       >
-        <div className="component-shop-card__name">{this.props.shop.name}</div>
         <div className="component-shop-card__address">
           {this.props.shop.address}
         </div>
-        <div className="component-shop-card__telephone">
-          {this.props.shop.telephone}
+        <div className="component-shop-card__name-telephone">
+          <div className="component-shop-card__name">
+            {this.props.shop.name}
+          </div>
+          <div className="component-shop-card__telephone">
+            {this.props.shop.telephone}
+          </div>
         </div>
-        {this.renderOpenDates()}
+
         <div className="component-shop-card__cover" />
       </div>
     );
@@ -68,5 +76,5 @@ const mapStateToProps = ({ pickedDate }) => {
 
 export default connect(
   mapStateToProps,
-  { pickedDate }
+  { pickedDate, pickStore }
 )(ShopCard);

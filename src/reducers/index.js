@@ -97,6 +97,13 @@ const paymentInformationReducer = (paymentInformation = [], action) => {
   }
   return paymentInformation;
 };
+
+const pickupAddressReducer = (pickupAddress = { dates: [] }, action) => {
+  if (action.type === actionTypes.pickStore) {
+    return action.payload;
+  }
+  return pickupAddress;
+};
 export default combineReducers({
   products: productsReducer,
   language_id: languageIdReducer,
@@ -111,5 +118,6 @@ export default combineReducers({
   customSetting: customSettingReducer,
   labels: labelsReducer,
   paidItemList: paidItemListReducer,
-  paymentInformation: paymentInformationReducer
+  paymentInformation: paymentInformationReducer,
+  pickupAddress: pickupAddressReducer
 });

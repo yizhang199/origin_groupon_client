@@ -80,6 +80,13 @@ export const pickedDate = date => {
   };
 };
 
+export const pickStore = store => {
+  return {
+    type: types.pickStore,
+    payload: store
+  };
+};
+
 export const getShops = () => {
   return async function(dispatch) {
     const response = await kidsnParty.get(`/locations`);

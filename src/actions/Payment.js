@@ -1,7 +1,13 @@
 import types from "./actionTypes";
 
-import { Payment as redpay } from "../apis";
-import { getTotalPrice, getTotal } from "../helpers";
+import { Payment as redpay, kidsnParty } from "../apis";
+import {
+  getTotalPrice,
+  getTotal,
+  calculateTotalPrice,
+  makeOrderItemOption,
+  makeHeader
+} from "../helpers";
 
 export const create = () => {
   return async function(dispatch, getState) {
@@ -45,7 +51,7 @@ export const create = () => {
       customer_id: user.user_id,
       payment_method: paymentMethod,
       fax: pickedDate,
-      order_status_id: method,
+      order_status_id: 1,
       total: orderInfo.total,
       order_items: orderInfo.items
     };

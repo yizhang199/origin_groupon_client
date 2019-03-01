@@ -5,6 +5,52 @@ import { getTotalPrice, getTotal } from "../helpers";
 
 export const create = () => {
   return async function(dispatch, getState) {
+    const { user, pickedDate, selectedShop, paymentMethod } = getState();
+    const { location_id } = selectedShop;
+    const headers = makeHeader();
+    const { shoppingCartList } = getState();
+    const makeOrderInfo = () => {
+      let total = 0;
+      let items = [];
+
+      shoppingCartList.map(orderItem => {
+        const options = orderItem.item.choices
+          ? makeOrderItemOption(orderItem.item.choices)
+          : [];
+        const sum = calculateTotalPrice(orderItem);
+        total += sum;
+        items = [
+          ...items,
+          {
+            product_id: orderItem.item.product_id,
+            price: sum / orderItem.quantity,
+            quantity: orderItem.quantity,
+            total: sum,
+            options
+          }
+        ];
+      });
+
+      return { total, items };
+    };
+
+    const orderInfo = makeOrderInfo();
+    const today = new Date();
+    const invoice_no = `${today.getFullYear()}${today.getDate()}${today.getMonth()}${Math.round(
+      Math.random() * 1000
+    )}`;
+    const requestBody = {
+      invoice_no: invoice_no,
+      store_id: location_id,
+      customer_id: user.user_id,
+      payment_method: paymentMethod,
+      fax: pickedDate,
+      order_status_id: method,
+      total: orderInfo.total,
+      order_items: orderInfo.items
+    };
+    const response = await kidsnParty.post("/orders", requestBody, { headers });
+
     const { paymentMethod, shoppingCartList } = getState();
 
     const today = new Date();
@@ -13,7 +59,7 @@ export const create = () => {
       Math.random() * 1000
     )}`;
 
-    const response = await redpay.post(`create`, {
+    const paymentResponse = await redpay.post(`create`, {
       version: "1.0",
       mchNo: "77902",
       storeNo: "77911",
@@ -22,7 +68,7 @@ export const create = () => {
       payWay: "BUYER_SCAN_TRX_QRCODE",
       currency: "AUD",
       amount: getTotalPrice(shoppingCartList),
-      notifyUrl: "http://kidsnparty.com.au/table4/public/api/payment",
+      notifyUrl: "http://kidsnparty.com.au/roben_api/public/api/payment",
       returnUrl: "http://kidsnparty.com.au/groupon/complete",
       item: "Clothes",
       quantity: getTotal(shoppingCartList),
@@ -30,10 +76,10 @@ export const create = () => {
       params: '{"buyerId":285502587945850268}'
     });
 
-    window.location = response.data.approvel_url
-      ? response.data.approvel_url
+    window.location = paymentResponse.data.approvel_url
+      ? paymentResponse.data.approvel_url
       : "/confirm";
-    dispatch({ type: "abc" });
+    dispatch({ type: types.saveOrder, payload: response.data });
   };
 };
 const query = paymentId => {

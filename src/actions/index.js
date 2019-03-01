@@ -1,9 +1,10 @@
 import types from "./actionTypes";
 
-import { kidsnParty, Payment } from "../apis";
+import { kidsnParty } from "../apis";
 import Auth from "./Auth";
 import Order from "./Order";
 import Product from "./Product";
+import Payment from "./Payment";
 
 import { history } from "../history";
 export const actionTypes = types;

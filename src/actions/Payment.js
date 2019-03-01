@@ -57,9 +57,6 @@ export const create = () => {
     };
     const response = await kidsnParty.post("/orders", requestBody, { headers });
 
-    const { paymentMethod, shoppingCartList } = getState();
-
-    const today = new Date();
     const timestamps = Math.floor(today / 1000);
     const mchOrderNo = `${today.getFullYear()}${today.getDate()}${today.getMonth()}${Math.round(
       Math.random() * 1000

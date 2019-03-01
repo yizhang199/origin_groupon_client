@@ -39,8 +39,10 @@ const selectedShopReducer = (selectedShop = {}, action) => {
   return selectedShop;
 };
 
-const pickedDateReducer = (pickedDate = {}, action) => {
-  if (action.type === actionTypes.pickedDate) {
+const pickedDateReducer = (pickedDate = new Date(), action) => {
+  if (action.type === actionTypes.pickDate) {
+    return action.payload;
+  } else if (action.type === actionTypes.selectDate) {
     return action.payload;
   }
 

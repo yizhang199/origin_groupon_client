@@ -3,6 +3,7 @@
   position: relative;
   margin: 10px 0px;
   padding: 15px;
+  padding-bottom: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,7 +14,8 @@
 }
 .component-shop-card:hover,
 .component-shop-card:active {
-  background-color: #a5a5a5a5;
+  background-color: #a5a5a54d;
+  border-color: #ffba2d;
 }
 .component-shop-card__cover {
   position: absolute;
@@ -45,4 +47,23 @@
 }
 .component-shop-card__name {
   color: #ffba2d;
+}
+.component-shop-card__date-picker__label {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 80%;
+  height: 30px;
+  font-size: 12px;
+}
+.react-datepicker__input-container input {
+  display: none;
+}
+
+.react-datepicker__day--highlighted {
+  background-color: #ffba2d;
+  color: #fff;
+}
+.react-datepicker-wrapper {
+  opacity: 1;
 }

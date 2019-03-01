@@ -120,6 +120,9 @@ export const makeDate = date => {
   const cusMonth = months[dt.getMonth()];
   const dtDate = dt.getDate();
   const cusDate = dtDate > 9 ? dtDate : `0${dtDate}`;
+  if (!cusMonth || !cusDate || !cusYear) {
+    return undefined;
+  }
   return `${cusMonth} ${cusDate}, ${cusYear}`;
 };
 

@@ -66,7 +66,7 @@ export const confirmOrder = () => {
   };
 };
 
-export const selectedShop = shop => {
+export const selectShop = shop => {
   return {
     type: types.selectedShop,
     payload: shop
@@ -79,11 +79,10 @@ export const pickedDate = date => {
     payload: date
   };
 };
-
-export const pickStore = store => {
+export const selectDate = date => {
   return {
-    type: types.pickStore,
-    payload: store
+    type: types.selectDate,
+    payload: date
   };
 };
 

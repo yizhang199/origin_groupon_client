@@ -17,8 +17,8 @@ export const index = () => {
 };
 export const create = method => {
   return async function(dispatch, getState) {
-    const { user, pickedDate, paymentMethod } = getState();
-    const { location_id } = pickedDate;
+    const { user, pickedDate, selectedShop, paymentMethod } = getState();
+    const { location_id } = selectedShop;
     const headers = makeHeader();
     const { shoppingCartList } = getState();
     const makeOrderInfo = () => {
@@ -56,7 +56,7 @@ export const create = method => {
       store_id: location_id,
       customer_id: user.user_id,
       payment_method: paymentMethod,
-      fax: pickedDate.date,
+      fax: pickedDate,
       order_status_id: method,
       total: orderInfo.total,
       order_items: orderInfo.items

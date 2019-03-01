@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 
 import ShopCard from "./ShopCard";
 import Head from "./Head";
@@ -13,6 +14,7 @@ import {
 
 import "../css/Confirm.css";
 import { baseUrl } from "../apis";
+import { makeDate } from "../helpers";
 class Confirm extends React.Component {
   /**
    * declare state
@@ -95,10 +97,10 @@ class Confirm extends React.Component {
    */
   getTitle = (content, attributeName) => {
     if (attributeName === "showShopList") {
-      if (this.props.pickedDate.date) {
-        return `取货地点：${this.props.pickedDate.shop_name} 取货日期：${
-          this.props.pickedDate.date
-        }`;
+      if (this.props.selectedShop.name && makeDate(this.props.pickedDate)) {
+        return `取货地点：${this.props.selectedShop.name} 取货日期：${makeDate(
+          this.props.pickedDate
+        )}`;
       } else {
         return content;
       }
@@ -226,8 +228,14 @@ class Confirm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ shops, pickedDate, paymentMethod, labels }) => {
-  return { shops, pickedDate, paymentMethod, labels };
+const mapStateToProps = ({
+  shops,
+  paymentMethod,
+  labels,
+  selectedShop,
+  pickedDate
+}) => {
+  return { shops, paymentMethod, labels, selectedShop, pickedDate };
 };
 
 export default connect(

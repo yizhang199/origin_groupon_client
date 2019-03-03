@@ -3,15 +3,18 @@ import { connect } from "react-redux";
 import { Link, Element } from "react-scroll";
 import Carousel from "./Carousel";
 
-import { getProducts } from "../actions";
+import { getProducts, showModal } from "../actions";
 import ProductCard from "./ProductCard";
 import ShoppingCart from "./ShoppingCart";
 import Head from "./Head";
+import Modal from "./Modal";
+
 import "../css/Products.css";
 
 class Products extends React.Component {
   componentDidMount() {
     this.props.getProducts();
+    this.props.showModal();
   }
 
   render() {
@@ -68,6 +71,7 @@ class Products extends React.Component {
           </div>
         </div>
         <ShoppingCart />
+        <Modal />
       </React.Fragment>
     );
   }
@@ -79,5 +83,5 @@ const mapStateToProps = ({ products, language_id, labels }) => {
 
 export default connect(
   mapStateToProps,
-  { getProducts }
+  { getProducts, showModal }
 )(Products);

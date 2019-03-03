@@ -106,6 +106,15 @@ const pickupAddressReducer = (pickupAddress = { dates: [] }, action) => {
   }
   return pickupAddress;
 };
+const toggleModalReducer = (modalStatus = false, action) => {
+  if (action.type === actionTypes.hideModal) {
+    return false;
+  } else if (action.type === actionTypes.showModal) {
+    return true;
+  }
+
+  return modalStatus;
+};
 export default combineReducers({
   products: productsReducer,
   language_id: languageIdReducer,
@@ -121,5 +130,6 @@ export default combineReducers({
   labels: labelsReducer,
   paidItemList: paidItemListReducer,
   paymentInformation: paymentInformationReducer,
-  pickupAddress: pickupAddressReducer
+  pickupAddress: pickupAddressReducer,
+  modalStatus: toggleModalReducer
 });

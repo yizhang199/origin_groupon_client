@@ -20,7 +20,9 @@ const types = {
   setPaymentInformation: "SET_PAYMENT_INFORMATION",
   saveOrder: "SAVE_ORDER",
   pickStore: "PICK_STORE",
-  selectDate: "SELECT_DATE"
+  selectDate: "SELECT_DATE",
+  hideModal: "HIDE_MODAL",
+  showModal: "SHOW_MODAL"
 };
 
 export default types;

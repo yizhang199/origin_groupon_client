@@ -5,6 +5,7 @@ import Auth from "./Auth";
 import Order from "./Order";
 import Product from "./Product";
 import Payment from "./Payment";
+import Modal from "./Modal";
 
 import { history } from "../history";
 export const actionTypes = types;
@@ -143,3 +144,7 @@ export const renderNewShoppingCart = order => {
     history.push(`${process.env.PUBLIC_URL}/`);
   };
 };
+
+// modal actions
+export const hideModal = Modal.hide;
+export const showModal = Modal.show;

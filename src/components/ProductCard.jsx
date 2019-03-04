@@ -2,12 +2,13 @@ import React from "react";
 
 import {
   addToShoppingCartList,
-  decreaseFromShoppingCartList
+  decreaseFromShoppingCartList,
+  showModal
 } from "../actions";
 import { connect } from "react-redux";
 
-import ChoiceForm from "./ChoiceForm";
-
+// import ChoiceForm from "./ChoiceForm";
+import Modal from "./Modal";
 import "../css/ProductCard.css";
 import { baseUrl } from "../apis";
 
@@ -32,7 +33,8 @@ class ProductCard extends React.Component {
   };
 
   toggleOptionForm = () => {
-    this.setState({ showChoiceForm: !this.state.showChoiceForm });
+    // this.setState({ showChoiceForm: !this.state.showChoiceForm });
+    this.props.showModal();
   };
 
   decrease = () => {
@@ -120,7 +122,8 @@ class ProductCard extends React.Component {
             </div>
           </div>
         </div>
-        {this.state.showChoiceForm ? (
+        <Modal product={this.props.product} content={"choice form"} />
+        {/* {this.state.showChoiceForm ? (
           <React.Fragment>
             <div
               onClick={this.toggleOptionForm}
@@ -131,7 +134,7 @@ class ProductCard extends React.Component {
               product={this.props.product}
             />
           </React.Fragment>
-        ) : null}
+        ) : null} */}
         {this.props.product.quantity === 0 ? (
           <div className="component-product-cover" />
         ) : null}
@@ -146,5 +149,5 @@ const mapStateToProps = ({ shoppingCartList }) => {
 
 export default connect(
   mapStateToProps,
-  { addToShoppingCartList, decreaseFromShoppingCartList }
+  { addToShoppingCartList, decreaseFromShoppingCartList, showModal }
 )(ProductCard);

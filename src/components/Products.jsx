@@ -7,14 +7,12 @@ import { getProducts, showModal } from "../actions";
 import ProductCard from "./ProductCard";
 import ShoppingCart from "./ShoppingCart";
 import Head from "./Head";
-import Modal from "./Modal";
 
 import "../css/Products.css";
 
 class Products extends React.Component {
   componentDidMount() {
     this.props.getProducts();
-    this.props.showModal();
   }
 
   render() {
@@ -71,7 +69,6 @@ class Products extends React.Component {
           </div>
         </div>
         <ShoppingCart />
-        <Modal />
       </React.Fragment>
     );
   }

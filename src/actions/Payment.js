@@ -104,4 +104,10 @@ const query = paymentId => {
     });
   };
 };
-export default { create, query };
+export const setPaymentMethod = value => {
+  return {
+    type: types.setPaymentMethod,
+    payload: value
+  };
+};
+export default { create, query, setPaymentMethod };

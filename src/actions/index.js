@@ -1,149 +1,52 @@
 import types from "./actionTypes";
 
-import { kidsnParty } from "../apis";
 import Auth from "./Auth";
 import Order from "./Order";
 import Product from "./Product";
 import Payment from "./Payment";
 import Modal from "./Modal";
-
-import { history } from "../history";
+import App from "./App";
+import Shop from "./Shop";
+import Cart from "./Cart";
 export const actionTypes = types;
-export const initialApp = () => {
-  return async function(dispatch) {
-    const response = await kidsnParty.get("/initial", {
-      params: {
-        language_id: localStorage.getItem("aupos_language_id")
-          ? localStorage.getItem("aupos_language_id")
-          : null
-      }
-    });
-    dispatch({ type: types.initialApp, payload: response.data });
-  };
-};
-export const switchLanguage = language_id => {
-  language_id = parseInt(language_id);
-  language_id = language_id === 1 ? 2 : 1;
 
-  return {
-    type: types.switchLanguage,
-    payload: language_id
-  };
-};
+// App actions
+export const initialApp = App.index;
+export const switchLanguage = App.switchLanguage;
+
+// Product actions
 export const getProducts = Product.index;
 
-export const addToShoppingCartList = product => {
-  return {
-    type: types.addToShoppingCartList,
-    payload: product
-  };
-};
+// Shopping Cart List actions
+export const addToShoppingCartList = Cart.add;
 
-export const decreaseFromShoppingCartList = product => {
-  return {
-    type: types.decreaseFromShoppingCartList,
-    payload: product
-  };
-};
+export const decreaseFromShoppingCartList = Cart.decreaseByProduct;
 
-export const increaseOrderItem = orderItem => {
-  return {
-    type: types.increaseOrderItem,
-    payload: orderItem
-  };
-};
+export const increaseOrderItem = Cart.increaseByOrderItem;
 
-export const decreaseOrderItem = orderItem => {
-  return {
-    type: types.decreaseOrderItem,
-    payload: orderItem
-  };
-};
+export const decreaseOrderItem = Cart.decreaseByOrderItem;
+export const renderNewShoppingCart = Cart.renderNew;
 
-export const confirmOrder = () => {
-  return async function(dispatch) {
-    const response = await kidsnParty.post(`/orders`);
+// Shop actions
+export const getShops = Shop.index;
+export const selectShop = Shop.selectShop;
+export const pickedDate = Shop.pickedDate;
+export const selectDate = Shop.selectDate;
 
-    dispatch({ type: types.confirmOrder, payload: response.data });
-  };
-};
-
-export const selectShop = shop => {
-  return {
-    type: types.selectedShop,
-    payload: shop
-  };
-};
-
-export const pickedDate = date => {
-  return {
-    type: types.pickedDate,
-    payload: date
-  };
-};
-export const selectDate = date => {
-  return {
-    type: types.selectDate,
-    payload: date
-  };
-};
-
-export const getShops = () => {
-  return async function(dispatch) {
-    const response = await kidsnParty.get(`/locations`);
-
-    dispatch({ type: types.getShops, payload: response.data.locations });
-  };
-};
-
+// auth actions
 export const login = Auth.login;
 export const register = Auth.register;
 export const fetchUser = Auth.show;
 
-export const setPaymentMethod = value => {
-  return {
-    type: types.setPaymentMethod,
-    payload: value
-  };
-};
+// payment actions
+export const setPaymentMethod = Payment.setPaymentMethod;
 export const makePayment = Payment.create;
+
 // order actions
 export const fetchOrders = Order.index;
 export const saveOrCreateOrder = Order.create;
 export const deleteOrder = Order.deleteOrder;
-
 export const queryOrder = Payment.query;
-
-export const renderNewShoppingCart = order => {
-  return async function(dispatch, getState) {
-    const date = order.picked_date;
-    const location_id = order.store_id;
-    const shop_name = order.store_name;
-    const { language_id } = getState();
-    // 1. set up simple value state attributes
-    // 1-1. pickedDate
-    pickedDate({ date, location_id, shop_name });
-    // 1-3. paymentMethod
-    setPaymentMethod(order.paymentMethod);
-
-    // 2. set up complicate object data
-    // 2-1. restore shoppingCartList
-    const reponse = await kidsnParty.post("/convert", {
-      items: order.order_items,
-      language_id,
-      order_id: order.order_id
-    });
-
-    const newShoppingCartList = reponse.data.shoppingCartList;
-
-    dispatch({
-      type: types.renderNewShoppingCart,
-      payload: newShoppingCartList
-    });
-
-    history.push(`${process.env.PUBLIC_URL}/`);
-  };
-};
 
 // modal actions
 export const hideModal = Modal.hide;

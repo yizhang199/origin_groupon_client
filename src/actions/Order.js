@@ -2,11 +2,7 @@ import types from "./actionTypes";
 
 import { kidsnParty } from "../apis";
 import { history } from "../history";
-import {
-  calculateTotalPrice,
-  makeOrderItemOption,
-  makeHeader
-} from "../helpers";
+import { makeOrderInfo, makeHeader, makeInvoice_no } from "../helpers";
 
 export const index = () => {
   return async function(dispatch) {
@@ -21,36 +17,10 @@ export const create = method => {
     const { location_id } = selectedShop;
     const headers = makeHeader();
     const { shoppingCartList } = getState();
-    const makeOrderInfo = () => {
-      let total = 0;
-      let items = [];
 
-      shoppingCartList.map(orderItem => {
-        const options = orderItem.item.choices
-          ? makeOrderItemOption(orderItem.item.choices)
-          : [];
-        const sum = calculateTotalPrice(orderItem);
-        total += sum;
-        items = [
-          ...items,
-          {
-            product_id: orderItem.item.product_id,
-            price: sum / orderItem.quantity,
-            quantity: orderItem.quantity,
-            total: sum,
-            options
-          }
-        ];
-      });
+    const orderInfo = makeOrderInfo(shoppingCartList);
+    const invoice_no = makeInvoice_no();
 
-      return { total, items };
-    };
-
-    const orderInfo = makeOrderInfo();
-    const today = new Date();
-    const invoice_no = `${today.getFullYear()}${today.getDate()}${today.getMonth()}${Math.round(
-      Math.random() * 1000
-    )}`;
     const requestBody = {
       invoice_no: invoice_no,
       store_id: location_id,

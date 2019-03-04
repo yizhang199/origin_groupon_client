@@ -40,7 +40,7 @@ const OrderCard = props => {
    * @returns {JSX}
    */
   const renderOrderCardFooter = order => {
-    if (order.status_id === 1) {
+    if (parseInt(order.status_id) === 1) {
       return (
         <div className="component-order-card__footer">
           <button

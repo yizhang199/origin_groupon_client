@@ -136,3 +136,35 @@ export const makeHeader = () => {
 
   return headers;
 };
+
+export const makeOrderInfo = shoppingCartList => {
+  let total = 0;
+  let items = [];
+
+  shoppingCartList.map(orderItem => {
+    const options = orderItem.item.choices
+      ? makeOrderItemOption(orderItem.item.choices)
+      : [];
+    const sum = calculateTotalPrice(orderItem);
+    total += sum;
+    items = [
+      ...items,
+      {
+        product_id: orderItem.item.product_id,
+        price: sum / orderItem.quantity,
+        quantity: orderItem.quantity,
+        total: sum,
+        options
+      }
+    ];
+  });
+
+  return { total, items };
+};
+
+export const makeInvoice_no = () => {
+  const today = new Date();
+  return `${today.getFullYear()}${today.getDate()}${today.getMonth()}${Math.round(
+    Math.random() * 1000
+  )}`;
+};

@@ -34,6 +34,8 @@ const languageIdReducer = (language_id = 2, action) => {
 const selectedShopReducer = (selectedShop = {}, action) => {
   if (action.type === actionTypes.selectedShop) {
     return action.payload;
+  } else if (action.type === actionTypes.renderNewShoppingCart) {
+    return action.payload.selectedShop;
   }
 
   return selectedShop;
@@ -44,6 +46,8 @@ const pickedDateReducer = (pickedDate = new Date(), action) => {
     return action.payload;
   } else if (action.type === actionTypes.selectDate) {
     return action.payload;
+  } else if (action.type === actionTypes.renderNewShoppingCart) {
+    return action.payload.date;
   }
 
   return pickedDate;
@@ -64,6 +68,8 @@ const userReducer = (user = {}, action) => {
 const paymentMethodReducer = (paymentMethod = "", action) => {
   if (action.type === actionTypes.setPaymentMethod) {
     return action.payload;
+  } else if (action.type === actionTypes.renderNewShoppingCart) {
+    return action.payload.paymentMethod;
   }
   return paymentMethod;
 };

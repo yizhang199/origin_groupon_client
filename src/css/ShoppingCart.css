@@ -44,9 +44,9 @@
 .component-shopping-cart__icon-quantity {
   border-radius: 50%;
   background-color: red;
-  width: 15px;
-  height: 15px;
-  line-height: 15px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
   display: inline-block;
   font-size: 13px;
   text-align: center;

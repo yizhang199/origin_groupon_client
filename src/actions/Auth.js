@@ -20,10 +20,10 @@ const login = () => {
 };
 
 const register = () => {
-  return async function(getState) {
+  return async function(dispatch, getState) {
     const { values } = getState().form.registerForm;
     const response = await kidsnParty.post(`/user/register`, values);
-    console.log("register response: ", response);
+    dispatch({ type: "abc", payload: response.data });
     history.push(`${process.env.PUBLIC_URL}/`);
   };
 };
@@ -41,8 +41,8 @@ const show = () => {
         });
 
       if (response.status === 200) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-        dispatch({ type: types.login, payload: response.data });
+        localStorage.setItem("user", JSON.stringify(response.data.data));
+        dispatch({ type: types.login, payload: response.data.data });
       } else {
         localStorage.removeItem("user");
         history.push(`${process.env.PUBLIC_URL}/login`);

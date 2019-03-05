@@ -9,7 +9,8 @@ import {
   setPaymentMethod,
   makePayment,
   saveOrCreateOrder,
-  fetchUser
+  fetchUser,
+  changeCustomerComments
 } from "../actions";
 
 import "../css/Confirm.css";
@@ -22,7 +23,11 @@ class Confirm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showShopList: true, showPaymentMethod: false };
+    this.state = {
+      showShopList: true,
+      showPaymentMethod: false,
+      showCustomerComments: false
+    };
   }
   /**
    * call api fetch shop list
@@ -57,11 +62,8 @@ class Confirm extends React.Component {
    * @param {Void}
    * @returns {Void} update this.state.showShopList
    */
-  toggleSection = () => {
-    this.setState({
-      showShopList: !this.state.showShopList,
-      showPaymentMethod: !this.state.showPaymentMethod
-    });
+  toggleSection = attributeName => {
+    this.setState({ [attributeName]: !this.state[attributeName] });
   };
   /**
    * render JSX for section header
@@ -73,7 +75,9 @@ class Confirm extends React.Component {
     const stateProperty = this.state[attributeName];
     return (
       <div
-        onClick={this.toggleSection}
+        onClick={() => {
+          this.toggleSection(attributeName);
+        }}
         className="component-confirm__section-header"
       >
         <span
@@ -112,6 +116,7 @@ class Confirm extends React.Component {
         return content;
       }
     }
+    return content;
   };
   /**
    * render payment method details
@@ -167,6 +172,23 @@ class Confirm extends React.Component {
               />
             </span>
           </label>
+          {this.props.userAllowCash ? (
+            <label className="payment-section__radio-label">
+              <input
+                type="radio"
+                name="payment_method"
+                value="CASH"
+                onChange={this.handlePaymentMethodChange}
+              />
+              <span className="payment-section__check-mark-wrapper">
+                <img
+                  className="payment-section__body-img"
+                  src={`${baseUrl}/images/cash.png`}
+                  alt="Cash"
+                />
+              </span>
+            </label>
+          ) : null}
         </div>
       );
     } else {
@@ -190,6 +212,18 @@ class Confirm extends React.Component {
   saveOrder = () => {
     this.props.saveOrCreateOrder(1);
   };
+  renderCustomerComments = () => {
+    return (
+      <textarea
+        onChange={this.handleCustomerComments}
+        value={this.props.customerComments}
+        className="component-confirm__customer-comments"
+      />
+    );
+  };
+  handleCustomerComments = e => {
+    this.props.changeCustomerComments(e.target.value);
+  };
   render() {
     if (!this.props.labels.app_head_title) {
       return <div>loading...</div>;
@@ -208,6 +242,11 @@ class Confirm extends React.Component {
             "showPaymentMethod"
           )}
           {this.renderPaymentMethod()}
+          {this.renderSectionHeader(
+            this.props.labels.subtitle_customer_comments,
+            "showCustomerComments"
+          )}
+          {this.renderCustomerComments()}
           <div className="component-confirm__button-group">
             <button
               className="component-confirm__save-button"
@@ -233,12 +272,29 @@ const mapStateToProps = ({
   paymentMethod,
   labels,
   selectedShop,
-  pickedDate
+  pickedDate,
+  userAllowCash,
+  customerComments
 }) => {
-  return { shops, paymentMethod, labels, selectedShop, pickedDate };
+  return {
+    shops,
+    paymentMethod,
+    labels,
+    selectedShop,
+    pickedDate,
+    userAllowCash,
+    customerComments
+  };
 };
 
 export default connect(
   mapStateToProps,
-  { getShops, setPaymentMethod, makePayment, saveOrCreateOrder, fetchUser }
+  {
+    getShops,
+    setPaymentMethod,
+    makePayment,
+    saveOrCreateOrder,
+    fetchUser,
+    changeCustomerComments
+  }
 )(Confirm);

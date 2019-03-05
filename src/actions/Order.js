@@ -3,6 +3,7 @@ import types from "./actionTypes";
 import { kidsnParty } from "../apis";
 import { history } from "../history";
 import { makeOrderInfo, makeHeader, makeInvoice_no } from "../helpers";
+import { changeCustomerComments } from ".";
 
 export const index = () => {
   return async function(dispatch) {
@@ -13,7 +14,13 @@ export const index = () => {
 };
 export const create = method => {
   return async function(dispatch, getState) {
-    const { user, pickedDate, selectedShop, paymentMethod } = getState();
+    const {
+      user,
+      pickedDate,
+      selectedShop,
+      paymentMethod,
+      customerComments
+    } = getState();
     const { location_id } = selectedShop;
     const headers = makeHeader();
     const { shoppingCartList } = getState();
@@ -29,7 +36,8 @@ export const create = method => {
       fax: pickedDate,
       order_status_id: method,
       total: orderInfo.total,
-      order_items: orderInfo.items
+      order_items: orderInfo.items,
+      customerComments
     };
     const response = await kidsnParty.post("/orders", requestBody, { headers });
     dispatch({ type: types.saveOrder, payload: response.data });
@@ -45,9 +53,15 @@ const deleteOrder = order => {
     dispatch({ type: types.setOrders, payload: response.data });
   };
 };
-
+const comments = value => {
+  return {
+    type: types.changeCustomerComments,
+    payload: value
+  };
+};
 export default {
   create,
   index,
+  comments,
   deleteOrder
 };

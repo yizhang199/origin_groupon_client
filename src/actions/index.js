@@ -41,12 +41,13 @@ export const fetchUser = Auth.show;
 // payment actions
 export const setPaymentMethod = Payment.setPaymentMethod;
 export const makePayment = Payment.create;
+export const queryOrder = Payment.query;
 
 // order actions
 export const fetchOrders = Order.index;
 export const saveOrCreateOrder = Order.create;
 export const deleteOrder = Order.deleteOrder;
-export const queryOrder = Payment.query;
+export const changeCustomerComments = Order.comments;
 
 // modal actions
 export const hideModal = Modal.hide;

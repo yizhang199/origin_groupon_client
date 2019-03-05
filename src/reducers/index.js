@@ -121,6 +121,25 @@ const toggleModalReducer = (modalStatus = false, action) => {
 
   return modalStatus;
 };
+const userAllowCashReducer = (userAllowCash = false, action) => {
+  if (action.type === actionTypes.login) {
+    const permissions = action.payload.permissions;
+    let flag = false;
+    permissions.map(element => {
+      if (element.permission_id && parseInt(element.permission_id) === 1) {
+        flag = true;
+      }
+    });
+    return flag;
+  }
+  return userAllowCash;
+};
+const customerCommentsReducer = (customerComments = "", action) => {
+  if (action.type === actionTypes.changeCustomerComments) {
+    return action.payload;
+  }
+  return customerComments;
+};
 export default combineReducers({
   products: productsReducer,
   language_id: languageIdReducer,
@@ -137,5 +156,7 @@ export default combineReducers({
   paidItemList: paidItemListReducer,
   paymentInformation: paymentInformationReducer,
   pickupAddress: pickupAddressReducer,
-  modalStatus: toggleModalReducer
+  modalStatus: toggleModalReducer,
+  userAllowCash: userAllowCashReducer,
+  customerComments: customerCommentsReducer
 });

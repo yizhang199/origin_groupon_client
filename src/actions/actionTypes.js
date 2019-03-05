@@ -21,7 +21,8 @@ const types = {
   pickStore: "PICK_STORE",
   selectDate: "SELECT_DATE",
   hideModal: "HIDE_MODAL",
-  showModal: "SHOW_MODAL"
+  showModal: "SHOW_MODAL",
+  changeCustomerComments: "CHANGE_CUSTOMER_COMMENTS"
 };
 
 export default types;

@@ -213,13 +213,16 @@ class Confirm extends React.Component {
     this.props.saveOrCreateOrder(1);
   };
   renderCustomerComments = () => {
-    return (
-      <textarea
-        onChange={this.handleCustomerComments}
-        value={this.props.customerComments}
-        className="component-confirm__customer-comments"
-      />
-    );
+    if (this.state.showCustomerComments) {
+      return (
+        <textarea
+          onChange={this.handleCustomerComments}
+          value={this.props.customerComments}
+          className="component-confirm__customer-comments"
+        />
+      );
+    }
+    return null;
   };
   handleCustomerComments = e => {
     this.props.changeCustomerComments(e.target.value);

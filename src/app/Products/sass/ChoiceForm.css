@@ -7,8 +7,8 @@
   left: 10vw;
   background-color: #040404;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 2px white;
-          box-shadow: 0px 0px 2px white;
+  -webkit-box-shadow: 0px 0px 2px #fff;
+          box-shadow: 0px 0px 2px #fff;
 }
 
 .component-choice-form__header {
@@ -19,7 +19,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 5px 15px;
-  border-bottom: 2px solid #5a5a5a;
+  border-bottom: 2px solid #a5a5a5;
   margin-bottom: 8px;
 }
 
@@ -92,13 +92,13 @@
 .componente-choice-form__button-container button {
   width: 120px;
   height: 30px;
-  background-color: #daae14;
-  color: white;
+  background-color: #ffba2d;
+  color: #fff;
   font-weight: bold;
   border-radius: 5px;
   -webkit-box-shadow: 0 0 2px #fff;
           box-shadow: 0 0 2px #fff;
-  border: 1px solid #fff;
+  border: 1px solid;
   text-transform: capitalize;
 }
 
@@ -133,7 +133,7 @@
           align-items: center;
   width: 30%;
   height: 40px;
-  border: 1px solid #fff;
+  border: 1px solid;
   position: relative;
 }
 
@@ -149,15 +149,15 @@
       -ms-flex-align: center;
           align-items: center;
   width: 92%;
-  background-color: #5a5a5a;
-  border: 1px solid #fff;
+  background-color: #f67a7a;
+  border: 1px solid;
   height: 92%;
 }
 
 .component-choice-form__value-wrapper
 input:checked
 ~ .component-choice-form__value-info {
-  background-color: #daae14;
+  background-color: #ffba2d;
 }
 
 hr {
@@ -183,6 +183,6 @@ hr {
 
 .component-choice-form__option-intro {
   font-size: 10px;
-  color: #5a5a5a;
+  color: #f67a7a;
 }
 /*# sourceMappingURL=ChoiceForm.css.map */

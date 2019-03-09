@@ -1,5 +1,7 @@
+@import "../../shared/sass/_variables.scss";
+
 .component-open-date-tag {
-  border: 1px solid #fff;
+  border: 1px solid color("border2");
   height: 20px;
   width: 80px;
   display: flex;
@@ -10,7 +12,7 @@
 
 .component-open-date-tag__content {
   padding: 2px 5px;
-  background-color: #daae14;
+  background-color: color("main");
   font-size: 12px;
   width: 76px;
   height: 16px;
@@ -19,7 +21,7 @@
 
 .component-open-date-tag__content.disable {
   padding: 2px 5px;
-  background-color: #5a5a5a;
+  background-color: color("grey");
   font-size: 12px;
   width: 76px;
   height: 16px;

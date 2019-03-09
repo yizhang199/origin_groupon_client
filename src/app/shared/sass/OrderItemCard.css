@@ -62,7 +62,7 @@
 .component-order-item-card__quantity {
   font-size: 14px;
   font-weight: normal;
-  color: white;
+  color: #fff;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -125,7 +125,7 @@
 }
 
 .component-order-item-card__option-name {
-  color: #daae14;
+  color: #ffba2d;
 }
 
 .component-order-item-card__option-price {

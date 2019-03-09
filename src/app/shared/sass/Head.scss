@@ -1,3 +1,5 @@
+@import "./_variables.scss";
+
 .component-head {
   display: flex;
   justify-content: space-between;
@@ -7,5 +9,5 @@
 
 .component-head .material-icons {
   font-size: 26px;
-  color: #daae14;
+  color: color("icon");
 }

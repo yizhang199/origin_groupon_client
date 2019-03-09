@@ -1,12 +1,15 @@
+@import "../../shared/sass/_variables.scss";
+@import "../../shared/sass/_variables.scss";
+
 .component-order-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  border: 1px solid #5a5a5a;
+  border: 1px solid color("border");
   font-size: 12px;
-  box-shadow: 0px 0px 1px #fff;
+  box-shadow: 0px 0px 1px color("border2");
 }
 .component-order-card__header {
   display: flex;
@@ -31,14 +34,14 @@
 }
 .component-order-card__header__invoice-no,
 .component-order-card__header__picked-shop {
-  border-bottom: 1px solid #5a5a5a;
+  border-bottom: 1px solid color("border");
 }
 .component-order-card__header__invoice-no__title,
 .component-order-card__header__added-date__title,
 .component-order-card__header__picked-shop__title,
 .component-order-card__header__picked-date__title {
   flex: 1;
-  border-right: 1px solid #5a5a5a;
+  border-right: 1px solid color("border");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +49,7 @@
 }
 .component-order-card__header__picked-shop__title,
 .component-order-card__header__picked-date__title {
-  border-left: 1px solid #5a5a5a;
+  border-left: 1px solid color("border");
 }
 .component-order-card__header__invoice-no__value,
 .component-order-card__header__added-date__value,
@@ -60,7 +63,7 @@
   font-size: 10px;
   height: 30px;
   overflow: scroll;
-  border-top: 1px solid #5a5a5a;
+  border-top: 1px solid color("border");
   width: 100%;
 }
 .component-order-card__body__list-item {
@@ -73,7 +76,7 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  border-top: 1px solid #5a5a5a;
+  border-top: 1px solid color("border");
   height: 45px;
 }
 
@@ -81,17 +84,17 @@
 .component-order-card__footer__button-continue {
   outline: none;
   width: 90px;
-  color: #fff;
+  color: color("text");
   border-radius: 3px;
   height: 20px;
   border: 1px solid;
   font-size: 12px;
 }
 .component-order-card__footer__button-remove {
-  background-color: #f55747;
-  border-color: #f55747;
+  background-color: color("secondary");
+  border-color: color("secondary");
 }
 .component-order-card__footer__button-continue {
-  background-color: #daae14;
-  border-color: #daae14;
+  background-color: color("main");
+  border-color: color("main");
 }

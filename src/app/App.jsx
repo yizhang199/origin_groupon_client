@@ -12,7 +12,7 @@ import { PrivateRoute } from "../PrivateRoute";
 
 import { Login, Register } from "./Auth";
 
-import "../App.css";
+import "./shared/sass/App.css";
 
 class App extends React.Component {
   componentDidMount() {

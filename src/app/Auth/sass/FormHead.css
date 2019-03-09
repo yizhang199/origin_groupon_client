@@ -13,7 +13,7 @@
 }
 
 .component-from-head__nav {
-  color: white;
+  color: #fff;
   text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -24,13 +24,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #daae14;
+  border: 1px solid #ffba2d;
   width: 120px;
 }
 
 .component-from-head__nav.active {
-  color: black;
-  background-color: #daae14;
+  color: #040404;
+  background-color: #ffba2d;
 }
 
 .left {

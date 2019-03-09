@@ -15,7 +15,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid;
 }
 
 .component-confirm__subtitle {
@@ -25,7 +25,7 @@
 }
 
 .component-confirm__subtitle.active {
-  color: #daae14;
+  color: #ffba2d;
 }
 
 .payment-section__header-text {
@@ -33,7 +33,7 @@
   line-height: 20px;
   font-size: 14px;
   font-weight: bold;
-  color: #333333;
+  color: #a5a5a5;
 }
 
 .payment-section__body {
@@ -74,19 +74,19 @@
       -ms-flex-align: center;
           align-items: center;
   border-radius: 3px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid;
 }
 
 .payment-section__body-img {
   width: 120px;
-  background-color: white;
+  background-color: #fff;
   border-radius: 2px;
   padding: 3px;
   height: 46px;
 }
 
 .payment-section__body input:checked ~ .payment-section__check-mark-wrapper {
-  background-color: #daae14;
+  background-color: #ffba2d;
 }
 
 .payment-section__footer {
@@ -105,11 +105,11 @@
   line-height: 28px;
   height: 28px;
   border-radius: 3px;
-  background-color: #daae14;
+  background-color: #ffba2d;
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   border: none;
 }
@@ -123,7 +123,7 @@
   width: 100vw;
   bottom: 0;
   left: 0;
-  background-color: black;
+  background-color: #040404;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
@@ -139,15 +139,15 @@
   color: #fff;
   border-radius: 5px;
   outline: none;
-  border: 1px solid #fff;
+  border: 1px solid;
 }
 
 .component-confirm__save-button {
-  background-color: #daae14;
+  background-color: #ffba2d;
 }
 
 .component-confirm__payment-button {
-  background-color: #f55747;
+  background-color: #f67a7a;
 }
 
 .component-confirm__customer-comments {

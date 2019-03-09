@@ -18,14 +18,14 @@
       -ms-flex-align: center;
           align-items: center;
   border-radius: 5px;
-  border: 1px solid #fff;
+  border: 1px solid color("border2");
   overflow: scroll;
 }
 
 .component-shop-card:hover,
 .component-shop-card:active {
-  background-color: #a5a5a54d;
-  border-color: #ffba2d;
+  background-color: color("cover");
+  border-color: color("main");
 }
 
 .component-shop-card__cover {
@@ -34,14 +34,14 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: color("cover");
 }
 
 .component-shop-card__name,
 .component-shop-card__address,
 .component-shop-card__telephone {
   z-index: 1;
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 1px color("textShadow");
 }
 
 .component-shop-card__open-dates-container {
@@ -71,7 +71,7 @@
 }
 
 .component-shop-card__name {
-  color: #ffba2d;
+  color: color("main");
 }
 
 .component-shop-card__date-picker__label {
@@ -94,8 +94,8 @@
 }
 
 .react-datepicker__day--highlighted {
-  background-color: #ffba2d;
-  color: #fff;
+  background-color: color("main");
+  color: color("text");
 }
 
 .react-datepicker-wrapper {

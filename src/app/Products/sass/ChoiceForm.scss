@@ -1,3 +1,5 @@
+@import "../../shared/sass/_variables.scss";
+
 .component-choice-form {
   height: 65vh;
   width: 80vw;
@@ -5,16 +7,16 @@
   z-index: 500;
   top: 15vh;
   left: 10vw;
-  background-color: #040404;
+  background-color: color("bodyBackground");
   border-radius: 5px;
-  box-shadow: 0px 0px 2px white;
+  box-shadow: 0px 0px 2px color("boxshadow2");
 }
 
 .component-choice-form__header {
   display: flex;
   align-items: center;
   padding: 5px 15px;
-  border-bottom: 2px solid #5a5a5a;
+  border-bottom: 2px solid color("border");
   margin-bottom: 8px;
 }
 .component-choice-form__header__image-container {
@@ -45,7 +47,7 @@
 
 .component-choice-form__option-name {
   text-align: center;
-  border-bottom: 1px solid #a5a5a5;
+  border-bottom: 1px solid color("border");
   margin-top: 10px;
 }
 .component-choice-form__footer {
@@ -61,12 +63,12 @@
 .componente-choice-form__button-container button {
   width: 120px;
   height: 30px;
-  background-color: #daae14;
-  color: white;
+  background-color: color("main");
+  color: color("text");
   font-weight: bold;
   border-radius: 5px;
-  box-shadow: 0 0 2px #fff;
-  border: 1px solid #fff;
+  box-shadow: 0 0 2px color("boxshadow2");
+  border: 1px solid color("border2");
   text-transform: capitalize;
 }
 .component-choice-form__option-value-container {
@@ -87,7 +89,7 @@
   align-items: center;
   width: 30%;
   height: 40px;
-  border: 1px solid #fff;
+  border: 1px solid color("border2");
   position: relative;
 }
 .component-choice-form__value-info {
@@ -95,14 +97,14 @@
   flex-direction: column;
   align-items: center;
   width: 92%;
-  background-color: #5a5a5a;
-  border: 1px solid #fff;
+  background-color: color("secondary");
+  border: 1px solid color("border2");
   height: 92%;
 }
 .component-choice-form__value-wrapper
   input:checked
   ~ .component-choice-form__value-info {
-  background-color: #daae14;
+  background-color: color("main");
 }
 hr {
   margin: 0;
@@ -118,9 +120,9 @@ hr {
 }
 .component-choice-form__value-price {
   font-size: 10px;
-  color: #fff;
+  color: color("text");
 }
 .component-choice-form__option-intro {
   font-size: 10px;
-  color: #5a5a5a;
+  color: color("secondary");
 }

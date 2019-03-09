@@ -1,8 +1,10 @@
+@import "./_variables.scss";
+
 .component-order-item-card {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid #a5a5a5;
+  border-bottom: 1px solid color("border");
   height: 60px;
   align-items: center;
 }
@@ -34,7 +36,7 @@
 .component-order-item-card__quantity {
   font-size: 14px;
   font-weight: normal;
-  color: white;
+  color: color("text");
   flex: 1;
 }
 .component-order-item-card__price {
@@ -57,7 +59,7 @@
 }
 .component-order-item-card .material-icons {
   font-size: 16px;
-  color: #ffba2d;
+  color: color("icon");
 }
 .component-order-item-card__product-quantity {
   font-size: 14px;
@@ -72,8 +74,8 @@
   height: 18px;
 }
 .component-order-item-card__option-name {
-  color: #daae14;
+  color: color("main");
 }
 .component-order-item-card__option-price {
-  color: #a5a5a5;
+  color: color("textSubtitle");
 }

@@ -1,9 +1,11 @@
+@import "../../shared/sass/_variables.scss";
+
 .component-product-card {
   padding: 5px 5px;
   border-radius: 5px;
   background-color: transparent;
   margin-bottom: 10px;
-  border: 1px solid #a5a5a5;
+  border: 1px solid color("border");
   position: relative;
 }
 .component-product-cover {
@@ -13,7 +15,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #a5a5a5a5;
+  background-color: color("cover");
 }
 .component-product-card__header {
   display: flex;
@@ -31,7 +33,7 @@
   width: 90px;
   height: 64px;
   border-radius: 5px;
-  box-shadow: 0px 0px 1px white;
+  box-shadow: 0px 0px 1px color("boxshadow2");
 }
 
 .component-product-card__info {
@@ -51,7 +53,7 @@
 .component-product-card__quantity {
   font-size: 14px;
   font-weight: normal;
-  color: white;
+  color: color("text");
   flex: 1;
 }
 .component-product-card__price {
@@ -75,11 +77,11 @@
 }
 .component-product-card .material-icons {
   font-size: 16px;
-  color: #ffba2d;
+  color: color("main");
 }
 .component-product-card .material-icons.disable {
   font-size: 16px;
-  color: #5a5a5a;
+  color: color("textSubtitle");
 }
 .component-product-card__product-quantity {
   font-size: 14px;
@@ -93,5 +95,5 @@
   width: 100vw;
   top: 0;
   left: 0;
-  background-color: #383333c2;
+  background-color: color("cover");
 }

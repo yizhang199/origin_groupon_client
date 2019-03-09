@@ -1,3 +1,5 @@
+@import "../../shared/sass/_variables.scss";
+
 .component-confirm {
   overflow: scroll;
   height: 88vh;
@@ -8,15 +10,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid color("border2");
 }
 .component-confirm__subtitle {
   height: 24px;
   line-height: 24px;
-  color: #fff;
+  color: color("text");
 }
 .component-confirm__subtitle.active {
-  color: #daae14;
+  color: color("main");
 }
 
 .payment-section__header-text {
@@ -24,7 +26,7 @@
   line-height: 20px;
   font-size: 14px;
   font-weight: bold;
-  color: #333333;
+  color: color("textSubtitle");
 }
 .payment-section__body {
   display: flex;
@@ -48,17 +50,17 @@
   justify-content: center;
   align-items: center;
   border-radius: 3px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid color("border2");
 }
 .payment-section__body-img {
   width: 120px;
-  background-color: white;
+  background-color: #fff;
   border-radius: 2px;
   padding: 3px;
   height: 46px;
 }
 .payment-section__body input:checked ~ .payment-section__check-mark-wrapper {
-  background-color: #daae14;
+  background-color: color("main");
 }
 .payment-section__footer {
   display: flex;
@@ -71,11 +73,11 @@
   line-height: 28px;
   height: 28px;
   border-radius: 3px;
-  background-color: #daae14;
+  background-color: color("main");
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  color: #ffffff;
+  color: color("text");
   text-decoration: none;
   border: none;
 }
@@ -86,7 +88,7 @@
   width: 100vw;
   bottom: 0;
   left: 0;
-  background-color: black;
+  background-color: color("bodyBackground");
   justify-content: space-around;
   align-items: center;
   z-index: 500;
@@ -95,16 +97,16 @@
 .component-confirm__save-button {
   width: 120px;
   height: 30px;
-  color: #fff;
+  color: color("text");
   border-radius: 5px;
   outline: none;
-  border: 1px solid #fff;
+  border: 1px solid color("border2");
 }
 .component-confirm__save-button {
-  background-color: #daae14;
+  background-color: color("main");
 }
 .component-confirm__payment-button {
-  background-color: #f55747;
+  background-color: color("secondary");
 }
 .component-confirm__customer-comments {
   width: 100%;

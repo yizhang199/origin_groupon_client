@@ -1,3 +1,4 @@
+@import "../../shared/sass/_variables.scss";
 .component-form-head {
   display: flex;
   justify-content: center;
@@ -7,18 +8,18 @@
 }
 
 .component-from-head__nav {
-  color: white;
+  color: color("text");
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #daae14;
+  border: 1px solid color("main");
   width: 120px;
 }
 
 .component-from-head__nav.active {
-  color: black;
-  background-color: #daae14;
+  color: color("bodyBackground");
+  background-color: color("main");
 }
 
 .left {

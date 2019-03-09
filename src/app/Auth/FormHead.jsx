@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { history } from "../../history";
 
-import "./sass/FormHead.css";
+// import "./sass/FormHead.css";
 
 const FormHead = () => {
   return (

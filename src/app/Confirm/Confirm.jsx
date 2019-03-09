@@ -13,7 +13,7 @@ import {
   changeCustomerComments
 } from "../../_actions";
 
-import "./sass/Confirm.css";
+// import "./sass/Confirm.css";
 
 import { baseUrl } from "../../_apis";
 import { makeDate } from "../../_helpers";

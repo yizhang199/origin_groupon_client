@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { switchLanguage } from "../../_actions";
 import { history } from "../../history";
 
-import "./sass/Head.css";
+// import "./sass/Head.css";
 
 const Head = props => {
   // const { pathname } = window.location;

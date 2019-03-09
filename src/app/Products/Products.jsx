@@ -7,7 +7,7 @@ import { getProducts, showModal } from "../../_actions";
 import ProductCard from "./ProductCard";
 import { Head, ShoppingCart } from "../shared/";
 
-import "./sass/Products.css";
+// import "./sass/Products.css";
 
 class Products extends React.Component {
   componentDidMount() {

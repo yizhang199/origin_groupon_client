@@ -97,7 +97,7 @@
   flex-direction: column;
   align-items: center;
   width: 92%;
-  background-color: color("secondary");
+  background-color: color("grey");
   border: 1px solid color("border2");
   height: 92%;
 }
@@ -108,7 +108,6 @@
 }
 hr {
   margin: 0;
-
   padding: 0;
   width: 100%;
   border: none;
@@ -125,5 +124,5 @@ hr {
 }
 .component-choice-form__option-intro {
   font-size: 10px;
-  color: color("secondary");
+  color: color("grey");
 }

@@ -6,7 +6,7 @@ import OrderItemCard from "./OrderItemCard";
 import { history } from "../../history";
 import { getTotal, getTotalPrice } from "../../_helpers";
 
-import "./sass/ShoppingCart.css";
+// import "./sass/ShoppingCart.css";
 
 class ShoppingCart extends React.Component {
   constructor(props) {

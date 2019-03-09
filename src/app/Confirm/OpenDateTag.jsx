@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { pickedDate } from "../../_actions";
 
-import "./sass/OpenDateTag.css";
+// import "./sass/OpenDateTag.css";
 class OpenDateTag extends React.Component {
   handlePickedDate = () => {
     this.props.pickedDate({

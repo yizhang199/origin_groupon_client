@@ -6,7 +6,7 @@ import { queryOrder } from "../../_actions";
 
 import { Head } from "../shared/";
 
-// import "../css/Complete.css";
+import "./sass/Complete.css";
 class Complete extends React.Component {
   constructor(props) {
     super(props);

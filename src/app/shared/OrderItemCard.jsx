@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { increaseOrderItem, decreaseOrderItem } from "../../_actions";
 
-// import "../css/OrderItemCard.css";
+import "./sass/OrderItemCard.css";
 
 class OrderItemCard extends React.Component {
   makePrice = value => {

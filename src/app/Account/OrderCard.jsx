@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { renderNewShoppingCart, deleteOrder } from "../../_actions";
 import { makeDate } from "../../_helpers";
 
-// import "../css/OrderCard.css";
+import "./sass/OrderCard.css";
 
 /**
  * main function to render JSX

@@ -5,7 +5,7 @@ import { addToShoppingCartList } from "../../_actions";
 import { makePrice } from "../../_helpers";
 import { baseUrl } from "../../_apis";
 
-// import "../css/ChoiceForm.css";
+import "./sass/ChoiceForm.css";
 
 class ChoiceForm extends React.Component {
   constructor(props) {

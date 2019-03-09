@@ -13,7 +13,8 @@ import {
   changeCustomerComments
 } from "../../_actions";
 
-// import "../css/Confirm.css";
+import "./sass/Confirm.css";
+
 import { baseUrl } from "../../_apis";
 import { makeDate } from "../../_helpers";
 class Confirm extends React.Component {

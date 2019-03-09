@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { history } from "../../history";
 
-// import "../css/AccountInformation.css";
+import "./sass/AccountInformation.css";
 
 const AccountInformation = props => {
   if (!props.labels.account_greeting) {

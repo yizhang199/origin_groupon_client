@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { ChoiceForm } from "../Products";
 import { hideModal } from "../../_actions";
 
-// import "../css/Modal.css";
+import "./sass/Modal.css";
 
 const Modal = ({ hideModal, modalStatus, content, product }) => {
   const renderContent = () => {

@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { selectShop, selectDate } from "../../_actions";
 
 import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import "react-datepicker/dist/react-datepicker.css";
 
-// import "../css/ShopCard.css";
+import "./sass/ShopCard.css";
 class ShopCard extends React.Component {
   handleDateChange = e => {
     const newDate = new Date(e);

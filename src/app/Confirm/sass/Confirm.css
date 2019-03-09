@@ -1,0 +1,159 @@
+.component-confirm {
+  overflow: scroll;
+  height: 88vh;
+}
+
+.component-confirm__section-header {
+  font-size: 12px;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 2px solid #fff;
+}
+
+.component-confirm__subtitle {
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+}
+
+.component-confirm__subtitle.active {
+  color: #daae14;
+}
+
+.payment-section__header-text {
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.payment-section__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.payment-section__body input {
+  opacity: 0;
+  position: absolute;
+}
+
+.payment-section__radio-label {
+  margin-top: 10px;
+}
+
+.payment-section__check-mark-wrapper {
+  background-color: #25262b;
+  height: 52px;
+  width: 126px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 3px;
+  border: 1px solid #f1f1f1;
+}
+
+.payment-section__body-img {
+  width: 120px;
+  background-color: white;
+  border-radius: 2px;
+  padding: 3px;
+  height: 46px;
+}
+
+.payment-section__body input:checked ~ .payment-section__check-mark-wrapper {
+  background-color: #daae14;
+}
+
+.payment-section__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 15px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-bottom: 50px;
+}
+
+.payment-section__footer-button {
+  width: 99px;
+  line-height: 28px;
+  height: 28px;
+  border-radius: 3px;
+  background-color: #daae14;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+}
+
+.component-confirm__button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 70px;
+  position: fixed;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 500;
+}
+
+.component-confirm__payment-button,
+.component-confirm__save-button {
+  width: 120px;
+  height: 30px;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #fff;
+}
+
+.component-confirm__save-button {
+  background-color: #daae14;
+}
+
+.component-confirm__payment-button {
+  background-color: #f55747;
+}
+
+.component-confirm__customer-comments {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=Confirm.css.map */

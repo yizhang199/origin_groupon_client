@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 
 import { register } from "../../_actions";
-// import "../css/Form.css";
+import "./sass/Form.css";
 
 class RegisterForm extends React.Component {
   renderInput = ({ input, placeholder, type }) => {

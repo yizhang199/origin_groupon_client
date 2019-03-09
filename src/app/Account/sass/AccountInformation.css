@@ -1,0 +1,23 @@
+.component-account-information {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+}
+
+.component-account-information__footer__button-logout {
+  width: 80px;
+  background-color: #daae14;
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #fff;
+  height: 20px;
+  border-radius: 3px;
+}
+/*# sourceMappingURL=AccountInformation.css.map */

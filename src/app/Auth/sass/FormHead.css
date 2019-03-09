@@ -13,7 +13,7 @@
 }
 
 .component-from-head__nav {
-  color: #fff;
+  color: #000;
   text-decoration: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29,7 +29,7 @@
 }
 
 .component-from-head__nav.active {
-  color: #040404;
+  color: #fff;
   background-color: #ffba2d;
 }
 

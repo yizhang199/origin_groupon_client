@@ -1,19 +1,22 @@
 $colors: (
-  text: #fff,
+  text: #000,
   textSubtitle: #a5a5a5,
   textPrimary: #8c8c8c,
   main: #ffba2d,
   secondary: #f55747,
   boxShadow: #a5a5a5,
-  bodyBackground: #040404,
-  lightBackground: #25262b,
+  bodyBackground: #fff,
+  headBackground: #ffba2d,
+  lightBackground: #e4e0e0,
   icon: #ffba2d,
-  cover: #000000a5,
+  // cover: #000000a5,
+    cover: #c7c7c7a5,
   header1: #8c8c8c,
   border: #a5a5a5,
   border2: #fff,
   boxshadow2: #fff,
-  background2: #393a3d,
+  // background2: #393a3d,
+    background2: rgb(209, 207, 207),
   textShadow: #000
 );
 

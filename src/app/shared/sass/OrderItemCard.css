@@ -62,7 +62,7 @@
 .component-order-item-card__quantity {
   font-size: 14px;
   font-weight: normal;
-  color: #fff;
+  color: #000;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;

@@ -36,14 +36,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #25262b;
+  background-color: #e4e0e0;
   border: none;
   -webkit-box-flex: 9;
       -ms-flex: 9;
           flex: 9;
   padding: 0px 10px;
   outline: none;
-  color: #fff;
+  color: #000;
 }
 
 .component-form__input::-webkit-input-placeholder {
@@ -82,7 +82,7 @@
       -ms-flex-align: center;
           align-items: center;
   height: 40px;
-  background-color: #25262b;
+  background-color: #e4e0e0;
   width: 80vw;
 }
 

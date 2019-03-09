@@ -9,9 +9,11 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 8px 0px;
+  border-bottom: 2px solid #a5a5a5;
 }
 
 .component-head .material-icons {
   font-size: 26px;
+  color: #ffba2d;
 }
 /*# sourceMappingURL=Head.css.map */

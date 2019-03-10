@@ -396,6 +396,23 @@ hr {
   border: 1px solid #a5a5a5;
   position: relative;
 }
+.component-product-card .groupon-tag {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 23px;
+  width: 23px;
+  font-size: 16px;
+  border: 2px solid #ffba2d;
+  color: #ffba2d;
+  font-weight: bold;
+  transform: rotateZ(-45deg);
+}
 
 .component-product-cover {
   height: 100%;

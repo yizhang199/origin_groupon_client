@@ -38,6 +38,12 @@ class ProductCard extends React.Component {
     // this.props.showModal();
   };
 
+  renderGroupOnTag = () => {
+    if (!this.props.product.isDiscount) {
+      return null;
+    }
+    return <span className="groupon-tag">团</span>;
+  };
   decrease = () => {
     this.props.decreaseFromShoppingCartList(this.props.product);
   };
@@ -97,6 +103,7 @@ class ProductCard extends React.Component {
         className="component-product-card"
         data-test="component-product-card"
       >
+        {this.renderGroupOnTag()}
         <div className="component-product-card__header">
           <div className="component-product-card__image-container">
             <img src={`${baseUrl}${this.props.product.image}`} alt="" />
@@ -123,7 +130,7 @@ class ProductCard extends React.Component {
             </div>
           </div>
         </div>
-        {/* <Modal product={this.props.product} content={"choice form"} /> */}
+
         {this.state.showChoiceForm ? (
           <React.Fragment>
             <div

@@ -7,6 +7,23 @@
   margin-bottom: 10px;
   border: 1px solid color("border");
   position: relative;
+  .groupon-tag {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    background-color: color("bodyBackground");
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 23px;
+    width: 23px;
+    font-size: 16px;
+    border: 2px solid color("main");
+    color: color("main");
+    font-weight: bold;
+    transform: rotateZ(-45deg);
+  }
 }
 .component-product-cover {
   height: 100%;

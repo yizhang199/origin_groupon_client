@@ -69,6 +69,7 @@
   width: 100vw;
   left: 0;
   top: 23vh;
+  box-sizing: border-box;
 }
 
 .component-shopping-cart__list__footer {
@@ -76,20 +77,19 @@
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 8vh;
+  height: 10vh;
   justify-content: center;
   align-items: center;
   display: flex;
   background: color("bodyBackground");
-  box-shadow: -1px 0px 0px color("border");
+  box-shadow: 0px 0px 5px color("border");
 }
 .component-shopping-cart__list__button-confirm {
-  background-color: #daae14;
-  border: 1px solid #daae14;
+  background-color: color("main");
+  border: 1px solid color("main");
   border-radius: 3px;
   height: 35px;
   width: 120px;
-  /* line-height: 20px; */
   color: color("text");
   font-weight: bold;
   text-align: center;

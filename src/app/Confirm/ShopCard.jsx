@@ -1,22 +1,72 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { makeDate } from "../../_helpers";
 import { selectShop, selectDate } from "../../_actions";
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 
 // import "./sass/ShopCard.css";
 class ShopCard extends React.Component {
-  handleDateChange = e => {
-    const newDate = new Date(e);
-    // const newDate = new Date(eventDate.setDate(eventDate.getDate() + 1));
+  // handleDateChange = e => {
+  //   const newDate = new Date(e);
+  //   // const newDate = new Date(eventDate.setDate(eventDate.getDate() + 1));
+  //   this.props.selectDate(newDate);
+  // };
+  // renderCalendar = () => {
+  //   const picked_location = this.props.selectedShop.location_id;
+  //   const component_location = this.props.shop.location_id;
+
+  //   if (!picked_location || picked_location !== component_location) {
+  //     return null;
+  //   }
+  //   return (
+  //     <label
+  //       onClick={e => {
+  //         e.stopPropagation();
+  //       }}
+  //       className="component-shop-card__date-picker__label"
+  //     >
+  //       <DatePicker
+  //         selected={this.props.pickedDate}
+  //         includeDates={this.props.shop.open}
+  //         onChange={this.handleDateChange}
+  //         shouldCloseOnSelect={true}
+  //         withPortal
+  //       />
+  //       <i className="material-icons">date_range</i>
+  //       <span>select a date</span>
+  //     </label>
+  //   );
+  // };
+
+  handleSelectDateChange = e => {
+    const newDate = new Date(e.target.value);
     this.props.selectDate(newDate);
   };
-  renderCalendar = () => {
+
+  renderSelectInputOptions = () => {
+    return (
+      <React.Fragment>
+        {/* <option value="text_label" disabled>
+          --请选择--
+        </option> */}
+        {this.props.shop.open.map((ele, index) => {
+          return (
+            <option value={makeDate(ele)} key={`eleOption${index}`}>
+              {ele}
+            </option>
+          );
+        })}
+        ;
+      </React.Fragment>
+    );
+  };
+
+  renderDatePicker = () => {
     const picked_location = this.props.selectedShop.location_id;
     const component_location = this.props.shop.location_id;
-
     if (!picked_location || picked_location !== component_location) {
       return null;
     }
@@ -27,15 +77,15 @@ class ShopCard extends React.Component {
         }}
         className="component-shop-card__date-picker__label"
       >
-        <DatePicker
-          selected={this.props.pickedDate}
-          includeDates={this.props.shop.open}
-          onChange={this.handleDateChange}
-          shouldCloseOnSelect={true}
-          withPortal
-        />
-        <i className="material-icons">date_range</i>
-        <span>select a date</span>
+        <span>请选择取货时间: </span>
+        <select
+          className="component-add-option-to-new-product-form__selector"
+          value={makeDate(this.props.pickedDate)}
+          onChange={this.handleSelectDateChange}
+        >
+          {this.renderSelectInputOptions()}
+        </select>
+        {/* <i className="material-icons">date_range</i> */}
       </label>
     );
   };
@@ -85,7 +135,8 @@ class ShopCard extends React.Component {
         </div>
         <div className="component-shop-card__name-telephone">
           {this.renderShopContact()}
-          {this.renderCalendar()}
+          {/* {this.renderCalendar()} */}
+          {this.renderDatePicker()}
         </div>
         {/* <div className="component-shop-card__cover" /> */}
       </div>

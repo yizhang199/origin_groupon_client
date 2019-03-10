@@ -8,10 +8,7 @@ import {
 import { connect } from "react-redux";
 
 import ChoiceForm from "./ChoiceForm";
-// import Modal from "./Modal";
 import { baseUrl } from "../../_apis";
-
-// import "./sass/ProductCard.css";
 
 class ProductCard extends React.Component {
   constructor(props) {

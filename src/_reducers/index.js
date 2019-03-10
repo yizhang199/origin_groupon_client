@@ -41,13 +41,15 @@ const selectedShopReducer = (selectedShop = {}, action) => {
   return selectedShop;
 };
 
-const pickedDateReducer = (pickedDate = new Date(), action) => {
+const pickedDateReducer = (pickedDate = "", action) => {
   if (action.type === actionTypes.pickDate) {
     return action.payload;
   } else if (action.type === actionTypes.selectDate) {
     return action.payload;
   } else if (action.type === actionTypes.renderNewShoppingCart) {
     return action.payload.date;
+  } else if (action.type === actionTypes.selectedShop) {
+    return new Date(action.payload.open[0]);
   }
 
   return pickedDate;

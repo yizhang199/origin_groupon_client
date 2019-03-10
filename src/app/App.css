@@ -137,7 +137,7 @@
   left: 0;
   width: 100vw;
   height: 6vh;
-  background-color: #ffba2d;
+  background-color: #ffba2dcf;
 }
 
 .component-shopping-cart__cover {
@@ -161,7 +161,7 @@
 
 .component-shopping-cart__icon-container {
   position: absolute;
-  top: -18px;
+  top: -10px;
   left: 20px;
   border-radius: 50%;
   border: 2px solid #ffba2d;
@@ -179,18 +179,19 @@
 }
 
 .component-shopping-cart__icon-quantity {
+  position: absolute;
   border-radius: 50%;
   background-color: #f55747;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  display: inline-block;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 13px;
-  text-align: center;
   font-weight: bold;
-  left: 20px;
+  left: 25px;
   top: -5px;
-  position: absolute;
+  color: #fff;
 }
 
 .component-shopping-cart__list__header {

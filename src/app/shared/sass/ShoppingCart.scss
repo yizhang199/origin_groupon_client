@@ -7,7 +7,7 @@
   left: 0;
   width: 100vw;
   height: 6vh;
-  background-color: color("main");
+  background-color: color("mainOpicity");
 }
 .component-shopping-cart__cover {
   height: 100vh;
@@ -28,7 +28,7 @@
 }
 .component-shopping-cart__icon-container {
   position: absolute;
-  top: -18px;
+  top: -10px;
   left: 20px;
   border-radius: 50%;
   border: 2px solid color("main");
@@ -44,18 +44,19 @@
   color: color("icon");
 }
 .component-shopping-cart__icon-quantity {
+  position: absolute;
   border-radius: 50%;
   background-color: color("secondary");
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  display: inline-block;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 13px;
-  text-align: center;
   font-weight: bold;
-  left: 20px;
+  left: 25px;
   top: -5px;
-  position: absolute;
+  color: color("bodyBackground");
 }
 .component-shopping-cart__list__header {
   height: 6vh;

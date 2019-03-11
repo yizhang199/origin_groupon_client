@@ -57,7 +57,9 @@ class ProductCard extends React.Component {
     ) {
       return (
         <div className="component-product-card__quantity">
-          <span>CLOSE</span>
+          <span className="component-product-card__quantity__close-tag">
+            CLOSE
+          </span>
         </div>
       );
     }
@@ -70,6 +72,12 @@ class ProductCard extends React.Component {
     );
   };
   renderButtonGroup = () => {
+    if (
+      this.props.product.isDiscount &&
+      parseInt(this.props.product.discountQuantity) === 0
+    ) {
+      return null;
+    }
     const quantity = this.getQuantity();
     const withOptions = this.props.product.options.length > 0;
     if (!withOptions && quantity > 0) {

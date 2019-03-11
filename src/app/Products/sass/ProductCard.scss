@@ -72,6 +72,14 @@
   font-weight: normal;
   color: color("text");
   flex: 1;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed color("secondary");
+    color: color("secondary");
+    border-radius: 3px;
+  }
 }
 .component-product-card__price {
   font-size: 12px;

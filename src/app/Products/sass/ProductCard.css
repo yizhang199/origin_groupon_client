@@ -109,6 +109,21 @@
           flex: 1;
 }
 
+.component-product-card__quantity span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px dashed #f55747;
+  color: #f55747;
+  border-radius: 3px;
+}
+
 .component-product-card__price {
   font-size: 12px;
 }

@@ -47,6 +47,17 @@ class ProductCard extends React.Component {
   add = () => {
     this.props.addToShoppingCartList(this.props.product);
   };
+  renderQuantity = () => {
+    if (!this.props.product.isDiscount) {
+      return null;
+    }
+    return (
+      <div className="component-product-card__quantity">
+        {this.props.product.stock_status_id - this.props.product.quantity}/
+        {this.props.product.stock_status_id}
+      </div>
+    );
+  };
   renderButtonGroup = () => {
     const quantity = this.getQuantity();
     const withOptions = this.props.product.options.length > 0;
@@ -118,11 +129,7 @@ class ProductCard extends React.Component {
               </div>
             </div>
             <div className="component-product-card__info__footer">
-              <div className="component-product-card__quantity">
-                {this.props.product.stock_status_id -
-                  this.props.product.quantity}
-                /{this.props.product.stock_status_id}
-              </div>
+              {this.renderQuantity()}
               {this.renderButtonGroup()}
             </div>
           </div>

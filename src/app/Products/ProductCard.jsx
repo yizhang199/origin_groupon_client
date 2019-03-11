@@ -51,10 +51,21 @@ class ProductCard extends React.Component {
     if (!this.props.product.isDiscount) {
       return null;
     }
+    if (
+      this.props.product.isDiscount &&
+      parseInt(this.props.product.discountQuantity) === 0
+    ) {
+      return (
+        <div className="component-product-card__quantity">
+          <span>CLOSE</span>
+        </div>
+      );
+    }
     return (
       <div className="component-product-card__quantity">
-        {this.props.product.stock_status_id - this.props.product.quantity}/
-        {this.props.product.stock_status_id}
+        {this.props.product.stock_status_id -
+          this.props.product.discountQuantity}
+        /{this.props.product.stock_status_id}
       </div>
     );
   };

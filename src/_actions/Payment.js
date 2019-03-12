@@ -42,7 +42,7 @@ const create = () => {
       headers
     });
     dispatch({ type: types.saveOrder, payload: response.data.orders });
-    history.push("/");
+    history.push(`${process.env.PUBLIC_URL}/`);
   };
 };
 // export const create = () => {

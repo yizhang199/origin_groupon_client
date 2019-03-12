@@ -133,7 +133,7 @@ class ProductCard extends React.Component {
         {this.renderGroupOnTag()}
         <div className="component-product-card__header">
           <div className="component-product-card__image-container">
-            <img src={`${baseUrl}${this.props.product.image}`} alt="" />
+            <img src={`${this.props.product.image}`} alt="" />
           </div>
           <div className="component-product-card__info">
             <div className="component-product-card__info__header">

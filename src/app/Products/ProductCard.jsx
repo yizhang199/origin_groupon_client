@@ -8,7 +8,6 @@ import {
 import { connect } from "react-redux";
 
 import ChoiceForm from "./ChoiceForm";
-import { baseUrl } from "../../_apis";
 
 class ProductCard extends React.Component {
   constructor(props) {
@@ -48,6 +47,15 @@ class ProductCard extends React.Component {
     this.props.addToShoppingCartList(this.props.product);
   };
   renderQuantity = () => {
+    if (!this.props.app_status.isOpen) {
+      return (
+        <div className="component-product-card__quantity">
+          <span className="component-product-card__quantity__close-tag">
+            CLOSE
+          </span>
+        </div>
+      );
+    }
     if (!this.props.product.isDiscount) {
       return null;
     }
@@ -72,6 +80,9 @@ class ProductCard extends React.Component {
     );
   };
   renderButtonGroup = () => {
+    if (!this.props.app_status.isOpen) {
+      return null;
+    }
     if (
       this.props.product.isDiscount &&
       parseInt(this.props.product.discountQuantity) === 0
@@ -174,8 +185,8 @@ class ProductCard extends React.Component {
   }
 }
 
-const mapStateToProps = ({ shoppingCartList }) => {
-  return { shoppingCartList };
+const mapStateToProps = ({ shoppingCartList, app_status }) => {
+  return { shoppingCartList, app_status };
 };
 
 export default connect(

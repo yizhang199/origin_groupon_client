@@ -91,7 +91,7 @@ const customSettingReducer = (customSetting = {}, action) => {
 };
 const labelsReducer = (labels = {}, action) => {
   if (action.type === actionTypes.initialApp) {
-    return action.payload.layout_text;
+    return action.payload.labels;
   }
   return labels;
 };
@@ -142,7 +142,14 @@ const customerCommentsReducer = (customerComments = "", action) => {
   }
   return customerComments;
 };
+const app_statusReducer = (app_status = {}, action) => {
+  if (action.type === actionTypes.initialApp) {
+    return action.payload.app_status;
+  }
+  return app_status;
+};
 export default combineReducers({
+  app_status: app_statusReducer,
   products: productsReducer,
   language_id: languageIdReducer,
   form: formReducer,

@@ -1,3 +1,9 @@
 .carousel .slide img {
   height: 130px;
 }
+.carousel {
+  .slide {
+    background-color: color("bodyBackground");
+    height: 130px;
+  }
+}

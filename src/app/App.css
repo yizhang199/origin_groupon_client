@@ -2,6 +2,11 @@
   height: 130px;
 }
 
+.carousel .slide {
+  background-color: #fff;
+  height: 130px;
+}
+
 .component-head {
   display: flex;
   justify-content: space-between;
@@ -1113,4 +1118,4 @@ hr {
   border-color: #ffba2d;
 }
 
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=App.css.map */

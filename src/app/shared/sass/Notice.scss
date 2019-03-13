@@ -1,0 +1,23 @@
+.component-notice {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .primary {
+    font-size: 1rem;
+    color: color("textButton");
+    font-weight: bold;
+  }
+  .secondary {
+    font-size: 0.8rem;
+    color: color("textSubtitle");
+  }
+  &.close {
+    background-color: color("secondary");
+  }
+  &.open {
+    background-color: color("main");
+  }
+}

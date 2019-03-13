@@ -255,6 +255,30 @@
   border-right: 1px solid #a5a5a5;
 }
 
+.component-notice {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.component-notice .primary {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: bold;
+}
+.component-notice .secondary {
+  font-size: 0.8rem;
+  color: #a5a5a5;
+}
+.component-notice.close {
+  background-color: #f55747;
+}
+.component-notice.open {
+  background-color: #ffba2d;
+}
+
 .component-choice-form {
   height: 65vh;
   width: 80vw;

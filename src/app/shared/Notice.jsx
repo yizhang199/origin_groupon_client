@@ -7,12 +7,25 @@ const Notice = ({ app_status }) => {
 
   const renderContent = () => {
     if (isOpen) {
-      return <p>本团截止日期：{makeDate(end_date)}</p>;
+      return (
+        <span className="primary">本团截止日期：{makeDate(end_date)}</span>
+      );
     }
-    return <p>当前团已关闭，下一团开启日期为:{makeDate(start_date)}</p>;
+    return (
+      <>
+        <span className="primary">当前团已关闭</span>
+        <span className="secondary">
+          下一团开启日期为:{makeDate(start_date)}
+        </span>
+      </>
+    );
   };
 
-  return <div>{renderContent()}</div>;
+  return (
+    <div className={`component-notice ${isOpen ? "open" : "close"}`}>
+      {renderContent()}
+    </div>
+  );
 };
 
 const mapStateToProps = ({ app_status }) => {

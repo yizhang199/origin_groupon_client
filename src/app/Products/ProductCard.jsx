@@ -13,7 +13,7 @@ class ProductCard extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showChoiceForm: false };
+    this.state = { showChoiceForm: false, showDetail: false };
   }
   getQuantity = () => {
     let counter = 0;
@@ -45,6 +45,27 @@ class ProductCard extends React.Component {
   };
   add = () => {
     this.props.addToShoppingCartList(this.props.product);
+  };
+  renderProductDetail = () => {
+    if (!this.state.showDetail) {
+      return null;
+    }
+    return (
+      <div
+        className="pop-up-product-detail"
+        onClick={() => {
+          this.setState({ showDetail: false });
+        }}
+      >
+        <div className="content">
+          <img src={`${this.props.product.image}`} alt="" />
+          <div className="product-info">
+            <div className="name">{this.props.product.name}</div>
+            <div className="price">${this.props.product.price}</div>
+          </div>
+        </div>
+      </div>
+    );
   };
   renderQuantity = () => {
     if (!this.props.app_status.isOpen) {
@@ -141,9 +162,15 @@ class ProductCard extends React.Component {
         className="component-product-card"
         data-test="component-product-card"
       >
+        {this.renderProductDetail()}
         {this.renderGroupOnTag()}
         <div className="component-product-card__header">
-          <div className="component-product-card__image-container">
+          <div
+            className="component-product-card__image-container"
+            onClick={() => {
+              this.setState({ showDetail: true });
+            }}
+          >
             <img src={`${this.props.product.image}`} alt="" />
           </div>
           <div className="component-product-card__info">
@@ -177,9 +204,10 @@ class ProductCard extends React.Component {
             />
           </React.Fragment>
         ) : null}
-        {this.props.product.quantity === 0 ? (
+
+        {/* {this.props.product.quantity === 0 ? (
           <div className="component-product-cover" />
-        ) : null}
+        ) : null} */}
       </div>
     );
   }

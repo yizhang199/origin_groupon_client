@@ -26,11 +26,11 @@ class LoginForm extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
           <div className="component-form__input-container">
             <label className="component-form__form-field">
-              <i className="material-icons">email</i>
+              <i className="material-icons">phone</i>
               <Field
-                name="email"
+                name="phone"
                 component={this.renderInput}
-                placeholder="请输入Email"
+                placeholder="请输入phone no."
                 type="text"
               />
             </label>

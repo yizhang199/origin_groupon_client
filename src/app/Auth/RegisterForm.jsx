@@ -6,18 +6,26 @@ import { register } from "../../_actions";
 // import "./sass/Form.css";
 
 class RegisterForm extends React.Component {
-  renderInput = ({ input, placeholder, type }) => {
+  renderInput = ({ input, placeholder, type, meta }) => {
     return (
-      <input
-        {...input}
-        type={type}
-        className="component-form__input"
-        placeholder={placeholder}
-      />
+      <>
+        <input
+          {...input}
+          type={type}
+          className="component-form__input"
+          placeholder={placeholder}
+        />
+        {this.renderError(meta)}
+      </>
     );
   };
-  onSubmit = formValues => {
+  onSubmit = () => {
     this.props.register();
+  };
+  renderError = ({ error, touched }) => {
+    if (touched && error) {
+      return <div className="form-error-message">{error}</div>;
+    }
   };
   render() {
     return (
@@ -36,11 +44,11 @@ class RegisterForm extends React.Component {
           </div>
           <div className="component-form__input-container">
             <label className="component-form__form-field">
-              <i className="material-icons">email</i>
+              <i className="material-icons">phone</i>
               <Field
-                name="email"
+                name="phone"
                 component={this.renderInput}
-                placeholder="请输入Email"
+                placeholder="请输入phone no."
                 type="text"
               />
             </label>
@@ -74,7 +82,23 @@ class RegisterForm extends React.Component {
   }
 }
 
-const reduxFormWrapper = reduxForm({ form: "registerForm" })(RegisterForm);
+const validate = formValues => {
+  const errors = {};
+  if (!formValues.phone) {
+    errors.phone = "您需要提供一个有效的电话号码";
+  } else if (!/04+[0-9]{8}$/.test(formValues.phone)) {
+    errors.phone = "电话号码格式错误，不要有空格";
+  }
+  if (!formValues.username) {
+    errors.username = "您需要提供一个有效的用户名";
+  }
+
+  return errors;
+};
+
+const reduxFormWrapper = reduxForm({ form: "registerForm", validate })(
+  RegisterForm
+);
 export default connect(
   null,
   { register }

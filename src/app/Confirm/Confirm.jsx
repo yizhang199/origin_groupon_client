@@ -75,7 +75,7 @@ class Confirm extends React.Component {
     const title = {
       showPaymentMethodSection: `支付方式`,
       showShopListSection: `取货时间地点`,
-      showCustomerComments: `客户备注`
+      showCustomerCommentsSection: `客户备注`
     };
     return (
       <div
@@ -124,83 +124,7 @@ class Confirm extends React.Component {
     }
     return content;
   };
-  /**
-   * render payment method details
-   * @param {Void}
-   * @returns {JSX}
-   */
-  renderPaymentMethod = () => {
-    if (this.state.showPaymentMethod) {
-      return (
-        <div className="payment-section__body">
-          <label className="payment-section__radio-label">
-            <input
-              type="radio"
-              name="payment_method"
-              value="Paypal"
-              onChange={this.handlePaymentMethodChange}
-            />
-            <span className="payment-section__check-mark-wrapper">
-              <img
-                className="payment-section__body-img"
-                src={`${baseUrl}/images/paypal.png`}
-                alt=""
-              />
-            </span>
-          </label>
-          <label className="payment-section__radio-label">
-            <input
-              type="radio"
-              name="payment_method"
-              value="ALIPAY"
-              onChange={this.handlePaymentMethodChange}
-            />
-            <span className="payment-section__check-mark-wrapper">
-              <img
-                className="payment-section__body-img"
-                src={`${baseUrl}/images/alipay.png`}
-                alt=""
-              />
-            </span>
-          </label>
-          <label className="payment-section__radio-label">
-            <input
-              type="radio"
-              name="payment_method"
-              value="WECHAT"
-              onChange={this.handlePaymentMethodChange}
-            />
-            <span className="payment-section__check-mark-wrapper">
-              <img
-                className="payment-section__body-img"
-                src={`${baseUrl}/images/wechat.png`}
-                alt=""
-              />
-            </span>
-          </label>
-          {this.props.userAllowCash ? (
-            <label className="payment-section__radio-label">
-              <input
-                type="radio"
-                name="payment_method"
-                value="CASH"
-                onChange={this.handlePaymentMethodChange}
-              />
-              <span className="payment-section__check-mark-wrapper">
-                <img
-                  className="payment-section__body-img"
-                  src={`${baseUrl}/images/cash.png`}
-                  alt="Cash"
-                />
-              </span>
-            </label>
-          ) : null}
-        </div>
-      );
-    } else {
-      return null;
-    }
-  };
+
   /**
    * update payment method
    * @param {Event}

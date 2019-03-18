@@ -904,6 +904,10 @@ hr {
   height: 30px;
 }
 
+.component-confirm .payment-section {
+  padding-left: 10%;
+}
+
 .component-complete {
   display: flex;
   width: 100vw;

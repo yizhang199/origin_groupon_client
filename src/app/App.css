@@ -85,7 +85,7 @@
 .component-order-item-card__quantity {
   font-size: 14px;
   font-weight: normal;
-  color: #000;
+  color: #3b3b3b;
   flex: 1;
 }
 
@@ -132,7 +132,7 @@
 }
 
 .component-order-item-card__option-price {
-  color: #a5a5a5;
+  color: #7c7c7c;
 }
 
 .component-shopping-cart__header {
@@ -232,7 +232,7 @@
   border-radius: 3px;
   height: 35px;
   width: 120px;
-  color: #000;
+  color: #3b3b3b;
   font-weight: bold;
   text-align: center;
   display: flex;
@@ -243,7 +243,7 @@
 
 .component-shopping-cart__list__header-quantity {
   width: 50px;
-  background-color: #000;
+  background-color: #3b3b3b;
   color: #ffba2d;
   display: flex;
   justify-content: space-evenly;
@@ -270,7 +270,7 @@
 }
 .component-notice .secondary {
   font-size: 0.8rem;
-  color: #a5a5a5;
+  color: #7c7c7c;
 }
 .component-notice.close {
   background-color: #f55747;
@@ -350,7 +350,7 @@
   width: 120px;
   height: 30px;
   background-color: #ffba2d;
-  color: #000;
+  color: #3b3b3b;
   font-weight: bold;
   border-radius: 5px;
   box-shadow: 0 0 2px #fff;
@@ -411,7 +411,7 @@ hr {
 
 .component-choice-form__value-price {
   font-size: 10px;
-  color: #000;
+  color: #3b3b3b;
 }
 
 .component-choice-form__option-intro {
@@ -524,7 +524,7 @@ hr {
 .component-product-card__quantity {
   font-size: 14px;
   font-weight: normal;
-  color: #000;
+  color: #3b3b3b;
   flex: 1;
 }
 .component-product-card__quantity span {
@@ -566,7 +566,7 @@ hr {
 
 .component-product-card .material-icons.disable {
   font-size: 16px;
-  color: #a5a5a5;
+  color: #7c7c7c;
 }
 
 .component-product-card__product-quantity {
@@ -645,21 +645,51 @@ hr {
 .component-confirm__section-header {
   font-size: 12px;
   height: 6vh;
+  margin-top: 2vh;
+  padding-bottom: 2vh;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #e0dcdc;
 }
-
-.component-confirm__subtitle {
-  height: 24px;
-  line-height: 24px;
-  color: #8c8c8c;
+.component-confirm__section-header .is-done {
+  width: 10%;
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
-
-.component-confirm__subtitle.active {
+.component-confirm__section-header .is-done .material-icons {
+  color: #2ad75c;
+  margin-top: -4px;
+}
+.component-confirm__section-header .component-confirm__subtitle {
+  color: #8c8c8c;
+  flex: 6;
+}
+.component-confirm__section-header .component-confirm__subtitle.active {
   color: #ffba2d;
+}
+.component-confirm__section-header .component-confirm__subtitle .title,
+.component-confirm__section-header .component-confirm__subtitle .detail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.component-confirm__section-header .component-confirm__subtitle .title {
+  color: #3b3b3b;
+  font-size: 1rem;
+}
+.component-confirm__section-header .component-confirm__subtitle .detail {
+  color: #7c7c7c;
+  padding: 3px 0px;
+  font-size: 10px;
+  font-weight: normal;
+}
+.component-confirm__section-header .material-icons {
+  height: 100%;
+  color: #8c8c8c;
 }
 
 .payment-section__header-text {
@@ -667,7 +697,7 @@ hr {
   line-height: 20px;
   font-size: 14px;
   font-weight: bold;
-  color: #a5a5a5;
+  color: #7c7c7c;
 }
 
 .payment-section__body {
@@ -728,7 +758,7 @@ hr {
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  color: #000;
+  color: #3b3b3b;
   text-decoration: none;
   border: none;
 }
@@ -818,89 +848,60 @@ hr {
   z-index: 1;
 }
 
-.component-shop-card {
-  position: relative;
-  margin: 10px 0px;
-  padding: 15px;
-  padding-bottom: 0px;
+.component-confirm .shop-section {
+  padding-left: 10%;
+}
+.component-confirm .shop-section .shop-card {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  border-radius: 5px;
+  margin-right: 1px;
+  margin-top: 10px;
+  transition: all 300ms ease-in;
+}
+.component-confirm .shop-section .shop-card.active {
+  box-shadow: 0px 0px 4px #d0d0d0;
+  transition: all 300ms ease-in;
+}
+.component-confirm .shop-section .shop-card .information {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 5px;
-  border: 1px solid #a5a5a5;
-  overflow: scroll;
-  box-shadow: 0px 3px 3px #a5a5a57d;
-  transition: all 400ms ease;
+  flex: 1;
+  margin-right: 15px;
 }
-
-.component-shop-card:hover,
-.component-shop-card:active {
-  background-color: #c7c7c7a5;
-  border-color: #ffba2d;
-  box-shadow: none;
-  transition: all 400ms ease;
+.component-confirm .shop-section .shop-card .information .sub-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  word-wrap: break-word;
+  margin-bottom: 15px;
 }
-
-.component-shop-card__cover {
-  position: absolute;
-  top: 0;
-  left: 0;
+.component-confirm .shop-section .shop-card .information .sub-info.date .title {
   height: 100%;
-  width: 100%;
-  background-color: #c7c7c7a5;
+  justify-content: center;
 }
-
-.component-shop-card__name,
-.component-shop-card__address,
-.component-shop-card__telephone {
-  z-index: 1;
-}
-
-.component-shop-card__open-dates-container {
+.component-confirm .shop-section .shop-card .information .sub-info .title {
+  flex: 1 1;
+  height: 17px;
   display: flex;
-  justify-content: space-between;
-  width: 80%;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #7c7c7c;
+  font-size: 10px;
 }
-
-.component-shop-card__name-telephone {
+.component-confirm .shop-section .shop-card .information .sub-info .value {
+  flex: 2;
+  font-size: 14px;
+  height: 100%;
   display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
+  color: #3b3b3b;
+  font-weight: normal;
 }
-
-.component-shop-card__name {
-  color: #ffba2d;
-}
-
-.component-shop-card__date-picker__label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  font-size: 12px;
-}
-.component-shop-card__date-picker__label .component-add-option-to-new-product-form__selector {
-  height: 40px;
-  border: 1px solid #a5a5a5;
-  border-radius: 5px;
-  width: 60%;
-}
-
-.react-datepicker__input-container input {
-  display: none;
-}
-
-.react-datepicker__day--highlighted {
-  background-color: #ffba2d;
-  color: #000;
-}
-
-.react-datepicker-wrapper {
-  opacity: 1;
+.component-confirm .shop-section .shop-card .information .sub-info .value select {
+  border-radius: 3px;
+  border: 1px solid #e0dcdc;
+  height: 30px;
 }
 
 .component-complete {
@@ -976,7 +977,7 @@ hr {
   flex: 9;
   padding: 0px 10px;
   outline: none;
-  color: #000;
+  color: #3b3b3b;
 }
 
 .component-form__input::placeholder {
@@ -984,7 +985,7 @@ hr {
 }
 
 .component-form__form-field .material-icons {
-  color: #a5a5a5;
+  color: #7c7c7c;
   flex: 1;
   margin-left: 4px;
 }
@@ -1023,7 +1024,7 @@ hr {
 }
 
 .component-from-head__nav {
-  color: #000;
+  color: #3b3b3b;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -1057,7 +1058,7 @@ hr {
 .component-account-information__footer__button-logout {
   width: 80px;
   background-color: #ffba2d;
-  color: #000;
+  color: #3b3b3b;
   font-weight: bold;
   border: 1px solid #a5a5a5;
   height: 20px;
@@ -1156,7 +1157,7 @@ hr {
 .component-order-card__footer__button-continue {
   outline: none;
   width: 90px;
-  color: #000;
+  color: #3b3b3b;
   border-radius: 3px;
   height: 20px;
   border: 1px solid;

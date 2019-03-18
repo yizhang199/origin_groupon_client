@@ -9,7 +9,6 @@ const types = {
   refreshShoppingCart: "REFRESH_SHOPPING_CART",
   initialApp: "INITIAL_APP",
   selectedShop: "SELECTED_SHOP",
-  pickedDate: "PICKED_DATE",
   getShops: "GET_SHOPS",
   login: "LOGIN",
   register: "REGISTER",

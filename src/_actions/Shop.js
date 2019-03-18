@@ -16,12 +16,6 @@ export const selectShop = shop => {
     payload: shop
   };
 };
-export const pickedDate = date => {
-  return {
-    type: types.pickedDate,
-    payload: date
-  };
-};
 export const selectDate = date => {
   return {
     type: types.selectDate,
@@ -30,7 +24,6 @@ export const selectDate = date => {
 };
 export default {
   index,
-  pickedDate,
   selectDate,
   selectShop
 };

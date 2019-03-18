@@ -2,26 +2,24 @@ import React from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 
-import ShopSection from "./ShopSection";
-import PaymentMethodSection from "./PaymentMethodSection";
-import CustomerCommentsSection from "./CustomerCommentsSection";
-
-import { Head } from "../shared";
+import ShopCard from "./ShopCard_old";
+import { Head } from "../../shared";
 import {
+  getShops,
   setPaymentMethod,
   makePayment,
   saveOrCreateOrder,
   fetchUser,
   changeCustomerComments
-} from "../../_actions";
+} from "../../../_actions";
 
-import { baseUrl } from "../../_apis";
-import { makeDate } from "../../_helpers";
+import { baseUrl } from "../../../_apis";
+import { makeDate } from "../../../_helpers";
 class Confirm extends React.Component {
   state = {
-    showShopListSection: true,
-    showPaymentMethodSection: false,
-    showCustomerCommentsSection: false
+    showShopList: true,
+    showPaymentMethod: false,
+    showCustomerComments: false
   };
 
   /**
@@ -30,8 +28,28 @@ class Confirm extends React.Component {
    */
   componentDidMount() {
     this.props.fetchUser();
+    this.props.getShops();
   }
 
+  /**
+   * render JSX shop list
+   * @returns {JSX} list of ShopCard.jsx
+   */
+  renderShopList = () => {
+    if (this.state.showShopList) {
+      return this.props.shops.map((shop, index) => {
+        return (
+          <ShopCard
+            toggleSection={this.toggleSection}
+            key={`shop${index}`}
+            shop={shop}
+          />
+        );
+      });
+    } else {
+      return null;
+    }
+  };
   /**
    * toggle section show shop list or show payment method
    * @param {Void}
@@ -41,29 +59,6 @@ class Confirm extends React.Component {
     this.setState({ [attributeName]: !this.state[attributeName] });
   };
   /**
-   * function - decide display/or not - "done" mark in front of each seciton header
-   * @param {String} section_name
-   * @return {Boolean} true - "done", false - "undone"
-   */
-  getIsDone = name => {
-    let isDone = false;
-    switch (name) {
-      case "showShopListSection":
-        if (this.props.selectedShop.name && makeDate(this.props.pickedDate)) {
-          isDone = true;
-        }
-        break;
-      case "showPaymentMethodSection":
-        break;
-      case "showCustomerCommentsSection":
-        break;
-      default:
-        break;
-    }
-
-    return isDone;
-  };
-  /**
    * render JSX for section header
    * @param {string} content
    * @param {string} attributeName
@@ -71,12 +66,6 @@ class Confirm extends React.Component {
    */
   renderSectionHeader = (content, attributeName) => {
     const stateProperty = this.state[attributeName];
-    let isDone = this.getIsDone(attributeName);
-    const title = {
-      showPaymentMethodSection: `支付方式`,
-      showShopListSection: `取货时间地点`,
-      showCustomerComments: `客户备注`
-    };
     return (
       <div
         onClick={() => {
@@ -84,14 +73,12 @@ class Confirm extends React.Component {
         }}
         className="component-confirm__section-header"
       >
-        <span className="is-done">
-          {isDone ? <i className="material-icons">done</i> : null}
-        </span>
-        <span className={`component-confirm__subtitle`}>
-          <span className="title">{title[attributeName]}</span>
-          <span className="detail">
-            {this.getTitle(content, attributeName)}
-          </span>
+        <span
+          className={`component-confirm__subtitle${
+            stateProperty ? " active" : ""
+          }`}
+        >
+          {this.getTitle(content, attributeName)}
         </span>
         <i className="material-icons">
           {stateProperty ? `keyboard_arrow_up` : `keyboard_arrow_down`}
@@ -106,7 +93,7 @@ class Confirm extends React.Component {
    * @returns {string} title
    */
   getTitle = (content, attributeName) => {
-    if (attributeName === "showShopListSection") {
+    if (attributeName === "showShopList") {
       if (this.props.selectedShop.name && makeDate(this.props.pickedDate)) {
         return `取货地点：${this.props.selectedShop.name} 取货日期：${makeDate(
           this.props.pickedDate
@@ -115,7 +102,7 @@ class Confirm extends React.Component {
         return content;
       }
     }
-    if (attributeName === "showPaymentMethodSection") {
+    if (attributeName === "showPaymentMethod") {
       if (this.props.paymentMethod) {
         return `支付方式：${this.props.paymentMethod}`;
       } else {
@@ -243,26 +230,19 @@ class Confirm extends React.Component {
         <div className="component-confirm">
           {this.renderSectionHeader(
             this.props.labels.subtitle_select_date,
-            "showShopListSection"
+            "showShopList"
           )}
-          {this.state.showShopListSection ? (
-            <ShopSection toggleSection={this.toggleSection} />
-          ) : null}
+          {this.renderShopList()}
           {this.renderSectionHeader(
             this.props.labels.subtitle_select_payment_method,
-            "showPaymentMethodSection"
+            "showPaymentMethod"
           )}
-          {this.state.showPaymentMethodSection ? (
-            <PaymentMethodSection />
-          ) : null}
+          {this.renderPaymentMethod()}
           {this.renderSectionHeader(
             this.props.labels.subtitle_customer_comments,
-            "showCustomerCommentsSection"
+            "showCustomerComments"
           )}
-          {this.state.showCustomerCommentsSection ? (
-            <CustomerCommentsSection />
-          ) : null}
-          {/* footer: button group */}
+          {this.renderCustomerComments()}
           <div className="component-confirm__button-group">
             <button
               className="component-confirm__save-button"
@@ -306,6 +286,7 @@ const mapStateToProps = ({
 export default connect(
   mapStateToProps,
   {
+    getShops,
     setPaymentMethod,
     makePayment,
     saveOrCreateOrder,

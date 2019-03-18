@@ -28,9 +28,8 @@ export const decreaseOrderItem = Cart.decreaseByOrderItem;
 export const renderNewShoppingCart = Cart.renderNew;
 
 // Shop actions
-export const getShops = Shop.index;
+export const fetchShops = Shop.index;
 export const selectShop = Shop.selectShop;
-export const pickedDate = Shop.pickedDate;
 export const selectDate = Shop.selectDate;
 
 // auth actions

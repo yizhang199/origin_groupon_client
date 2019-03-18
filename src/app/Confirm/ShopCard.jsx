@@ -1,188 +1,96 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { makeDate } from "../../_helpers";
-import { selectShop, selectDate } from "../../_actions";
+import { selectDate, selectShop } from "../../_actions";
 
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-
-// import "./sass/ShopCard.css";
 class ShopCard extends React.Component {
-  // handleDateChange = e => {
-  //   const newDate = new Date(e);
-  //   // const newDate = new Date(eventDate.setDate(eventDate.getDate() + 1));
-  //   this.props.selectDate(newDate);
-  // };
-  // renderCalendar = () => {
-  //   const picked_location = this.props.selectedShop.location_id;
-  //   const component_location = this.props.shop.location_id;
-
-  //   if (!picked_location || picked_location !== component_location) {
-  //     return null;
-  //   }
-  //   return (
-  //     <label
-  //       onClick={e => {
-  //         e.stopPropagation();
-  //       }}
-  //       className="component-shop-card__date-picker__label"
-  //     >
-  //       <DatePicker
-  //         selected={this.props.pickedDate}
-  //         includeDates={this.props.shop.open}
-  //         onChange={this.handleDateChange}
-  //         shouldCloseOnSelect={true}
-  //         withPortal
-  //       />
-  //       <i className="material-icons">date_range</i>
-  //       <span>select a date</span>
-  //     </label>
-  //   );
-  // };
-
-  handleSelectDateChange = e => {
-    const newDate = new Date(e.target.value);
-    this.props.selectDate(newDate);
-  };
-
-  renderSelectInputOptions = () => {
+  state = { selectedDate: "text_label" };
+  renderAvaliableDates = () => {
+    const { open, name } = this.props.shop;
     return (
-      <React.Fragment>
-        {/* <option value="text_label" disabled>
-          --请选择--
-        </option> */}
-        {this.props.shop.open.map((ele, index) => {
+      <>
+        <option value="text_label" disabled={true}>
+          --请选择时间--
+        </option>
+        {open.map((date, index) => {
           return (
-            <option value={makeDate(ele)} key={`eleOption${index}`}>
-              {ele}
+            <option key={`availableDate${name}${index}`} value={date}>
+              {date}
             </option>
           );
         })}
-        ;
-      </React.Fragment>
-    );
-  };
-
-  renderDatePicker = () => {
-    const picked_location = this.props.selectedShop.location_id;
-    const component_location = this.props.shop.location_id;
-    if (!picked_location || picked_location !== component_location) {
-      return null;
-    }
-    return (
-      <label
-        onClick={e => {
-          e.stopPropagation();
-        }}
-        className="component-shop-card__date-picker__label"
-      >
-        <span>请选择取货时间: </span>
-        <select
-          className="component-add-option-to-new-product-form__selector"
-          value={makeDate(this.props.pickedDate)}
-          onChange={this.handleSelectDateChange}
-        >
-          {this.renderSelectInputOptions()}
-        </select>
-        {/* <i className="material-icons">date_range</i> */}
-      </label>
-    );
-  };
-
-  pickStore = () => {
-    this.props.selectShop(this.props.shop);
-  };
-  renderShopContact = () => {
-    const picked_location = this.props.selectedShop.location_id;
-    const component_location = this.props.shop.location_id;
-    if (!picked_location) {
-      return (
-        <>
-          <div className="component-shop-card__name">
-            {this.props.shop.name}
-          </div>
-          <div className="component-shop-card__telephone">
-            {this.props.shop.telephone}
-          </div>
-        </>
-      );
-    }
-    if (picked_location && picked_location === component_location) {
-      return null;
-    }
-
-    return (
-      <>
-        <div className="component-shop-card__name">{this.props.shop.name}</div>
-        <div className="component-shop-card__telephone">
-          {this.props.shop.telephone}
-        </div>
       </>
     );
   };
+  handleOnChange = e => {
+    this.setState({ selectedDate: e.target.value });
+    this.props.selectDate(e.target.value);
+    this.props.toggleSection("showShopListSection");
+  };
+
+  handleOnShopChange = e => {
+    console.log(e.target.value);
+
+    this.props.selectShop(this.props.shop);
+  };
+
   render() {
+    const { location_id, address, telephone, name } = this.props.shop;
+
     return (
-      <div
-        className="component-shop-card"
-        // style={{
-        //   backgroundImage: `url(${baseUrl}/images/${this.props.shop.image})`
-        // }}
-        onClick={this.pickStore}
+      <label
+        className={`shop-card ${
+          location_id === this.props.selectedShop.location_id ? `active` : ``
+        }`}
       >
-        <div className="component-shop-card__address">
-          {this.props.shop.address}
+        <div className="information">
+          <div className="sub-info name">
+            <span className="title">店名</span>
+            <span className="value">{name}</span>
+          </div>
+          <div className="sub-info address">
+            <span className="title">地址</span>
+            <span className="value">{address}</span>
+          </div>
+          <div className="sub-info date">
+            <span className="title">取货日期</span>
+            <span className="value">
+              <select
+                value={
+                  location_id === this.props.selectedShop.location_id
+                    ? this.props.pickedDate
+                    : this.state.selectedDate
+                }
+                onChange={this.handleOnChange}
+                className="value"
+                disabled={location_id !== this.props.selectedShop.location_id}
+              >
+                {this.renderAvaliableDates()}
+              </select>
+            </span>
+          </div>
+          <div className="sub-info phone">
+            <span className="title">电话</span>
+            <span className="value">{telephone}</span>
+          </div>
         </div>
-        <div className="component-shop-card__name-telephone">
-          {this.renderShopContact()}
-          {/* {this.renderCalendar()} */}
-          {this.renderDatePicker()}
-        </div>
-        {/* <div className="component-shop-card__cover" /> */}
-      </div>
+        <input
+          type="radio"
+          name="shop-card"
+          value={location_id}
+          checked={location_id === this.props.selectedShop.location_id}
+          onChange={this.handleOnShopChange}
+        />
+      </label>
     );
   }
 }
 
-const mapStateToProps = ({ pickedDate, selectedShop, selectedDate }) => {
-  return { pickedDate, selectedShop, selectedDate };
+const mapStateToProps = ({ pickedDate, selectedShop }) => {
+  return { pickedDate, selectedShop };
 };
 
 export default connect(
   mapStateToProps,
-  { selectShop, selectDate }
+  { selectDate, selectShop }
 )(ShopCard);
-
-/**
-   * render JXS for open dates
-   * @returns {JSX}
-   
-renderOpenDates = () => {
-  return (
-    <div className="component-shop-card__open-dates-container">
-      {this.props.shop.open.map((openDate, index) => {
-        let myClass = "component-open-date-tag__content";
-        if (this.props.date.date) {
-          if (
-            this.props.date.date === openDate &&
-            this.props.date.location_id === this.props.shop.location_id
-          ) {
-            myClass = "component-open-date-tag__content";
-          } else {
-            myClass = "component-open-date-tag__content disable";
-          }
-        }
-        return (
-          <OpenDateTag
-            key={`openDate${index}`}
-            shop={this.props.shop}
-            date={openDate}
-            myClass={myClass}
-            toggleSection={this.props.toggleSection}
-          />
-        );
-      })}
-    </div>
-  );
-};
-*/

@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
               <Field
                 name="phone"
                 component={this.renderInput}
-                placeholder="请输入phone no."
+                placeholder="请输入phone no. 或 邮箱地址"
                 type="text"
               />
             </label>

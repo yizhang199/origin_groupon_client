@@ -54,8 +54,14 @@ class Confirm extends React.Component {
         }
         break;
       case "showPaymentMethodSection":
+        if (this.props.paymentMethod !== "") {
+          isDone = true;
+        }
         break;
       case "showCustomerCommentsSection":
+        if (this.props.customerComments !== "") {
+          isDone = true;
+        }
         break;
       default:
         break;
@@ -90,7 +96,7 @@ class Confirm extends React.Component {
         <span className={`component-confirm__subtitle`}>
           <span className="title">{title[attributeName]}</span>
           <span className="detail">
-            {this.getTitle(content, attributeName)}
+            {this.getDetail(content, attributeName)}
           </span>
         </span>
         <i className="material-icons">
@@ -105,7 +111,7 @@ class Confirm extends React.Component {
    * @param {string} attributeName
    * @returns {string} title
    */
-  getTitle = (content, attributeName) => {
+  getDetail = (content, attributeName) => {
     if (attributeName === "showShopListSection") {
       if (this.props.selectedShop.name && makeDate(this.props.pickedDate)) {
         return `取货地点：${this.props.selectedShop.name} 取货日期：${makeDate(
@@ -122,17 +128,16 @@ class Confirm extends React.Component {
         return content;
       }
     }
+    if (attributeName === "showCustomerCommentsSection") {
+      if (this.props.customerComments !== "") {
+        return `备注：${this.props.customerComments}`;
+      } else {
+        return content;
+      }
+    }
     return content;
   };
 
-  /**
-   * update payment method
-   * @param {Event}
-   * @returns {Void} update state.paymethod
-   */
-  handlePaymentMethodChange = e => {
-    this.props.setPaymentMethod(e.target.value);
-  };
   /**
    * call makepayment action to make payment
    */
@@ -141,21 +146,6 @@ class Confirm extends React.Component {
   };
   saveOrder = () => {
     this.props.saveOrCreateOrder(1);
-  };
-  renderCustomerComments = () => {
-    if (this.state.showCustomerComments) {
-      return (
-        <textarea
-          onChange={this.handleCustomerComments}
-          value={this.props.customerComments}
-          className="component-confirm__customer-comments"
-        />
-      );
-    }
-    return null;
-  };
-  handleCustomerComments = e => {
-    this.props.changeCustomerComments(e.target.value);
   };
   render() {
     if (!this.props.labels.app_head_title) {
@@ -177,7 +167,7 @@ class Confirm extends React.Component {
             "showPaymentMethodSection"
           )}
           {this.state.showPaymentMethodSection ? (
-            <PaymentMethodSection />
+            <PaymentMethodSection toggleSection={this.toggleSection} />
           ) : null}
           {this.renderSectionHeader(
             this.props.labels.subtitle_customer_comments,

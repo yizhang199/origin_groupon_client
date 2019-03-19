@@ -686,6 +686,12 @@ hr {
   padding: 3px 0px;
   font-size: 10px;
   font-weight: normal;
+  text-overflow: ellipsis;
+  display: inline-block;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+  width: 70vw;
 }
 .component-confirm__section-header .material-icons {
   height: 100%;

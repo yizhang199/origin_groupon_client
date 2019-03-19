@@ -38,11 +38,13 @@
       .information-row {
         display: flex;
         justify-content: flex-start;
+        margin-top: 5px;
         .title {
           width: 26%;
         }
         .value {
           font-size: 10px;
+          line-height: 16px;
           display: inline-block;
           text-overflow: ellipsis;
           width: 70%;
@@ -85,91 +87,56 @@
       }
     }
   }
-}
-.component-order-card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.component-order-card__header__left,
-.component-order-card__header__right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+  .card-detail {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 10px 20px 10px;
+    transition: all 300ms ease;
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 0px;
+      span {
+        .title {
+          color: color("textSubtitle");
+          padding-right: 10px;
+        }
+        .value {
+          color: color("text");
+          font-weight: bold;
+          font-size: 16px;
+        }
+      }
+    }
+    .list {
+      display: flex;
+      flex-direction: column;
 
-.component-order-card__header__invoice-no,
-.component-order-card__header__added-date,
-.component-order-card__header__picked-shop,
-.component-order-card__header__picked-date {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.component-order-card__header__invoice-no,
-.component-order-card__header__picked-shop {
-  border-bottom: 1px solid color("border");
-}
-.component-order-card__header__invoice-no__title,
-.component-order-card__header__added-date__title,
-.component-order-card__header__picked-shop__title,
-.component-order-card__header__picked-date__title {
-  flex: 1;
-  border-right: 1px solid color("border");
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-}
-.component-order-card__header__picked-shop__title,
-.component-order-card__header__picked-date__title {
-  border-left: 1px solid color("border");
-}
-.component-order-card__header__invoice-no__value,
-.component-order-card__header__added-date__value,
-.component-order-card__header__picked-shop__value,
-.component-order-card__header__picked-date__value {
-  flex: 2;
-  text-align: right;
-  padding-right: 5px;
-}
-.component-order-card__body {
-  font-size: 10px;
-  height: 30px;
-  overflow: scroll;
-  border-top: 1px solid color("border");
-  width: 100%;
-}
-.component-order-card__body__list-item {
-  margin-right: 5px;
-  padding: 4px;
-  display: -webkit-inline-box;
-}
-.component-order-card__footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  border-top: 1px solid color("border");
-  height: 45px;
-}
-
-.component-order-card__footer__button-remove,
-.component-order-card__footer__button-continue {
-  outline: none;
-  width: 90px;
-  color: color("text");
-  border-radius: 3px;
-  height: 20px;
-  border: 1px solid;
-  font-size: 12px;
-}
-.component-order-card__footer__button-remove {
-  background-color: color("secondary");
-  border-color: color("secondary");
-}
-.component-order-card__footer__button-continue {
-  background-color: color("main");
-  border-color: color("main");
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding-right: 10%;
+        color: color("textSubtitle");
+        border-bottom: 1px solid color("bodyBackground");
+        .information {
+          .row {
+            margin-bottom: 5px;
+            &.name {
+              font-size: 10px;
+            }
+            &.unit-price,
+            &.total {
+              font-size: 13px;
+              .title {
+                font-size: 10px;
+                padding-right: 3px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

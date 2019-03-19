@@ -1116,12 +1116,14 @@ hr {
 .component-order-card .card-body .information .information-row {
   display: flex;
   justify-content: flex-start;
+  margin-top: 5px;
 }
 .component-order-card .card-body .information .information-row .title {
   width: 26%;
 }
 .component-order-card .card-body .information .information-row .value {
   font-size: 10px;
+  line-height: 16px;
   display: inline-block;
   text-overflow: ellipsis;
   width: 70%;
@@ -1159,103 +1161,51 @@ hr {
 .component-order-card .card-body .quantity-status .quantity .unit {
   color: #7c7c7c;
 }
-
-.component-order-card__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.component-order-card .card-detail {
   width: 100%;
+  box-sizing: border-box;
+  padding: 10px 10px 20px 10px;
+  transition: all 300ms ease;
 }
-
-.component-order-card__header__left,
-.component-order-card__header__right {
-  flex: 1;
+.component-order-card .card-detail .header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0px;
+}
+.component-order-card .card-detail .header span .title {
+  color: #7c7c7c;
+  padding-right: 10px;
+}
+.component-order-card .card-detail .header span .value {
+  color: #3b3b3b;
+  font-weight: bold;
+  font-size: 16px;
+}
+.component-order-card .card-detail .list {
   display: flex;
   flex-direction: column;
 }
-
-.component-order-card__header__invoice-no,
-.component-order-card__header__added-date,
-.component-order-card__header__picked-shop,
-.component-order-card__header__picked-date {
+.component-order-card .card-detail .list .order-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-bottom: 10px;
+  padding-right: 10%;
+  color: #7c7c7c;
+  border-bottom: 1px solid #fff;
 }
-
-.component-order-card__header__invoice-no,
-.component-order-card__header__picked-shop {
-  border-bottom: 1px solid #a5a5a5;
+.component-order-card .card-detail .list .order-item .information .row {
+  margin-bottom: 5px;
 }
-
-.component-order-card__header__invoice-no__title,
-.component-order-card__header__added-date__title,
-.component-order-card__header__picked-shop__title,
-.component-order-card__header__picked-date__title {
-  flex: 1;
-  border-right: 1px solid #a5a5a5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-}
-
-.component-order-card__header__picked-shop__title,
-.component-order-card__header__picked-date__title {
-  border-left: 1px solid #a5a5a5;
-}
-
-.component-order-card__header__invoice-no__value,
-.component-order-card__header__added-date__value,
-.component-order-card__header__picked-shop__value,
-.component-order-card__header__picked-date__value {
-  flex: 2;
-  text-align: right;
-  padding-right: 5px;
-}
-
-.component-order-card__body {
+.component-order-card .card-detail .list .order-item .information .row.name {
   font-size: 10px;
-  height: 30px;
-  overflow: scroll;
-  border-top: 1px solid #a5a5a5;
-  width: 100%;
 }
-
-.component-order-card__body__list-item {
-  margin-right: 5px;
-  padding: 4px;
-  display: -webkit-inline-box;
+.component-order-card .card-detail .list .order-item .information .row.unit-price, .component-order-card .card-detail .list .order-item .information .row.total {
+  font-size: 13px;
 }
-
-.component-order-card__footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  border-top: 1px solid #a5a5a5;
-  height: 45px;
-}
-
-.component-order-card__footer__button-remove,
-.component-order-card__footer__button-continue {
-  outline: none;
-  width: 90px;
-  color: #3b3b3b;
-  border-radius: 3px;
-  height: 20px;
-  border: 1px solid;
-  font-size: 12px;
-}
-
-.component-order-card__footer__button-remove {
-  background-color: #f55747;
-  border-color: #f55747;
-}
-
-.component-order-card__footer__button-continue {
-  background-color: #ffba2d;
-  border-color: #ffba2d;
+.component-order-card .card-detail .list .order-item .information .row.unit-price .title, .component-order-card .card-detail .list .order-item .information .row.total .title {
+  font-size: 10px;
+  padding-right: 3px;
 }
 
 /*# sourceMappingURL=App.css.map */

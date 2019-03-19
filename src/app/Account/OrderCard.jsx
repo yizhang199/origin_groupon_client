@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { renderNewShoppingCart, deleteOrder } from "../../_actions";
 import { makeDate } from "../../_helpers";
+import OrderItem from "./OrderItem";
 
 // import "./sass/OrderCard.css";
 
@@ -37,6 +38,23 @@ class OrderCard extends React.Component {
     });
 
     return count;
+  };
+  /**
+   *
+   */
+  renderOrderListTotal = list => {
+    let total = 0;
+
+    list.map(orderItem => {
+      total += parseFloat(orderItem.total);
+    });
+
+    return (
+      <span>
+        <span className="title">总计:</span>
+        <span className="value">$ {total.toFixed(2)}</span>
+      </span>
+    );
   };
   /**
    * get order status in text name
@@ -77,6 +95,23 @@ class OrderCard extends React.Component {
    */
   continueOrder = () => {
     this.props.renderNewShoppingCart(this.props.order);
+  };
+  /**
+   * function - return JSX for order item card
+   */
+  renderOrderListDetail = list => {
+    return (
+      <div className="list">
+        {list.map(orderItem => {
+          return (
+            <OrderItem
+              key={`orderItem${orderItem.order_product_id}`}
+              orderItem={orderItem}
+            />
+          );
+        })}
+      </div>
+    );
   };
 
   render() {
@@ -133,6 +168,14 @@ class OrderCard extends React.Component {
             </span>
           </div>
         </div>
+        {this.state.isShowDetail ? (
+          <div className="card-detail">
+            <div className="header">
+              {this.renderOrderListTotal(order.order_items)}
+            </div>
+            {this.renderOrderListDetail(order.order_items)}
+          </div>
+        ) : null}
       </div>
     );
   }

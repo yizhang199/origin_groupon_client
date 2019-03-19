@@ -724,7 +724,7 @@ hr {
 }
 
 .payment-section__check-mark-wrapper {
-  background-color: #e4e0e0;
+  background-color: #f6f6f6;
   height: 52px;
   width: 126px;
   display: flex;
@@ -982,7 +982,7 @@ hr {
 
 .component-form__input {
   display: flex;
-  background-color: #e4e0e0;
+  background-color: #f6f6f6;
   border: none;
   flex: 9;
   padding: 0px 10px;
@@ -1006,7 +1006,7 @@ hr {
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  background-color: #e4e0e0;
+  background-color: #f6f6f6;
   width: 80vw;
 }
 
@@ -1081,9 +1081,83 @@ hr {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  border: 1px solid #a5a5a5;
   font-size: 12px;
-  box-shadow: 0px 0px 1px #a5a5a5;
+  background-color: #f6f6f6;
+}
+.component-order-card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  box-sizing: border-box;
+}
+.component-order-card .header .information-row {
+  font-size: 12px;
+  font-weight: bold;
+  color: #3b3b3b;
+}
+.component-order-card .header .information-row .title {
+  margin-right: 10px;
+}
+.component-order-card .card-body {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0px 10px 20px 10px;
+}
+.component-order-card .card-body .information {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  color: #7c7c7c;
+}
+.component-order-card .card-body .information .information-row {
+  display: flex;
+  justify-content: flex-start;
+}
+.component-order-card .card-body .information .information-row .title {
+  width: 26%;
+}
+.component-order-card .card-body .information .information-row .value {
+  font-size: 10px;
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: 70%;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+}
+.component-order-card .card-body .quantity-status {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 20%;
+}
+.component-order-card .card-body .quantity-status .status {
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #3b3b3b;
+}
+.component-order-card .card-body .quantity-status .status.pending {
+  color: #f55747;
+}
+.component-order-card .card-body .quantity-status .status.complete {
+  color: #7c7c7c;
+}
+.component-order-card .card-body .quantity-status .status.saved {
+  color: #4c4cfa;
+}
+.component-order-card .card-body .quantity-status .quantity .value {
+  color: #ffba2d;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.component-order-card .card-body .quantity-status .quantity .unit {
+  color: #7c7c7c;
 }
 
 .component-order-card__header {

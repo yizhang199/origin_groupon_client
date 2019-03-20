@@ -54,7 +54,8 @@ export const renderNew = order => {
         newShoppingCartList,
         paymentMethod,
         selectedShop,
-        date: order.picked_date
+        date: order.picked_date,
+        order_id: order.order_id
       }
     });
 

@@ -44,7 +44,7 @@ export const queryOrder = Payment.query;
 
 // order actions
 export const fetchOrders = Order.index;
-export const saveOrCreateOrder = Order.create;
+export const saveOrder = Order.save;
 export const deleteOrder = Order.deleteOrder;
 export const changeCustomerComments = Order.comments;
 

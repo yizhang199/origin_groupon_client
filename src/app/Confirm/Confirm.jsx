@@ -10,7 +10,7 @@ import { Head } from "../shared";
 import {
   setPaymentMethod,
   makePayment,
-  saveOrCreateOrder,
+  saveOrder,
   fetchUser,
   changeCustomerComments
 } from "../../_actions";
@@ -145,7 +145,7 @@ class Confirm extends React.Component {
     this.props.makePayment();
   };
   saveOrder = () => {
-    this.props.saveOrCreateOrder(1);
+    this.props.saveOrder();
   };
   render() {
     if (!this.props.labels.app_head_title) {
@@ -222,7 +222,7 @@ export default connect(
   {
     setPaymentMethod,
     makePayment,
-    saveOrCreateOrder,
+    saveOrder,
     fetchUser,
     changeCustomerComments
   }

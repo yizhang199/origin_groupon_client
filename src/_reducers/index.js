@@ -150,7 +150,14 @@ const app_statusReducer = (app_status = {}, action) => {
   }
   return app_status;
 };
+const orderIdReducer = (order_id = "", action) => {
+  if (action.type === actionTypes.renderNewShoppingCart) {
+    return action.payload.order_id;
+  }
+  return order_id;
+};
 export default combineReducers({
+  order_id: orderIdReducer,
   app_status: app_statusReducer,
   products: productsReducer,
   language_id: languageIdReducer,

@@ -33,7 +33,6 @@ const create = () => {
       customer_id: user.user_id,
       payment_method: paymentMethod,
       fax: pickedDate,
-      order_status_id: 2,
       total: orderInfo.total,
       order_items: orderInfo.items,
       customerComments
@@ -41,8 +40,14 @@ const create = () => {
     const response = await kidsnParty.post("/payment", requestBody, {
       headers
     });
-    dispatch({ type: types.saveOrder, payload: response.data.orders });
-    history.push(`${process.env.PUBLIC_URL}/`);
+
+    dispatch({ type: types.refreshShoppingCart });
+
+    if (response.data.status === "success") {
+      window.location.href = response.data.approvel_url;
+    } else {
+      history.push(`${process.env.PUBLIC_URL}/`);
+    }
   };
 };
 // export const create = () => {

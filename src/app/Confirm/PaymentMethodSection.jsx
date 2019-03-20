@@ -4,16 +4,30 @@ import { setPaymentMethod } from "../../_actions";
 import { baseUrl } from "../../_apis";
 
 const PaymentMethodSection = ({ setPaymentMethod, toggleSection }) => {
-  const paymentMethods = [
+  const ua = window.navigator.userAgent.toLowerCase();
+  const compare = ua.match(/MicroMessenger/i) == "micromessenger";
+  let defaultMethods = [
     { value: "Paypal", image: "/images/paypal.png" },
-    { value: "ALIPAY", image: "/images/alipay.png" },
-    { value: "WECHAT", image: "/images/wechat.png" },
     { value: "CASH", image: "/images/cash.png" }
   ];
+  let paymentMethods = [];
+  if (compare) {
+    paymentMethods = [
+      ...defaultMethods,
+      { value: "WECHAT", image: "/images/wechat.png" }
+    ];
+  } else {
+    paymentMethods = [
+      ...defaultMethods,
+      { value: "ALIPAY", image: "/images/alipay.png" }
+    ];
+  }
+
   const handlePaymentMethodChange = e => {
     toggleSection("showPaymentMethodSection");
     setPaymentMethod(e.target.value);
   };
+
   const renderInput = ({ value, image }) => {
     return (
       <label

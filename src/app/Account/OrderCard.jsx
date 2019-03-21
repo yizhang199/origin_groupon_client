@@ -166,7 +166,7 @@ class OrderCard extends React.Component {
             </span>
             <span className="information-row">
               <span className="title">取货时间: </span>
-              <span className="value"> {makeDate(order.picked_date)}</span>
+              <span className="value"> {order.picked_date}</span>
             </span>
             <span className="information-row">
               <span className="title">产品明细: </span>

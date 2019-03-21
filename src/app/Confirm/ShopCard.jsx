@@ -2,23 +2,29 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { selectDate, selectShop } from "../../_actions";
+import { makeShopOpenDate } from "../../_helpers";
 
 class ShopCard extends React.Component {
-  state = { selectedDate: "text_label" };
+  state = { selectedDate: `未选定时间` };
   renderAvaliableDates = () => {
-    const { open, name } = this.props.shop;
+    const { open } = this.props.shop;
+    const { open_date, open_time, close_time } = open;
+    const dateString = `${makeShopOpenDate(
+      open_date
+    )}: ${open_time} -- ${close_time}`;
     return (
       <>
-        <option value="text_label" disabled={true}>
+        <option value={`未选定时间`} disabled={true}>
           --请选择时间--
         </option>
-        {open.map((date, index) => {
+        {/* {open.map((date, index) => {
           return (
             <option key={`availableDate${name}${index}`} value={date}>
               {date}
             </option>
           );
-        })}
+        })} */}
+        <option value={dateString}>{dateString}</option>
       </>
     );
   };
@@ -28,9 +34,7 @@ class ShopCard extends React.Component {
     this.props.toggleSection("showShopListSection");
   };
 
-  handleOnShopChange = e => {
-    console.log(e.target.value);
-
+  handleOnShopChange = () => {
     this.props.selectShop(this.props.shop);
   };
 

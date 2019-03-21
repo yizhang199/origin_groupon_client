@@ -114,9 +114,9 @@ class Confirm extends React.Component {
   getDetail = (content, attributeName) => {
     if (attributeName === "showShopListSection") {
       if (this.props.selectedShop.name && makeDate(this.props.pickedDate)) {
-        return `取货地点：${this.props.selectedShop.name} 取货日期：${makeDate(
+        return `取货地点：${this.props.selectedShop.name} 取货日期：${
           this.props.pickedDate
-        )}`;
+        }`;
       } else {
         return content;
       }

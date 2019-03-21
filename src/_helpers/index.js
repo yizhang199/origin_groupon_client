@@ -100,30 +100,51 @@ export const makePrice = value => {
  * @param {String} date
  * @returns {String} formatted Open Date
  */
-export const makeDate = date => {
-  const dt = new Date(date);
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ];
-  const cusYear = dt.getFullYear();
-  const cusMonth = months[dt.getMonth()];
-  const dtDate = dt.getDate();
-  const cusDate = dtDate > 9 ? dtDate : `0${dtDate}`;
-  if (!cusMonth || !cusDate || !cusYear) {
-    return undefined;
-  }
-  return `${cusMonth} ${cusDate}, ${cusYear}`;
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+];
+
+const weeks = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+
+export const makeDate = value => {
+  const dt = new Date(value);
+
+  const day = dt.getDate();
+  const month = dt.getMonth();
+  const year = dt.getFullYear();
+  // const hours = dt.getHours();
+  // const minutes = dt.getMinutes();
+
+  const formatDay = day > 9 ? day : `0${day}`;
+  const formatMonth = months[month];
+  // const formatHours = hours > 9 ? hours : `0${hours}`;
+  // const formatMinutes = minutes > 9 ? minutes : `0${minutes}`;
+
+  return `${formatDay} ${formatMonth}, ${year}`;
+};
+export const makeShopOpenDate = value => {
+  const dt = new Date(value);
+
+  const day = dt.getDate();
+  const month = dt.getMonth();
+  const week = dt.getDay();
+
+  const formatDay = day > 9 ? day : `0${day}`;
+  const formatMonth = months[month];
+  const formatWeek = weeks[week];
+
+  return `${formatDay} ${formatMonth}, ${formatWeek}`;
 };
 
 export const makeHeader = () => {

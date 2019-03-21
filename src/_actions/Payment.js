@@ -51,11 +51,12 @@ const create = () => {
   };
 };
 
-const query = (channel, paymentId) => {
+const query = (channel, payment_id) => {
   return async function(dispatch) {
-    const response = await kidsnParty.get(`payments/${paymentId}`, {
+    const response = await kidsnParty.get(`payment`, {
       params: {
-        channel
+        channel,
+        payment_id
       }
     });
     console.log(response);

@@ -43,7 +43,7 @@ export const save = () => {
     };
     const response = await kidsnParty.post("/orders", requestBody, { headers });
     dispatch({ type: types.saveOrder, payload: response.data.products });
-    history.push("/");
+    history.push(`${process.env.PUBLIC_URL}/`);
   };
 };
 

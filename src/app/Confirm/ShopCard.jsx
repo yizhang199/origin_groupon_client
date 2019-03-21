@@ -5,7 +5,7 @@ import { selectDate, selectShop } from "../../_actions";
 import { makeShopOpenDate } from "../../_helpers";
 
 class ShopCard extends React.Component {
-  state = { selectedDate: `未选定时间` };
+  state = { selectedDate: `未选定日期` };
   renderAvaliableDates = () => {
     const { open } = this.props.shop;
     const { open_date, open_time, close_time } = open;
@@ -14,7 +14,7 @@ class ShopCard extends React.Component {
     )}: ${open_time} -- ${close_time}`;
     return (
       <>
-        <option value={`未选定时间`} disabled={true}>
+        <option value={`未选定日期`} disabled={true}>
           --请选择时间--
         </option>
         {/* {open.map((date, index) => {

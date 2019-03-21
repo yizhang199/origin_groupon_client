@@ -45,7 +45,7 @@ const selectedShopReducer = (selectedShop = {}, action) => {
   return selectedShop;
 };
 
-const pickedDateReducer = (pickedDate = "text_label", action) => {
+const pickedDateReducer = (pickedDate = "未选定日期", action) => {
   if (action.type === actionTypes.pickDate) {
     return action.payload;
   } else if (action.type === actionTypes.selectDate) {
@@ -53,7 +53,7 @@ const pickedDateReducer = (pickedDate = "text_label", action) => {
   } else if (action.type === actionTypes.renderNewShoppingCart) {
     return action.payload.date;
   } else if (action.type === actionTypes.selectedShop) {
-    return "text_label";
+    return "未选定日期";
   }
 
   return pickedDate;

@@ -5,7 +5,9 @@ import shoppingCartListReducer from "./shoppingCartListReducer";
 
 const productsReducer = (products = [], action) => {
   if (action.type === actionTypes.getProducts) {
-    return action.payload.data;
+    return action.payload;
+  } else if (action.type === actionTypes.saveOrder) {
+    return action.payload;
   }
   return products;
 };
@@ -80,8 +82,6 @@ const paymentMethodReducer = (paymentMethod = "", action) => {
 const ordersReducer = (orders = [], action) => {
   if (action.type === actionTypes.setOrders) {
     return action.payload;
-  } else if (action.type === actionTypes.saveOrders) {
-    return action.payload;
   }
   return orders;
 };
@@ -153,6 +153,8 @@ const app_statusReducer = (app_status = {}, action) => {
 const orderIdReducer = (order_id = "", action) => {
   if (action.type === actionTypes.renderNewShoppingCart) {
     return action.payload.order_id;
+  } else if (action.type === actionTypes.saveOrder) {
+    return "";
   }
   return order_id;
 };

@@ -138,5 +138,18 @@
         }
       }
     }
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        border: 1px solid color("bodyBackground");
+        background-color: color("myRed");
+        box-shadow: 0 0 5px color("myRed");
+        border-radius: 4px;
+        color: color("bodyBackground");
+        padding: 5px 15px;
+      }
+    }
   }
 }

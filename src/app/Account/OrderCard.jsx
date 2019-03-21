@@ -114,6 +114,24 @@ class OrderCard extends React.Component {
     );
   };
 
+  renderOrderDetailFooter = ({ order_id, status_id }) => {
+    if (parseInt(status_id) !== 1) {
+      return null;
+    }
+    return (
+      <div className="footer">
+        <button
+          onClick={() => {
+            this.props.deleteOrder(order_id);
+            this.setState({ isShowDetail: false });
+          }}
+        >
+          delete
+        </button>
+      </div>
+    );
+  };
+
   render() {
     const order = this.props.order;
     return (
@@ -174,6 +192,7 @@ class OrderCard extends React.Component {
               {this.renderOrderListTotal(order.order_items)}
             </div>
             {this.renderOrderListDetail(order.order_items)}
+            {this.renderOrderDetailFooter(order)}
           </div>
         ) : null}
       </div>

@@ -13,7 +13,7 @@ const index = () => {
       params: { language_id }
     });
 
-    dispatch({ type: types.getProducts, payload: response });
+    dispatch({ type: types.getProducts, payload: response.data });
   };
 };
 

@@ -36,21 +36,21 @@ export const save = () => {
       customer_id: user.user_id,
       payment_method: paymentMethod,
       fax: pickedDate,
-      order_status_id: 6,
+      order_status_id: 1,
       total: orderInfo.total,
       order_items: orderInfo.items,
       customerComments
     };
     const response = await kidsnParty.post("/orders", requestBody, { headers });
-    dispatch({ type: types.getProducts, payload: response.data.products });
+    dispatch({ type: types.saveOrder, payload: response.data.products });
     history.push("/");
   };
 };
 
-const deleteOrder = order => {
+const deleteOrder = orderId => {
   const headers = makeHeader();
   return async function(dispatch) {
-    const response = await kidsnParty.delete(`/order/${order.order_id}`, {
+    const response = await kidsnParty.delete(`/order/${orderId}`, {
       headers
     });
     dispatch({ type: types.setOrders, payload: response.data });

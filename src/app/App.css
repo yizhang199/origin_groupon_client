@@ -1207,5 +1207,18 @@ hr {
   font-size: 10px;
   padding-right: 3px;
 }
+.component-order-card .card-detail .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.component-order-card .card-detail .footer button {
+  border: 1px solid #fff;
+  background-color: #f55747;
+  box-shadow: 0 0 5px #f55747;
+  border-radius: 4px;
+  color: #fff;
+  padding: 5px 15px;
+}
 
 /*# sourceMappingURL=App.css.map */

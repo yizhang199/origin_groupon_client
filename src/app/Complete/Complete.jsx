@@ -2,47 +2,84 @@ import React from "react";
 import queryString from "query-string";
 import { connect } from "react-redux";
 
-import { queryOrder } from "../../_actions";
+import { queryPayment } from "../../_actions";
 
 import { Head } from "../shared/";
 
 class Complete extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { paymentId: "" };
-  }
+  state = { paymentId: "" };
+
   componentDidMount() {
-    const paymentId = queryString.parse(this.props.location.search).paymentId;
-    this.setState({ paymentId });
-    this.props.queryOrder(paymentId);
+    const channel = this.props.match.params.channel;
+    if (channel === "poli") {
+      const paymentId = queryString.parse(this.props.location.search).token;
+      this.setState({ paymentId });
+      this.props.queryPayment(channel, paymentId);
+    }
+
+    if (channel === "paypal") {
+    }
+
+    if (channel === "wechant" || channel === "alipay") {
+    }
   }
 
   renderPaymentInformation = () => {
-    return this.props.paymentInformation.map((element, index) => {
-      return (
-        <div
-          key={`paymentInformation${index}`}
-          className="component-complete__trasition-information"
-        >
-          <div className="component-complete__trasition-information__row">
-            <span className="component-complete__trasition-information__subtitle">
-              {this.props.labels.paid_amount}
-            </span>
-            <span className="component-complete__trasition-information__value">
-              ${element.amount.total}
-            </span>
-          </div>
-          <div className="component-complete__trasition-information__row">
-            <span className="component-complete__trasition-information__subtitle">
-              {this.props.labels.payee}
-            </span>
-            <span className="component-complete__trasition-information__value">
-              {element.payee.email}
-            </span>
-          </div>
+    const {
+      error_code,
+      date_time,
+      status,
+      bill_amount,
+      paid_amount,
+      transaction_id
+    } = this.props.paymentInformation;
+    if (error_code) {
+      return <p>支付失败，请重试</p>;
+    }
+    return (
+      <div className="component-complete__trasition-information">
+        <div className="component-complete__trasition-information__row">
+          <span className="component-complete__trasition-information__subtitle">
+            {`支付ref. No.`}
+          </span>
+          <span className="component-complete__trasition-information__value">
+            ${transaction_id}
+          </span>
         </div>
-      );
-    });
+        <div className="component-complete__trasition-information__row">
+          <span className="component-complete__trasition-information__subtitle">
+            {`应付金额`}
+          </span>
+          <span className="component-complete__trasition-information__value">
+            ${bill_amount}
+          </span>
+        </div>
+        <div className="component-complete__trasition-information__row">
+          <span className="component-complete__trasition-information__subtitle">
+            {`支付状态`}
+          </span>
+          <span className="component-complete__trasition-information__value">
+            {status}
+          </span>
+        </div>
+        <div className="component-complete__trasition-information__row">
+          <span className="component-complete__trasition-information__subtitle">
+            {`支付时间`}
+          </span>
+          <span className="component-complete__trasition-information__value">
+            {date_time}
+          </span>
+        </div>
+        <div className="component-complete__trasition-information__row">
+          <span className="component-complete__trasition-information__subtitle">
+            {this.props.labels.paid_amount}
+          </span>
+          <span className="component-complete__trasition-information__value">
+            ${paid_amount}
+          </span>
+        </div>
+      </div>
+    );
   };
 
   render() {
@@ -72,5 +109,5 @@ const mapStateToProps = ({ paymentInformation, labels }) => {
 
 export default connect(
   mapStateToProps,
-  { queryOrder }
+  { queryPayment }
 )(Complete);

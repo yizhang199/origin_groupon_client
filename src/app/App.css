@@ -962,6 +962,7 @@ hr {
 
 .component-complete__trasition-information__value {
   font-size: 12px;
+  text-align: right;
 }
 
 .component-form {

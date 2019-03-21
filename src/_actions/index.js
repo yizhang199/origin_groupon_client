@@ -40,7 +40,7 @@ export const fetchUser = Auth.show;
 // payment actions
 export const setPaymentMethod = Payment.setPaymentMethod;
 export const makePayment = Payment.create;
-export const queryOrder = Payment.query;
+export const queryPayment = Payment.query;
 
 // order actions
 export const fetchOrders = Order.index;

@@ -41,6 +41,8 @@ export const fetchUser = Auth.show;
 export const setPaymentMethod = Payment.setPaymentMethod;
 export const makePayment = Payment.create;
 export const queryPayment = Payment.query;
+export const fetchCanceledOrder = Payment.fetchCanceledOrder;
+export const continuePay = Payment.continuePay;
 
 // order actions
 export const fetchOrders = Order.index;

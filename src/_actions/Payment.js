@@ -51,6 +51,24 @@ const create = () => {
   };
 };
 
+const continuePay = () => {
+  return async function(dispatch, getState) {
+    const headers = makeHeader();
+    const requestBody = getState().canceledOrder;
+    const response = await kidsnParty.post("/payment", requestBody, {
+      headers
+    });
+
+    dispatch({ type: types.refreshShoppingCart });
+
+    if (response.data.status === "success") {
+      window.location.href = response.data.approvel_url;
+    } else {
+      history.push(`${process.env.PUBLIC_URL}/`);
+    }
+  };
+};
+
 const query = (channel, payment_id) => {
   return async function(dispatch) {
     const response = await kidsnParty.get(`payment`, {
@@ -59,20 +77,24 @@ const query = (channel, payment_id) => {
         payment_id
       }
     });
-    console.log(response);
-    const fakeData = {
-      error_code: null,
-      date_time: new Date(),
-      status: "Complete",
-      bill_amount: "200.00",
-      paid_amount: "200.00",
-      transaction_id: "abc1122334455676"
-    };
     dispatch({
       type: types.setPaymentInformation,
       payload: response.data.payment_information
-        ? response.data.payment_information
-        : fakeData
+    });
+  };
+};
+
+const fetchCanceledOrder = (channel, payment_id) => {
+  return async function(dispatch) {
+    const response = await kidsnParty.get(`payment/fetchCanceledOrder`, {
+      params: {
+        channel,
+        payment_id
+      }
+    });
+    dispatch({
+      type: types.setCanceledOrder,
+      payload: response.data.order
     });
   };
 };
@@ -82,4 +104,10 @@ export const setPaymentMethod = value => {
     payload: value
   };
 };
-export default { create, query, setPaymentMethod };
+export default {
+  create,
+  query,
+  setPaymentMethod,
+  fetchCanceledOrder,
+  continuePay
+};

@@ -1,7 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { renderNewShoppingCart, deleteOrder } from "../../_actions";
+import {
+  renderNewShoppingCart,
+  deleteOrder,
+  continuePay
+} from "../../_actions";
 import { makeDate } from "../../_helpers";
 import OrderItem from "./OrderItem";
 
@@ -74,6 +78,9 @@ class OrderCard extends React.Component {
         );
       case 3:
         return <span className="status complete">{`已完成`}</span>;
+      case 6:
+        return <span className="status pending">{`未支付`}</span>;
+
       default:
         break;
     }
@@ -115,21 +122,37 @@ class OrderCard extends React.Component {
   };
 
   renderOrderDetailFooter = ({ order_id, status_id }) => {
-    if (parseInt(status_id) !== 1) {
+    if (parseInt(status_id) !== 1 && parseInt(status_id) !== 6) {
       return null;
     }
-    return (
-      <div className="footer">
-        <button
-          onClick={() => {
-            this.props.deleteOrder(order_id);
-            this.setState({ isShowDetail: false });
-          }}
-        >
-          delete
-        </button>
-      </div>
-    );
+    if (parseInt(status_id) === 1) {
+      return (
+        <div className="footer">
+          <button
+            onClick={() => {
+              this.props.deleteOrder(order_id);
+              this.setState({ isShowDetail: false });
+            }}
+          >
+            delete
+          </button>
+        </div>
+      );
+    }
+    if (parseInt(status_id) === 6) {
+      return (
+        <div className="footer">
+          <button
+            onClick={() => {
+              this.props.continuePay(order_id);
+              this.setState({ isShowDetail: false });
+            }}
+          >
+            去支付
+          </button>
+        </div>
+      );
+    }
   };
 
   render() {
@@ -202,5 +225,5 @@ class OrderCard extends React.Component {
 
 export default connect(
   null,
-  { renderNewShoppingCart, deleteOrder }
+  { renderNewShoppingCart, deleteOrder, continuePay }
 )(OrderCard);

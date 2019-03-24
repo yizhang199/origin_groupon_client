@@ -119,12 +119,14 @@ class ShoppingCart extends React.Component {
   render() {
     return (
       <div className="component-shopping-cart">
-        <div
-          onClick={this.toggleList}
-          className="component-shopping-cart__header"
-        >
-          {this.renderIcon()}
-        </div>
+        {!this.state.showList ? (
+          <div
+            onClick={this.toggleList}
+            className="component-shopping-cart__header"
+          >
+            {this.renderIcon()}
+          </div>
+        ) : null}
         {this.renderList()}
       </div>
     );

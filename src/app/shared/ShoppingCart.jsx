@@ -82,13 +82,18 @@ class ShoppingCart extends React.Component {
                 {`$${getTotalPrice(this.props.shoppingCartList)}`}
               </span>
             </div>
-            {this.props.shoppingCartList.map((orderItem, index) => {
-              return (
-                <OrderItemCard orderItem={orderItem} key={`orderItem${index}`}>
-                  {orderItem.item.name}
-                </OrderItemCard>
-              );
-            })}
+            <div className="component-shopping-cart__list__body">
+              {this.props.shoppingCartList.map((orderItem, index) => {
+                return (
+                  <OrderItemCard
+                    orderItem={orderItem}
+                    key={`orderItem${index}`}
+                  >
+                    {orderItem.item.name}
+                  </OrderItemCard>
+                );
+              })}
+            </div>
             <div className="component-shopping-cart__list__footer">
               <Link
                 onClick={this.toggleList}

@@ -7,8 +7,8 @@ const PaymentMethodSection = ({ setPaymentMethod, toggleSection }) => {
   const ua = window.navigator.userAgent.toLowerCase();
   const compare = ua.match(/MicroMessenger/i) == "micromessenger";
   let defaultMethods = [
-    { value: "Paypal", image: "/images/paypal.png" },
-    { value: "CASH", image: "/images/cash.png" }
+    // { value: "Paypal", image: "/images/paypal.png" },
+    { value: "POLI", image: "/images/poli.png" }
   ];
   let paymentMethods = [];
   if (compare) {

@@ -1,6 +1,6 @@
 import types from "./actionTypes";
 
-import { Payment as redpay, kidsnParty } from "../_apis";
+import { kidsnParty } from "../_apis";
 import {
   getTotalPrice,
   getTotal,
@@ -27,14 +27,19 @@ const create = () => {
     const orderInfo = makeOrderInfo(shoppingCartList);
     const invoice_no = makeInvoice_no();
 
+    const today = new Date();
+    const timestamps = Math.floor(today / 1000);
+
     const requestBody = {
       invoice_no: invoice_no,
       store_id: location_id,
       customer_id: user.user_id,
-      payment_method: paymentMethod,
+      channel: paymentMethod,
       fax: pickedDate,
       total: orderInfo.total,
       order_items: orderInfo.items,
+      timestamps,
+      quantity: orderInfo.quantity,
       customerComments
     };
     const response = await kidsnParty.post("/payment", requestBody, {

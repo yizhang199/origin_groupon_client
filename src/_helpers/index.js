@@ -160,6 +160,7 @@ export const makeHeader = () => {
 
 export const makeOrderInfo = shoppingCartList => {
   let total = 0;
+  let quantity = 0;
   let items = [];
 
   shoppingCartList.map(orderItem => {
@@ -168,6 +169,7 @@ export const makeOrderInfo = shoppingCartList => {
       : [];
     const sum = calculateTotalPrice(orderItem);
     total += sum;
+    quantity += orderItem.quantity;
     items = [
       ...items,
       {
@@ -180,7 +182,7 @@ export const makeOrderInfo = shoppingCartList => {
     ];
   });
 
-  return { total, items };
+  return { total, items, quantity };
 };
 
 export const makeInvoice_no = () => {

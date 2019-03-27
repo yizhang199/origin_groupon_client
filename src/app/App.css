@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "pingfang";
+  src: url("./fonts/pingfang/pingfang.ttf");
+}
 .carousel .slide img {
   height: 130px;
 }
@@ -284,6 +288,33 @@
 }
 .component-notice.open {
   background-color: #ffba2d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  color: #3b3b3b;
+  font-family: "pingfang", Arial, Helvetica, sans-serif !important;
+}
+
+body {
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 0px 10px;
+}
+
+/* hide ugly scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+::-moz-scrollbar {
+  display: none;
 }
 
 .component-choice-form {

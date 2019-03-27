@@ -40,9 +40,7 @@ class LoginForm extends React.Component {
               <Field
                 name="password"
                 component={this.renderInput}
-                placeholder={
-                  this.props.password.login_form_placeholder_password
-                }
+                placeholder={this.props.labels.login_form_placeholder_password}
                 type="password"
               />
             </label>
@@ -57,7 +55,10 @@ class LoginForm extends React.Component {
   }
 }
 const reduxFormWrapper = reduxForm({ form: "loginForm" })(LoginForm);
+const mapStateToProps = ({ labels }) => {
+  return { labels };
+};
 export default connect(
-  null,
+  mapStateToProps,
   { login }
 )(reduxFormWrapper);

@@ -175,7 +175,9 @@ class OrderCard extends React.Component {
           }
         >
           <span className="information-row">
-            <span className="title">{this.props.labels.invoice_no}:</span>
+            <span className="title">
+              {this.props.labels.order_card_invoice_no}:
+            </span>
             <span className="value">{order.invoice_no}</span>
           </span>
           <span className="toggle">
@@ -189,19 +191,27 @@ class OrderCard extends React.Component {
         <div className="card-body">
           <div className="information">
             <span className="information-row">
-              <span className="title">{this.props.labels.created_date}: </span>
+              <span className="title">
+                {this.props.labels.order_card_created_date}:{" "}
+              </span>
               <span className="value"> {makeDate(order.create_date)}</span>
             </span>
             <span className="information-row">
-              <span className="title">{this.props.labels.pick_address}: </span>
+              <span className="title">
+                {this.props.labels.order_card_pick_address}:{" "}
+              </span>
               <span className="value"> {order.store_name}</span>
             </span>
             <span className="information-row">
-              <span className="title">{this.props.labels.pick_date}: </span>
+              <span className="title">
+                {this.props.labels.order_card_pick_date}:{" "}
+              </span>
               <span className="value"> {order.picked_date}</span>
             </span>
             <span className="information-row">
-              <span className="title">{this.props.labels.order_items}: </span>
+              <span className="title">
+                {this.props.labels.order_card_pick_order_items}:{" "}
+              </span>
               <span className="value">
                 {this.renderOrderList(order.order_items)}
               </span>

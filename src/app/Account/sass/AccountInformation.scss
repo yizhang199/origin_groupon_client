@@ -5,14 +5,23 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
-}
-
-.component-account-information__footer__button-logout {
-  width: 80px;
-  background-color: color("main");
-  color: color("text");
-  font-weight: bold;
-  border: 1px solid color("border2");
-  height: 20px;
-  border-radius: 3px;
+  .component-account-information__footer {
+    button {
+      min-width: 80px;
+      color: color("text");
+      font-weight: bold;
+      border: 1px solid color("bodyBackground");
+      margin-left: 10px;
+      height: 30px;
+      border-radius: 3px;
+      &.logout {
+        background-color: color("myRed");
+        box-shadow: 0 0 3px color("myRed");
+      }
+      &.nav-to-admin {
+        background-color: color("main");
+        box-shadow: 0 0 3px color("main");
+      }
+    }
+  }
 }

@@ -18,9 +18,15 @@ const AccountInformation = props => {
 
       <div className="component-account-information__footer">
         <button
-          className="component-account-information__footer__button-logout"
+          className="nav-to-admin"
           onClick={() => {
-            localStorage.removeItem("user");
+            history.push("/admin");
+          }}
+        >{`前往控制台`}</button>
+        <button
+          className="logout"
+          onClick={() => {
+            localStorage.removeItem("guoli_groupon_user");
             history.push(`${process.env.PUBLIC_URL}/`);
           }}
         >

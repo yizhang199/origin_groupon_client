@@ -631,7 +631,7 @@ hr {
 .component-products__category-list {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 182px);
+  height: calc(100vh - 96px);
   overflow: scroll;
   margin-top: 10px;
 }
@@ -653,6 +653,8 @@ hr {
 
 .component-products__category-list .component-products__item span {
   text-align: center;
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .component-products__category-list .component-products__item.active {
@@ -672,6 +674,11 @@ hr {
   flex: 3;
   padding: 0 10px;
   padding-bottom: 10vh;
+}
+
+.component-products .component-products__product-list .component-products__item h3 {
+  font-weight: normal;
+  font-size: 16px;
 }
 
 .component-confirm {
@@ -1103,15 +1110,22 @@ hr {
   align-items: center;
   height: 60px;
 }
-
-.component-account-information__footer__button-logout {
-  width: 80px;
-  background-color: #ffba2d;
+.component-account-information .component-account-information__footer button {
+  min-width: 80px;
   color: #3b3b3b;
   font-weight: bold;
-  border: 1px solid #a5a5a5;
-  height: 20px;
+  border: 1px solid #fff;
+  margin-left: 10px;
+  height: 30px;
   border-radius: 3px;
+}
+.component-account-information .component-account-information__footer button.logout {
+  background-color: #f55747;
+  box-shadow: 0 0 3px #f55747;
+}
+.component-account-information .component-account-information__footer button.nav-to-admin {
+  background-color: #ffba2d;
+  box-shadow: 0 0 3px #ffba2d;
 }
 
 .component-order-card {

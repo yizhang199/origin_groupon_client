@@ -11,7 +11,10 @@ const login = () => {
     const response = await kidsnParty.post(`/user/login`, values);
     if (response.data.success) {
       dispatch({ type: types.login, payload: response.data.data });
-      localStorage.setItem("user", JSON.stringify(response.data.data));
+      localStorage.setItem(
+        "guoli_groupon_user",
+        JSON.stringify(response.data.data)
+      );
       history.push(`${process.env.PUBLIC_URL}/`);
     } else {
       alert("email or password incorrect");
@@ -30,21 +33,24 @@ const register = () => {
 
 const show = () => {
   return async function(dispatch) {
-    if (localStorage.getItem("user")) {
+    if (localStorage.getItem("guoli_groupon_user")) {
       const headers = makeHeader();
       const response = await kidsnParty
         .get("/user", { headers })
         .catch(error => {
-          localStorage.removeItem("user");
+          localStorage.removeItem("guoli_groupon_user");
           history.push(`${process.env.PUBLIC_URL}/login`);
           return { type: "abc", payload: error };
         });
 
       if (response.status === 200) {
-        localStorage.setItem("user", JSON.stringify(response.data.data));
+        localStorage.setItem(
+          "guoli_groupon_user",
+          JSON.stringify(response.data.data)
+        );
         dispatch({ type: types.login, payload: response.data.data });
       } else {
-        localStorage.removeItem("user");
+        localStorage.removeItem("guoli_groupon_user");
         history.push(`${process.env.PUBLIC_URL}/login`);
       }
     } else {

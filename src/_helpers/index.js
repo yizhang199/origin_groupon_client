@@ -149,8 +149,8 @@ export const makeShopOpenDate = value => {
 
 export const makeHeader = () => {
   let headers = {};
-  if (localStorage.getItem("user")) {
-    const user = JSON.parse(localStorage.getItem("user"));
+  if (localStorage.getItem("guoli_groupon_user")) {
+    const user = JSON.parse(localStorage.getItem("guoli_groupon_user"));
     const auth_token = `Bearer ${user.api_token}`;
     headers = { Authorization: auth_token };
   }

@@ -9,7 +9,7 @@
 .component-products__category-list {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 182px);
+  height: calc(100vh - 96px);
   overflow: scroll;
   margin-top: 10px;
 }
@@ -30,6 +30,8 @@
 
 .component-products__category-list .component-products__item span {
   text-align: center;
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .component-products__category-list .component-products__item.active {
@@ -48,4 +50,14 @@
   flex: 3;
   padding: 0 10px;
   padding-bottom: 10vh;
+}
+.component-products {
+  .component-products__product-list {
+    .component-products__item {
+      h3 {
+        font-weight: normal;
+        font-size: 16px;
+      }
+    }
+  }
 }

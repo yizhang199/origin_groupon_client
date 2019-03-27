@@ -20,7 +20,7 @@ const AccountInformation = props => {
         <button
           className="nav-to-admin"
           onClick={() => {
-            history.push("/admin");
+            window.location.href = `http://guoli.com.au/admin`;
           }}
         >{`前往控制台`}</button>
         <button

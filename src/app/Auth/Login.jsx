@@ -13,7 +13,7 @@ const Login = props => {
       <Head title={props.labels.app_head_title} pageName="login" />
       <div className="component-login">
         <FormHead />
-        <LoginForm />
+        <LoginForm labels={props.labels} />
       </div>
     </React.Fragment>
   );

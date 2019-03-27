@@ -8,6 +8,7 @@ class ShopCard extends React.Component {
   state = { selectedDate: `未选定日期` };
   renderAvaliableDates = () => {
     const { open } = this.props.shop;
+    const { labels } = this.props;
     const { open_date, open_time, close_time } = open;
     const dateString = `${makeShopOpenDate(
       open_date
@@ -15,7 +16,7 @@ class ShopCard extends React.Component {
     return (
       <>
         <option value={`未选定日期`} disabled={true}>
-          --请选择时间--
+          --{labels.shop_card_placeholder_date_selector}--
         </option>
         {/* {open.map((date, index) => {
           return (
@@ -40,7 +41,7 @@ class ShopCard extends React.Component {
 
   render() {
     const { location_id, address, telephone, name } = this.props.shop;
-
+    const { labels } = this.props;
     return (
       <label
         className={`shop-card ${
@@ -49,15 +50,15 @@ class ShopCard extends React.Component {
       >
         <div className="information">
           <div className="sub-info name">
-            <span className="title">店名</span>
+            <span className="title">{labels.shop_card_name}</span>
             <span className="value">{name}</span>
           </div>
           <div className="sub-info address">
-            <span className="title">地址</span>
+            <span className="title">{labels.shop_card_address}</span>
             <span className="value">{address}</span>
           </div>
           <div className="sub-info date">
-            <span className="title">取货日期</span>
+            <span className="title">{labels.shop_card_date}</span>
             <span className="value">
               <select
                 value={
@@ -74,7 +75,7 @@ class ShopCard extends React.Component {
             </span>
           </div>
           <div className="sub-info phone">
-            <span className="title">电话</span>
+            <span className="title">{labels.shop_card_phone}</span>
             <span className="value">{telephone}</span>
           </div>
         </div>
@@ -90,8 +91,8 @@ class ShopCard extends React.Component {
   }
 }
 
-const mapStateToProps = ({ pickedDate, selectedShop }) => {
-  return { pickedDate, selectedShop };
+const mapStateToProps = ({ pickedDate, selectedShop, labels }) => {
+  return { pickedDate, selectedShop, labels };
 };
 
 export default connect(

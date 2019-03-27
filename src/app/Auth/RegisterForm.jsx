@@ -37,7 +37,7 @@ class RegisterForm extends React.Component {
               <Field
                 name="username"
                 component={this.renderInput}
-                placeholder="请输入用户名"
+                placeholder={this.props.labels.signup_form_placeholder_username}
                 type="text"
               />
             </label>
@@ -48,7 +48,7 @@ class RegisterForm extends React.Component {
               <Field
                 name="phone"
                 component={this.renderInput}
-                placeholder="请输入phone no."
+                placeholder={this.props.labels.signup_form_placeholder_phone}
                 type="text"
               />
             </label>
@@ -59,7 +59,7 @@ class RegisterForm extends React.Component {
               <Field
                 name="password"
                 component={this.renderInput}
-                placeholder="请输入密码"
+                placeholder={this.props.labels.signup_form_placeholder_password}
                 type="password"
               />
             </label>
@@ -70,12 +70,16 @@ class RegisterForm extends React.Component {
               <Field
                 name="repeat_password"
                 component={this.renderInput}
-                placeholder="请再次输入密码"
+                placeholder={
+                  this.props.labels.signup_form_placeholder_repeat_password
+                }
                 type="password"
               />
             </label>
           </div>
-          <button className="component-form__submit-button">确认</button>
+          <button className="component-form__submit-button">
+            {this.props.labels.signup_form_submit_button}
+          </button>
         </form>
       </div>
     );

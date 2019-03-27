@@ -9,8 +9,6 @@ import {
 import { makeDate } from "../../_helpers";
 import OrderItem from "./OrderItem";
 
-// import "./sass/OrderCard.css";
-
 /**
  * main function to render JSX
  * @param {React.Props} props
@@ -55,7 +53,7 @@ class OrderCard extends React.Component {
 
     return (
       <span>
-        <span className="title">总计:</span>
+        <span className="title">{this.props.labels.order_card_total}:</span>
         <span className="value">$ {total.toFixed(2)}</span>
       </span>
     );
@@ -68,18 +66,29 @@ class OrderCard extends React.Component {
   getStatusName = id => {
     switch (parseInt(id)) {
       case 2:
-        return <span className="status pending">{`待取货`}</span>;
+        return (
+          <span className="status pending">
+            {this.props.labels.order_card_status_2}
+          </span>
+        );
       case 1:
         return (
-          <span
-            className="status saved"
-            onClick={this.continueOrder}
-          >{`继续>>`}</span>
+          <span className="status saved" onClick={this.continueOrder}>
+            {this.props.labels.order_card_status_1}
+          </span>
         );
       case 3:
-        return <span className="status complete">{`已完成`}</span>;
+        return (
+          <span className="status complete">
+            {this.props.labels.order_card_status_3}
+          </span>
+        );
       case 6:
-        return <span className="status pending">{`未支付`}</span>;
+        return (
+          <span className="status pending">
+            {this.props.labels.order_card_status_6}
+          </span>
+        );
 
       default:
         break;
@@ -134,7 +143,7 @@ class OrderCard extends React.Component {
               this.setState({ isShowDetail: false });
             }}
           >
-            delete
+            {this.props.labels.order_card_delete}
           </button>
         </div>
       );
@@ -166,7 +175,7 @@ class OrderCard extends React.Component {
           }
         >
           <span className="information-row">
-            <span className="title">订单号:</span>
+            <span className="title">{this.props.labels.invoice_no}:</span>
             <span className="value">{order.invoice_no}</span>
           </span>
           <span className="toggle">
@@ -180,19 +189,19 @@ class OrderCard extends React.Component {
         <div className="card-body">
           <div className="information">
             <span className="information-row">
-              <span className="title">创建日期: </span>
+              <span className="title">{this.props.labels.created_date}: </span>
               <span className="value"> {makeDate(order.create_date)}</span>
             </span>
             <span className="information-row">
-              <span className="title">取货地点: </span>
+              <span className="title">{this.props.labels.pick_address}: </span>
               <span className="value"> {order.store_name}</span>
             </span>
             <span className="information-row">
-              <span className="title">取货时间: </span>
+              <span className="title">{this.props.labels.pick_date}: </span>
               <span className="value"> {order.picked_date}</span>
             </span>
             <span className="information-row">
-              <span className="title">产品明细: </span>
+              <span className="title">{this.props.labels.order_items}: </span>
               <span className="value">
                 {this.renderOrderList(order.order_items)}
               </span>
@@ -223,7 +232,11 @@ class OrderCard extends React.Component {
   }
 }
 
+const mapStateToProps = ({ labels }) => {
+  return { labels };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { renderNewShoppingCart, deleteOrder, continuePay }
 )(OrderCard);

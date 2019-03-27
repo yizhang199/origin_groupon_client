@@ -1,6 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const OrderItem = ({ orderItem }) => {
+const OrderItem = ({ orderItem, labels }) => {
   const { name, quantity, total, price } = orderItem;
 
   return (
@@ -8,10 +9,12 @@ const OrderItem = ({ orderItem }) => {
       <div className="information">
         <div className="row name">{name}</div>
         <div className="row unit-price">
-          <span className={`title`}>{`单价:`}</span> <span>{`$${price}`}</span>
+          <span className={`title`}>{labels.order_item_unit_price}:</span>{" "}
+          <span>{`$${price}`}</span>
         </div>
         <div className="row total">
-          <span className="title">{`小计:`}</span> <span>{`$${total}`}</span>
+          <span className="title">{labels.order_item_total}:</span>{" "}
+          <span>{`$${total}`}</span>
         </div>
       </div>
       <div className="quantity">{`X ${quantity}`}</div>
@@ -19,4 +22,8 @@ const OrderItem = ({ orderItem }) => {
   );
 };
 
-export default OrderItem;
+const mapStateToProps = ({ labels }) => {
+  return { labels };
+};
+
+export default connect(mapStateToProps)(OrderItem);

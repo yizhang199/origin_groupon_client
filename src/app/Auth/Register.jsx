@@ -14,7 +14,7 @@ const Register = props => {
       <Head title={props.labels.app_head_title} pageName="register" />
       <div className="component-register">
         <FormHead />
-        <RegisterForm />
+        <RegisterForm labels={props.labels} />
       </div>
     </React.Fragment>
   );

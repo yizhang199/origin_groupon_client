@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 
 import { history } from "../../history";
 
-// import "./sass/AccountInformation.css";
-
 const AccountInformation = props => {
   if (!props.labels.account_greeting) {
     return <div>loading...</div>;
@@ -17,12 +15,14 @@ const AccountInformation = props => {
       </div>
 
       <div className="component-account-information__footer">
-        <button
-          className="nav-to-admin"
-          onClick={() => {
-            window.location.href = `http://guoli.com.au/admin`;
-          }}
-        >{`前往控制台`}</button>
+        {parseInt(props.user.user_group_id) === 3 ? (
+          <button
+            className="nav-to-admin"
+            onClick={() => {
+              window.location.href = `http://guoli.com.au/admin`;
+            }}
+          >{`前往控制台`}</button>
+        ) : null}
         <button
           className="logout"
           onClick={() => {

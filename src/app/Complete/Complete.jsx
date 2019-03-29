@@ -44,7 +44,7 @@ class Complete extends React.Component {
             {labels.complete_payment_id}
           </span>
           <span className="component-complete__trasition-information__value">
-            ${transaction_id}
+            {transaction_id}
           </span>
         </div>
         <div className="component-complete__trasition-information__row">
